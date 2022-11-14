@@ -1,3 +1,5 @@
+import './NavBar.scss';
+
 const NavBar = () => {
   return <h1>Hi</h1>;
 };
