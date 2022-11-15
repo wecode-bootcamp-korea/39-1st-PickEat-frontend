@@ -3,20 +3,79 @@
 
 .mainBody {
   margin-top: 30px;
+
+  .fa-egg {
+    color: $deepYellow;
+  }
+
   .mainColorBox {
     @include flex(space-between, center);
     width: 100%;
     height: 500px;
     padding-right: 250px;
+    padding-left: 250px;
     background-color: $pointGreen;
 
     .colorBoxContent {
       .colorBoxText {
         color: white;
         font-family: 'Noto Sans KR', sans-serif;
-        font-size: 45px;
+        font-size: 35px;
+        white-space: nowrap;
+        span {
+          color: $pointBlack;
+          font-family: 'Alfa Slab One', cursive;
+        }
 
-        .colorBoxText span {
+        i {
+          margin-right: 7px;
+          color: $deepYellow;
+        }
+
+        .colorBoxText2 {
+          margin-top: 10px;
+        }
+      }
+
+      .colorBoxInput {
+        width: 350px;
+        height: 45px;
+        margin-top: 15px;
+        padding: 5px 40px 5px 15px;
+        border: 2px solid #fff;
+        border-radius: 15px;
+        background: none;
+        color: #fff;
+        font-size: 20px;
+      }
+
+      .fa-magnifying-glass {
+        position: absolute;
+        top: 312px;
+        left: 565px;
+        color: #fff;
+      }
+
+      .colorBoxInput::placeholder {
+        color: #fff;
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+
+      .colorBoxHash {
+        display: flex;
+        justify-content: space-around;
+        width: 230px;
+        margin-top: 15px;
+        color: #fff;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 14px;
+
+        li {
+          display: flex;
+          align-items: center;
+          padding: 3px;
+          border-radius: 10px;
+          background-color: rgba(222, 222, 222, 0.3);
         }
       }
     }
@@ -27,6 +86,57 @@
 
       .mainImg {
         width: 550px;
+      }
+    }
+  }
+  .mainHome {
+    width: 100%;
+    margin-top: 40px;
+    padding: 0px 250px 0px 250px;
+    .popularity {
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 23px;
+
+      span {
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+
+      .topNumber {
+        font-weight: 600;
+      }
+    }
+    .bastLecture {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      margin-top: 30px;
+      div {
+        width: 250px;
+        height: 320px;
+        margin-right: 15px;
+        border-radius: 15px;
+      }
+
+      .lectures {
+        padding: 10px;
+        background-color: $pointPink;
+
+        .lecturetitle {
+          display: inline-block;
+          margin-bottom: 5px;
+          padding: 2px;
+          border-radius: 5px;
+          background-color: white;
+          color: $pointBlack;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+        }
+
+        img {
+          width: 100%;
+          border-radius: 8px;
+        }
       }
     }
   }

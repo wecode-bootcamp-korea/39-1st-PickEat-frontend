@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
+    "title": "한식",
+    "price": "400,000",
+    "color": "#f4f693"
+  },
+
+  {
+    "id": 2,
+    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
+    "title": "중식",
+    "price": "400,000",
+    "color": "pointGreen"
+  },
+
+  {
+    "id": 3,
+    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
+    "title": "일식",
+    "price": "400,000",
+    "color": "pointGreen"
+  },
+
+  {
+    "id": 4,
+    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
+    "title": "양식",
+    "price": "400,000",
+    "color": "pointGreen"
+  },
+
+  {
+    "id": 5,
+    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
+    "title": "이탈리아",
+    "price": "400,000",
+    "color": "pointGreen"
+  }
+]
