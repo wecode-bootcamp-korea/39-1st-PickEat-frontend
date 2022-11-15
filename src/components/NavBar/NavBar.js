@@ -8,7 +8,12 @@ const NavBar = () => {
         <i class="fa-solid fa-egg" />
         P!CKEAT
       </h1>
+
       <ul className="navContents">
+        <li className="navContentsList2">
+          <p className="navP2">ABOUT</p>
+          <div className="dropBoxs" />
+        </li>
         <li className="navContentsList1">
           <p className="navP1">
             LECTURE
@@ -17,44 +22,30 @@ const NavBar = () => {
           <div className="dropBox1 dropBoxs">
             <ul className="dropBoxUl">
               <li className="dropBoxCt1">
-                <p>Korean | 한식</p>
+                <Link>Korean | 한식</Link>
               </li>
 
               <li className="dropBoxCt1">
-                <p>China | 중식</p>
+                <p>
+                  <Link>China | 중식</Link>
+                </p>
               </li>
 
               <li className="dropBoxCt1">
-                <p>Japan | 일식</p>
+                <p>
+                  <Link>Japan | 일식</Link>
+                </p>
               </li>
 
               <li className="dropBoxCtN">
-                <p>Western | 양식</p>
+                <p>
+                  <Link>Western | 양식</Link>
+                </p>
               </li>
             </ul>
           </div>
-          <div className="subeDropBox">
-            <li className="subeDropBoxCt">
-              <p>불고기</p>
-            </li>
-            <li className="subeDropBoxCt">
-              <p>불고기</p>
-            </li>
-            <li className="subeDropBoxCt">
-              <p>불고기</p>
-            </li>
-            <li className="subeDropBoxCt">
-              <p>불고기</p>
-            </li>
-            <li className="subeDropBoxCt">
-              <p>불고기</p>
-            </li>
-          </div>
         </li>
-        <li className="navContentsList2">
-          <p className="navP2">ABOUT</p>
-          <div className="dropBoxs" />
-        </li>
+
         <li className="navContentsList3">
           <p className="navP3">SHOPPING</p>
           <div className="dropBoxs" />
