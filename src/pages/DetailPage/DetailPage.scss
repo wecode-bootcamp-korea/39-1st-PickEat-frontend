@@ -1,3 +1,180 @@
-h1 {
-  text-align: center;
+@import '../../styles/variables.scss';
+
+.detailPage {
+  position: relative;
+  top: 60px;
+  font-family: 'Nanum Gothic', sans-serif;
+
+  .lecture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $pointGreen;
+    color: white;
+    border: 1px solid black;
+    padding: 30px;
+
+    .lectureImg {
+      width: 400px;
+      border-radius: 10px;
+    }
+
+    .lectureInfo {
+      padding-left: 50px;
+
+      p {
+        padding-top: 10px;
+      }
+
+      .lectureInfoIndex {
+        font-size: 15px;
+      }
+
+      .lectureInfoName {
+        font-size: 30px;
+      }
+
+      .lectureInfoCount {
+        font-size: 20px;
+      }
+
+      .lectureInfoBtn {
+        padding-top: 10px;
+
+        button {
+          font-family: 'Nanum Gothic', sans-serif;
+          padding: 5px 7px;
+          border-radius: 15px;
+          margin-left: 10px;
+
+          &:hover {
+            background-color: white;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .detailInformation {
+    width: 80%;
+    margin: 0 auto;
+
+    .detailNavBar {
+      height: 60px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 15px;
+      color: gray;
+
+      a {
+        color: inherit;
+        padding-right: 30px;
+
+        &:hover {
+          padding-bottom: 5px;
+          text-decoration-line: underline;
+          color: black;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .payForm {
+      border: 1px solid rgb(200, 199, 199);
+      border-radius: 7px;
+      position: absolute;
+      right: 125px;
+      width: 25%;
+      height: 250px;
+      padding: 30px;
+      font-size: 30px;
+
+      .payFormBtns {
+        display: flex;
+        flex-direction: column;
+        padding-top: 30px;
+
+        button {
+          font-family: 'Nanum Gothic', sans-serif;
+          border-radius: 5px;
+          font-size: 15px;
+          padding: 12px;
+        }
+
+        .payBtn {
+          font-family: 'Nanum Gothic', sans-serif;
+          background-color: $pointGreen;
+          color: white;
+        }
+
+        .cartBtn {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .content {
+      border: 1px solid black;
+      width: 60%;
+    }
+
+    .introduceTitle {
+      padding: 20px 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .review {
+      .reviewTitle {
+        padding: 20px 0;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .reviewSubTitle {
+        font-size: 15px;
+        color: gray;
+        padding-bottom: 10px;
+      }
+
+      .inputBox {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .inputBoxStar {
+          display: inline;
+          padding-bottom: 40px;
+        }
+
+        input {
+          display: block;
+          border: 1px solid #e9ecef;
+          width: 100%;
+          height: 100px;
+
+          &::placeholder {
+            opacity: 0.5;
+            padding-left: 10px;
+            text-align: start;
+          }
+        }
+
+        .enrollBtn {
+          position: relative;
+
+          background-color: $pointGreen;
+          color: white;
+          border-radius: 5px;
+          padding: 7px 12px;
+        }
+      }
+    }
+  }
 }
