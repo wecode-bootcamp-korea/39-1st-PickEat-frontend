@@ -1,3 +1,33 @@
-h1 {
-  text-align: center;
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+.mainBody {
+  margin-top: 30px;
+  .mainColorBox {
+    @include flex(space-between, center);
+    width: 100%;
+    height: 500px;
+    padding-right: 250px;
+    background-color: $pointGreen;
+
+    .colorBoxContent {
+      .colorBoxText {
+        color: white;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 45px;
+
+        .colorBoxText span {
+        }
+      }
+    }
+
+    .mainImgBox {
+      overflow: hidden;
+      border-radius: 50px;
+
+      .mainImg {
+        width: 550px;
+      }
+    }
+  }
 }
