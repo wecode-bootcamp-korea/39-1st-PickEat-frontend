@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DetailPage.scss';
 
 const DetailPage = () => {
@@ -16,17 +16,27 @@ const DetailPage = () => {
 
   const valid = comment.length >= 10 ? false : true;
 
+  const [productData, setProductData] = useState({});
+
+  useEffect(() => {
+    fetch('../../data/detailPageData.json')
+      .then(response => response.json())
+      .then(data => setProductData(data));
+  }, []);
+
+  console.log(productData);
+
   return (
     <div className="detailPage">
       <div className="lecture">
         <img
           className="lectureImg"
-          src="../../images/baking.jpg"
+          src={productData.profileImg}
           alt="lectureImg"
         />
         <div className="lectureInfo">
           <p className="lectureInfoIndex">강의 코스 양식</p>
-          <p className="lectureInfoName">Baking 베이킹</p>
+          <p className="lectureInfoName">{productData.title}</p>
           <br />
           <p className="lectureInfoCount">63개의 수강평 & 1901명의 수강생</p>
           <div className="lectureInfoBtn">
@@ -45,7 +55,7 @@ const DetailPage = () => {
           <a href="#qna">Q & A</a>
         </nav>
         <form className="payForm">
-          <div>가격:</div>
+          <div>{productData.price}원</div>
           <div className="payFormBtns">
             <button className="payBtn">바로 수강하기</button>
             <button className="cartBtn">장바구니 담기</button>
