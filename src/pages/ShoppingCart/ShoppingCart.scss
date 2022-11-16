@@ -1,29 +1,161 @@
 @import '../../styles/variables.scss';
 
 .container {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   font-family: 'Noto Sans KR', sans-serif;
 
   .sectionCart {
-    border: 1px solid black;
-    width: 70%;
+    width: 65%;
     margin-right: 20px;
 
     .sectionCartHeader {
-        padding: 20px 0;
-        font-size: 25px;
-        font-weight: bold;
+      padding: 20px 0;
+      font-size: 25px;
+      font-weight: bold;
     }
 
     .sectionCartControl {
-        border-bottom: 1px solid black;
-        padding: 15px 0;
-        font-size: 20px;
-        
-        
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid black;
+      padding: 15px 0;
+      font-size: 20px;
+
+      .cartCheckbox {
+        width: 20px;
+        height: 20px;
+        accent-color: $pointGreen;
+      }
+
+      label {
+        padding-left: 20px;
+        font-size: 18px;
+        letter-spacing: -1px;
+      }
+
+      .deleteBtn {
+        margin-left: auto;
+        border: 1px solid #858a8d;
+        border-radius: 6px;
+        background-color: transparent;
+        padding: 10px;
+        font-weight: bold;
+        letter-spacing: -1px;
+      }
+    }
+
+    .cartLectureList {
+      display: flex;
+      margin-top: 20px;
+
+      .cartCheckbox {
+        width: 20px;
+        height: 20px;
+        accent-color: $pointGreen;
+      }
+
+      .cartLectureImg {
+        width: 130px;
+        margin: 0 20px;
+      }
+
+      .cartLectureInfo {
+        font-size: 15px;
+
+        .cartLectureTitle {
+          font-weight: bold;
+          padding-bottom: 7px;
+        }
+
+        span {
+          font-size: 12px;
+        }
+
+        .lectureInstructor {
+          color: #858a8d;
+        }
+
+        .lectureInstructor::after {
+          content: '|';
+          color: #858a8d;
+          padding: 0 7px;
+        }
+
+        .lectureDuration {
+          color: #00c471;
+        }
+      }
+
+      .cartLecturePrice {
+        margin-left: auto;
+
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .cartProductList {
+      display: flex;
+      margin-top: 20px;
+
+      .cartCheckbox {
+        width: 20px;
+        height: 20px;
+        accent-color: $pointGreen;
+      }
+
+      .cartLectureImg {
+        width: 130px;
+        margin: 0 20px;
+      }
+
+      .cartProductInfo {
+        font-size: 15px;
+
+        .productName {
+          font-weight: bold;
+          padding-bottom: 7px;
+        }
+
+        .productCount {
+          display: flex;
+          align-items: center;
+
+          .productCountHeader {
+            font-size: 12px;
+            color: #858a8d;
+            margin-right: 10px;
+          }
+
+          .productCountBtn {
+            border: 1px solid #858a8d;
+            border-radius: 3px;
+
+            span {
+              font-size: 14px;
+              padding: 0 7px;
+            }
+
+            button {
+              padding: 0 7px;
+              font-size: 20px;
+              background-color: transparent;
+            }
+          }
+        }
+      }
+
+      .cartProductPrice {
+        margin-left: auto;
+
+        span {
+          font-weight: bold;
+        }
+      }
     }
   }
 
