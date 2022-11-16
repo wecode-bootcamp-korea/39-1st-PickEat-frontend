@@ -1,3 +1,100 @@
-h1 {
-  text-align: center;
-}
+.container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .asideCart {
+    float: right;
+    width: 30%;
+    font-family: 'Noto Sans KR', sans-serif;
+  
+    .buyerInfo {
+      border: 1px solid #e9ecef;
+      border-radius: 5px;
+      padding: 20px;
+  
+      .buyerInfoHeader {
+        font-family: 'Nanum Gothic', sans-serif;
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 10px;
+  
+        .buyerInfoChange {
+          float: right;
+          color: gray;
+          background-color: transparent;
+          font-size: 13px;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+  
+      .buyerInfoList {
+        font-size: 14px;
+  
+        div {
+          display: flex;
+          padding-top: 5px;
+  
+          dt {
+            display: inline;
+            color: #abb0b5;
+            width: 40%;
+          }
+  
+          dd {
+            display: inline;
+            color: #858a8d;
+          }
+        }
+      }
+    }
+  
+    .voucherInfo {
+      border: 1px solid #e9ecef;
+      border-radius: 5px;
+      padding: 20px;
+      margin-top: 10px;
+  
+      .pointUsing {
+        display: flex;
+        justify-content: space-between;
+  
+        label {
+          font-family: 'Nanum Gothic', sans-serif;
+        }
+  
+        span {
+          font-size: 13px;
+        }
+      }
+  
+      .pointUsingInteraction {
+        display: flex;
+        justify-content: space-between;
+        margin: 12px 0;
+  
+        input,
+        button {
+          border: 1px solid #e9ecef;
+          border-radius: 5px;
+          padding: 9px;
+          font-size: 13px;
+        }
+  
+        input {
+          width: 68%;
+  
+          &::placeholder {
+            opacity: 0.4;
+            text-align: right;
+          }
+        }
+  
+        button {
+          width: 30%;
+          background-color: transparent;
+          font-family: 'Nanum Gothic', sans-serif;
+        }
+      }
+    }
+  }
