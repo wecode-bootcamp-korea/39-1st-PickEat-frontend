@@ -1,23 +1,48 @@
+@import '../../styles/variables.scss';
+
 .container {
-    width: 80%;
-    margin: 0 auto;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Noto Sans KR', sans-serif;
+
+  .sectionCart {
+    border: 1px solid black;
+    width: 70%;
+    margin-right: 20px;
+
+    .sectionCartHeader {
+        padding: 20px 0;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .sectionCartControl {
+        border-bottom: 1px solid black;
+        padding: 15px 0;
+        font-size: 20px;
+        
+        
+    }
   }
-  
+
   .asideCart {
     float: right;
     width: 30%;
     font-family: 'Noto Sans KR', sans-serif;
-  
+
     .buyerInfo {
       border: 1px solid #e9ecef;
-      border-radius: 5px;
+      border-radius: 6px;
       padding: 20px;
-  
+      box-shadow: 0px 0px 5px 1px #e9ecef;
+
       .buyerInfoHeader {
         font-family: 'Nanum Gothic', sans-serif;
         border-bottom: 1px solid #e9ecef;
         padding-bottom: 10px;
-  
+
         .buyerInfoChange {
           float: right;
           color: gray;
@@ -27,20 +52,20 @@
           cursor: pointer;
         }
       }
-  
+
       .buyerInfoList {
-        font-size: 14px;
-  
+        font-size: 13px;
+
         div {
           display: flex;
-          padding-top: 5px;
-  
+          padding-top: 6px;
+
           dt {
             display: inline;
             color: #abb0b5;
             width: 40%;
           }
-  
+
           dd {
             display: inline;
             color: #858a8d;
@@ -48,31 +73,32 @@
         }
       }
     }
-  
+
     .voucherInfo {
       border: 1px solid #e9ecef;
       border-radius: 5px;
       padding: 20px;
       margin-top: 10px;
-  
+      box-shadow: 0px 0px 5px 1px #e9ecef;
+
       .pointUsing {
         display: flex;
         justify-content: space-between;
-  
+
         label {
           font-family: 'Nanum Gothic', sans-serif;
         }
-  
+
         span {
           font-size: 13px;
         }
       }
-  
+
       .pointUsingInteraction {
         display: flex;
         justify-content: space-between;
         margin: 12px 0;
-  
+
         input,
         button {
           border: 1px solid #e9ecef;
@@ -80,21 +106,61 @@
           padding: 9px;
           font-size: 13px;
         }
-  
+
         input {
           width: 68%;
-  
+
           &::placeholder {
             opacity: 0.4;
             text-align: right;
           }
         }
-  
+
         button {
           width: 30%;
           background-color: transparent;
           font-family: 'Nanum Gothic', sans-serif;
         }
       }
+
+      .priceRegular,
+      .priceDiscount,
+      .pricePay {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        font-size: 13px;
+      }
+
+      .priceRegular {
+        color: #858a8d;
+      }
+
+      .priceDiscount {
+        color: #e5503c;
+      }
+
+      .pricePay {
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .payBtn {
+        background-color: $pointGreen;
+        color: white;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-size: 13px;
+        border-radius: 5px;
+        padding: 12px;
+        margin: 7px 0;
+        width: 100%;
+      }
+
+      .payAgreement {
+        color: #abb0b5;
+        font-size: 12px;
+        line-height: 1.3;
+      }
     }
   }
+}
