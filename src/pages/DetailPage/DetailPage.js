@@ -37,7 +37,7 @@ const DetailPage = () => {
           alt="lectureImg"
         />
         <div className="lectureInfo">
-          <p className="lectureInfoIndex">강의 코스 양식</p>
+          <p className="lectureInfoIndex">강의 코스 {productData.category}</p>
           <p className="lectureInfoName">{productData.title}</p>
           <br />
           <p className="lectureInfoCount">63개의 수강평 & 1901명의 수강생</p>
