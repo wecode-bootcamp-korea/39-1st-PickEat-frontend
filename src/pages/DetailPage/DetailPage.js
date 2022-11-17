@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './DetailPage.scss';
 
 const DetailPage = () => {
@@ -16,16 +17,17 @@ const DetailPage = () => {
 
   const valid = comment.length >= 10 ? false : true;
 
-  const [productData, setProductData] = useState({});
+  const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    fetch('../../data/detailPageData.json')
+    fetch('http://10.58.52.98:3002/lectures/1')
       .then(response => response.json())
       .then(data => setProductData(data));
   }, []);
 
   console.log(productData);
-
+  // http://10.58.52.98:3002/lectures/1
+  // ../../data/detailPageData.json
   return (
     <div className="detailPage">
       <div className="lecture">
@@ -41,18 +43,26 @@ const DetailPage = () => {
           <p className="lectureInfoCount">63개의 수강평 & 1901명의 수강생</p>
           <div className="lectureInfoBtn">
             <span>#</span>
-            <button>레시피</button>
-            <button>양식</button>
-            <button>제과제빵</button>
+            <button className="lectureHashTag">레시피</button>
+            <button className="lectureHashTag">{productData.category}</button>
+            <button className="lectureHashTag">제과제빵</button>
           </div>
         </div>
       </div>
       <div className="detailInformation">
         <nav className="detailNavBar">
-          <a href="#introduce">강의소개</a>
-          <a href="#curriculum">커리큘럼</a>
-          <a href="#review">수강평</a>
-          <a href="#qna">Q & A</a>
+          <a href="#introduce" className="detailNavBarHeader">
+            강의소개
+          </a>
+          <a href="#curriculum" className="detailNavBarHeader">
+            커리큘럼
+          </a>
+          <a href="#review" className="detailNavBarHeader">
+            수강평
+          </a>
+          <a href="#qna" className="detailNavBarHeader">
+            Q & A
+          </a>
         </nav>
         <form className="payForm">
           <div>{productData.price}원</div>
@@ -61,9 +71,9 @@ const DetailPage = () => {
             <button className="cartBtn">장바구니 담기</button>
           </div>
           <ul className="payFormInfo">
-            <li>총 10개 수업 (11시간 1분)</li>
-            <li>수강기한: 무제한</li>
-            <li>난이도: 초급</li>
+            <li className="payFormDuration">총 10개 수업 (11시간 1분)</li>
+            <li className="payFormDuration">수강기한: 무제한</li>
+            <li className="payFormDuration">난이도: 초급</li>
           </ul>
         </form>
         <div className="content">
@@ -114,6 +124,7 @@ const DetailPage = () => {
             <div className="inputBox">
               <div className="inputBoxStar">별점을 선택해주세요</div>
               <textarea
+                className="reviewInputBox"
                 type="text"
                 placeholder="수강평을 10자 이상 작성해주세요."
                 onChange={handleComment}
@@ -128,11 +139,11 @@ const DetailPage = () => {
               </button>
             </div>
             <div className="commentSort">
-              <span>View</span>
-              <span>최신 순</span>
-              <span>좋아요 순</span>
-              <span>높은평점 순</span>
-              <span>낮은평점 순</span>
+              <span className="commentSortView">View</span>
+              <span className="commentSortView">최신 순</span>
+              <span className="commentSortView">좋아요 순</span>
+              <span className="commentSortView">높은평점 순</span>
+              <span className="commentSortView">낮은평점 순</span>
             </div>
 
             {commentList.map((comment, key) => {
@@ -140,7 +151,7 @@ const DetailPage = () => {
                 <div key={key} className="commentList">
                   <div className="commentInfo">
                     <img
-                      src="../../images/baking.jpg"
+                      src={productData.profileImg}
                       className="profileImg"
                       alt="profileImage"
                     />
@@ -154,8 +165,8 @@ const DetailPage = () => {
               );
             })}
           </div>
-          <div>
-            <div id="qna">Q & A</div>
+          <div className="qna">
+            <div id="qna">자주하는 질문</div>
           </div>
         </div>
       </div>
