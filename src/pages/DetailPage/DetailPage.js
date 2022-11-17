@@ -20,7 +20,7 @@ const DetailPage = () => {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    fetch('http://10.58.52.98:3002/lectures/1')
+    fetch('http://10.58.52.130:3002/products?type=lecture&name=한식')
       .then(response => response.json())
       .then(data => setProductData(data));
   }, []);
@@ -31,11 +31,7 @@ const DetailPage = () => {
   return (
     <div className="detailPage">
       <div className="lecture">
-        <img
-          className="lectureImg"
-          src={productData.profileImg}
-          alt="lectureImg"
-        />
+        <img className="lectureImg" src={productData.image} alt="lectureImg" />
         <div className="lectureInfo">
           <p className="lectureInfoIndex">강의 코스 {productData.category}</p>
           <p className="lectureInfoName">{productData.title}</p>
@@ -44,7 +40,7 @@ const DetailPage = () => {
           <div className="lectureInfoBtn">
             <span>#</span>
             <button className="lectureHashTag">레시피</button>
-            <button className="lectureHashTag">{productData.category}</button>
+            <button className="lectureHashTag">한식</button>
             <button className="lectureHashTag">제과제빵</button>
           </div>
         </div>
