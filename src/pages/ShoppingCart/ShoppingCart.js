@@ -17,12 +17,13 @@ const ShoppingCart = () => {
   const [cartProductData, setCartProductData] = useState([]);
 
   useEffect(() => {
-    fetch('data/cartProductData.json')
+    fetch('http://10.58.52.98:3002/products?type=lecture&name=한식')
       .then(response => response.json())
       .then(data => setCartProductData(data));
   }, []);
 
   console.log(cartProductData);
+  // data/cartProductData.json
 
   return (
     <div className="container">
