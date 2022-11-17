@@ -1,41 +1,43 @@
 [
   {
     "id": 1,
-    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
-    "title": "한식",
+    "img": "https://mblogthumb-phinf.pstatic.net/MjAxOTAxMjRfMTQx/MDAxNTQ4MzIxOTM1MTIx.Xaf_bASQ74WmS8bAbTNNAjaL-tnVzAgiPyTp_4IfxAUg.NQ-g8uNX4mITReJTaxMTjIBExmFxSs1fPruOeUhGg7Qg.JPEG.poly150117/22588603.jpg?type=w800",
+    "title": "[한식] OOO 의 한식 잘하는법",
     "price": "400,000",
-    "color": "#f4f693"
+    "viewer": 1500
   },
 
   {
     "id": 2,
-    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
-    "title": "중식",
-    "price": "400,000",
-    "color": "pointGreen"
+    "img": "https://img.lovepik.com/desgin_photo/40099/0739_list.jpg!/fw/431/clip/0x300a0a0",
+    "title": "[중식] 6년차 시니어 개발자가 알려주는 중식",
+    "price": "325,000",
+    "viewer": 1000
   },
 
   {
     "id": 3,
-    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
-    "title": "일식",
-    "price": "400,000",
-    "color": "pointGreen"
+    "img": "https://img.lovepik.com/original_origin_pic/18/11/07/fdaa56867fc51c7af3f9ad4529f7f74a.jpg_wh860.jpg",
+    "title": "[일식] 미스터 초밥왕 출신 OOO의 일식강의",
+    "price": "450,000",
+    "viewer": 2000,
+    "hot": "🔥"
   },
 
   {
     "id": 4,
-    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
-    "title": "양식",
-    "price": "400,000",
-    "color": "pointGreen"
+    "img": "https://cdn.pixabay.com/photo/2022/10/27/18/05/tomatoes-7551463_960_720.jpg",
+    "title": "[양식] 즐겁게 따라하는 서양식 일품요리",
+    "price": "500,000",
+    "viewer": 2500,
+    "hot": "🔥"
   },
 
   {
     "id": 5,
-    "img": "https://www.kyungrok.com/cook/images/sugang/head_hansik_20171221.png",
-    "title": "이탈리아",
-    "price": "400,000",
-    "color": "pointGreen"
+    "img": "https://media.istockphoto.com/id/1427390248/ko/%EC%82%AC%EC%A7%84/%ED%95%9C%EA%B5%AD%EC%8B%9D-%EB%A7%9B%EC%9E%88%EB%8A%94-%EC%9D%8C%EC%8B%9D-%ED%8C%8C%ED%9E%88%ED%83%80.jpg?s=612x612&w=is&k=20&c=QguEA-apZhYVE9CMk3sU-dGaaBE7dJfSLfHJ8Mub_GE=",
+    "title": "[멕시칸] 입벌려 타코들어간다! ",
+    "price": "270,000",
+    "viewer": 500
   }
 ]

@@ -4,17 +4,98 @@
 .mainBody {
   margin-top: 30px;
 
+  .colorBoxColor1 {
+    transition: 1s;
+    background-color: $pointGreen;
+  }
+
+  .colorBoxColor2 {
+    transition: 1s;
+    background-color: $pointOrange;
+  }
+  .colorBoxColor3 {
+    transition: 1s;
+    background-color: #0ac3dd;
+  }
+
+  .slide1 {
+    display: inline-block;
+
+    transform: translateX(0px);
+    transition: 1s;
+  }
+
+  .slide2 {
+    display: inline-block;
+
+    transform: translateX(-550px);
+    transition: 1s;
+  }
+
+  .slide3 {
+    display: inline-block;
+
+    transform: translateX(-1100px);
+    transition: 1s;
+  }
+
   .fa-egg {
     color: $deepYellow;
   }
 
   .mainColorBox {
-    @include flex(space-between, center);
+    @include flex(space-evenly, center);
     width: 100%;
     height: 500px;
-    padding-right: 250px;
-    padding-left: 250px;
-    background-color: $pointGreen;
+    padding-right: 300px;
+    padding-left: 300px;
+    white-space: nowrap;
+    .slideShowBody {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      .slideShowContents {
+        @include flex(center, center);
+
+        .fa-chevron-left {
+          color: #fff;
+          cursor: pointer;
+        }
+
+        .fa-chevron-right {
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+
+      .slideShowChckeBox {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        input {
+          width: 35px;
+          height: 6px;
+          margin-top: 5px;
+          margin-right: 5px;
+          margin-left: 5px;
+          transition: 1s;
+          border-radius: 8px;
+          background-color: rgba(233, 233, 233, 0.5);
+          appearance: none;
+
+          &:checked {
+            width: 40px;
+            height: 7px;
+            transition: 1s;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            appearance: none;
+          }
+        }
+      }
+    }
 
     .colorBoxContent {
       .colorBoxText {
@@ -22,12 +103,12 @@
         font-family: 'Noto Sans KR', sans-serif;
         font-size: 35px;
         white-space: nowrap;
-        span {
+        .siteName {
           color: $pointBlack;
           font-family: 'Alfa Slab One', cursive;
         }
 
-        i {
+        .fa-egg {
           margin-right: 7px;
           color: $deepYellow;
         }
@@ -37,23 +118,27 @@
         }
       }
 
-      .colorBoxInput {
+      .colorBoxIneer {
+        position: relative;
         width: 350px;
-        height: 45px;
-        margin-top: 15px;
-        padding: 5px 40px 5px 15px;
-        border: 2px solid #fff;
-        border-radius: 15px;
-        background: none;
-        color: #fff;
-        font-size: 20px;
-      }
+        .colorBoxInput {
+          width: 350px;
+          height: 45px;
+          margin-top: 15px;
+          padding: 5px 40px 5px 15px;
+          border: 2px solid #fff;
+          border-radius: 15px;
+          background: none;
+          color: #fff;
+          font-size: 20px;
+        }
 
-      .fa-magnifying-glass {
-        position: absolute;
-        top: 312px;
-        left: 565px;
-        color: #fff;
+        .fa-magnifying-glass {
+          position: absolute;
+          top: 37px;
+          right: 15px;
+          color: #fff;
+        }
       }
 
       .colorBoxInput::placeholder {
@@ -70,7 +155,7 @@
         font-family: 'Noto Sans KR', sans-serif;
         font-size: 14px;
 
-        li {
+        .hashTag {
           display: flex;
           align-items: center;
           padding: 3px;
@@ -81,23 +166,28 @@
     }
 
     .mainImgBox {
+      width: 550px;
       overflow: hidden;
       border-radius: 50px;
+      white-space: nowrap;
 
       .mainImg {
         width: 550px;
+        height: 300px;
+        object-fit: cover;
       }
     }
   }
   .mainHome {
-    width: 100%;
+    width: 1170px;
+    margin: auto;
     margin-top: 40px;
-    padding: 0px 250px 0px 250px;
     .popularity {
       font-family: 'Alfa Slab One', cursive;
       font-size: 23px;
+      white-space: nowrap;
 
-      span {
+      .popularityText {
         font-family: 'Noto Sans KR', sans-serif;
       }
 
@@ -105,39 +195,13 @@
         font-weight: 600;
       }
     }
+
     .bastLecture {
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
       margin-top: 30px;
-      div {
-        width: 250px;
-        height: 320px;
-        margin-right: 15px;
-        border-radius: 15px;
-      }
-
-      .lectures {
-        padding: 10px;
-        background-color: $pointPink;
-
-        .lecturetitle {
-          display: inline-block;
-          margin-bottom: 5px;
-          padding: 2px;
-          border-radius: 5px;
-          background-color: white;
-          color: $pointBlack;
-          font-family: 'Noto Sans KR', sans-serif;
-          font-size: 15px;
-          font-weight: 600;
-        }
-
-        img {
-          width: 100%;
-          border-radius: 8px;
-        }
-      }
+      padding: 5px;
     }
   }
 }
