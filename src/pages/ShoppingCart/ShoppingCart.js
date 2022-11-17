@@ -1,6 +1,29 @@
+import { useEffect, useState } from 'react';
+import CartLectureList from '../../components/CartLectureList';
+import CartProductList from '../../components/CartProductList';
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
+  const [cartLectureData, setCartLectureData] = useState([]);
+
+  useEffect(() => {
+    fetch('data/cartData.json')
+      .then(response => response.json())
+      .then(data => setCartLectureData(data));
+  }, []);
+
+  // console.log(cartLectureData);
+
+  const [cartProductData, setCartProductData] = useState([]);
+
+  useEffect(() => {
+    fetch('data/cartProductData.json')
+      .then(response => response.json())
+      .then(data => setCartProductData(data));
+  }, []);
+
+  console.log(cartProductData);
+
   return (
     <div className="container">
       <section className="sectionCart">
@@ -10,46 +33,13 @@ const ShoppingCart = () => {
           <label>전체선택</label>
           <button className="deleteBtn">선택삭제 ✖</button>
         </nav>
-
         <main className="sectionCartBody">
-          <div className="cartLectureList">
-            <input className="cartCheckbox" type="checkbox" />
-            <img
-              className="cartLectureImg"
-              src="../../images/baking.jpg"
-              alt="lectureImg"
-            />
-            <div className="cartLectureInfo">
-              <div className="cartLectureTitle">강의제목강의제목</div>
-              <span className="lectureInstructor">선생님</span>
-              <span className="lectureDuration">무제한 수강</span>
-            </div>
-            <div className="cartLecturePrice">
-              <span>55,000</span>원
-            </div>
-          </div>
-          <div className="cartProductList">
-            <input className="cartCheckbox" type="checkbox" />
-            <img
-              className="cartLectureImg"
-              src="../../images/baking.jpg"
-              alt="lectureImg"
-            />
-            <div className="cartProductInfo">
-              <div className="productName">도구도구도구</div>
-              <div className="productCount">
-                <span className="productCountHeader">수량</span>
-                <div className="productCountBtn">
-                  <button>–</button>
-                  <span>2</span>
-                  <button>+</button>
-                </div>
-              </div>
-            </div>
-            <div className="cartProductPrice">
-              <span>55,000</span>원
-            </div>
-          </div>
+          {cartLectureData.map(lecture => (
+            <CartLectureList key={lecture.id} lecture={lecture} />
+          ))}
+          {cartProductData.map(product => (
+            <CartProductList key={product.id} product={product} />
+          ))}
         </main>
       </section>
 

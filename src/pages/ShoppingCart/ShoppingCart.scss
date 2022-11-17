@@ -132,18 +132,27 @@
           }
 
           .productCountBtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border: 1px solid #858a8d;
             border-radius: 3px;
 
             span {
-              font-size: 14px;
+              font-size: 15px;
               padding: 0 7px;
+              height: 100%;
             }
 
             button {
-              padding: 0 7px;
+              padding: 0 5px;
               font-size: 20px;
               background-color: transparent;
+              margin-top: -3.667px;
+
+              &:hover {
+                cursor: pointer;
+              }
             }
           }
         }

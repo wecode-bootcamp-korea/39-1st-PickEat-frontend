@@ -1,0 +1,14 @@
+[
+  {
+    "id": 4,
+    "title": "국자",
+    "price": 4500,
+    "img": "../../images/baking.jpg"
+  },
+  {
+    "id": 5,
+    "title": "주걱",
+    "price": 1500,
+    "img": "../../images/baking.jpg"
+  }
+]

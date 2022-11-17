@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "한식강의",
+    "price": 13000,
+    "instructor": "김보윤",
+    "duration": "7일간 수강",
+    "img": "../../images/baking.jpg"
+  },
+  {
+    "id": 2,
+    "title": "중식강의",
+    "price": 17000,
+    "instructor": "홍길동",
+    "duration": "7일간 수강",
+    "img": "../../images/baking.jpg"
+  },
+  {
+    "id": 3,
+    "title": "일식강의",
+    "price": 9900,
+    "instructor": "김우빈",
+    "duration": "7일간 수강",
+    "img": "../../images/baking.jpg"
+  }
+]
