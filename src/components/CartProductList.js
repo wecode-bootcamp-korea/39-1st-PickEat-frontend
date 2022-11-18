@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 const CartProductList = props => {
-  const { id, title, price, img } = props.product;
+  // const { product, countUp, countDown } = props;
+  const { id, title, price, img, quantity } = props.product;
 
-  const [count, setCount] = useState(1);
-  const [productPrice, setProductPrice] = useState(price);
+  const [count, setCount] = useState(quantity);
+  const [productPrice, setProductPrice] = useState(price * quantity);
 
   const countUp = () => {
     setCount(count + 1);
@@ -36,7 +37,7 @@ const CartProductList = props => {
         </div>
       </div>
       <div className="cartProductPrice">
-        <span>{productPrice}</span>원
+        <span>{productPrice.toLocaleString()}</span>원
       </div>
     </div>
   );

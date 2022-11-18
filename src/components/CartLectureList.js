@@ -13,7 +13,7 @@ const CartLectureList = props => {
         <span className="lectureDuration">{duration}</span>
       </div>
       <div className="cartLecturePrice">
-        <span>{price}</span>원
+        <span>{price.toLocaleString()}</span>원
       </div>
     </div>
   );

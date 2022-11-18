@@ -4,7 +4,24 @@ import CartProductList from '../../components/CartProductList';
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
+  // 1. prop
+  // 2. states
+  // 3. state로 관리되는 computed value 들
+
   const [cartLectureData, setCartLectureData] = useState([]);
+  const [cartProductData, setCartProductData] = useState([]);
+
+  const productTotalPrice = cartProductData.reduce(
+    (total, cartProduct) => total + cartProduct.price,
+    0
+  );
+  const lectureTotalPrice = cartLectureData.reduce(
+    (total, cartLecture) => total + cartLecture.price,
+    0
+  );
+  const totalPrice = productTotalPrice + lectureTotalPrice;
+
+  console.log(totalPrice);
 
   useEffect(() => {
     fetch('data/cartData.json')
@@ -12,18 +29,15 @@ const ShoppingCart = () => {
       .then(data => setCartLectureData(data));
   }, []);
 
-  // console.log(cartLectureData);
-
-  const [cartProductData, setCartProductData] = useState([]);
-
   useEffect(() => {
-    fetch('http://10.58.52.98:3002/products?type=lecture&name=한식')
+    fetch('data/cartProductData.json')
       .then(response => response.json())
       .then(data => setCartProductData(data));
   }, []);
 
-  console.log(cartProductData);
+  // console.log(cartLectureData);
   // data/cartProductData.json
+  // http://10.58.52.98:3002/products?type=lecture&name=한식
 
   return (
     <div className="container">
@@ -68,12 +82,15 @@ const ShoppingCart = () => {
 
         <section className="voucherInfo">
           <div className="pointUsing">
-            <label>포인트</label>
-            <span>보유 0</span>
+            <label className="pointUsingTitle">포인트</label>
+            <span className="pointHave">보유 0</span>
           </div>
           <div className="pointUsingInteraction">
-            <input placeholder="1,000P 이상 사용가능" />
-            <button>전액사용</button>
+            <input
+              className="pointUsingInput"
+              placeholder="1,000P 이상 사용가능"
+            />
+            <button className="pointUsingAllBtn">전액사용</button>
           </div>
 
           <div className="priceRegular">
@@ -88,7 +105,7 @@ const ShoppingCart = () => {
 
           <div className="pricePay">
             <span>총 결제금액</span>
-            <div>12,000원</div>
+            <div>{totalPrice.toLocaleString()}원</div>
           </div>
 
           <button className="payBtn">결제하기</button>

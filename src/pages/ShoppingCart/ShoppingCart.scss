@@ -226,11 +226,11 @@
         display: flex;
         justify-content: space-between;
 
-        label {
+        .pointUsingTitle {
           font-family: 'Nanum Gothic', sans-serif;
         }
 
-        span {
+        .pointHave {
           font-size: 13px;
         }
       }
@@ -240,16 +240,17 @@
         justify-content: space-between;
         margin: 12px 0;
 
-        input,
-        button {
+        .pointUsingInput,
+        .pointUsingAllBtn {
           border: 1px solid #e9ecef;
           border-radius: 5px;
           padding: 9px;
           font-size: 13px;
         }
 
-        input {
+        .pointUsingInput {
           width: 68%;
+          text-align: right;
 
           &::placeholder {
             opacity: 0.4;
@@ -257,7 +258,7 @@
           }
         }
 
-        button {
+        .pointUsingAllBtn {
           width: 30%;
           background-color: transparent;
           font-family: 'Nanum Gothic', sans-serif;

@@ -3,12 +3,14 @@
     "id": 4,
     "title": "국자",
     "price": 4500,
+    "quantity": 3,
     "img": "../../images/baking.jpg"
   },
   {
     "id": 5,
     "title": "주걱",
     "price": 1500,
+    "quantity": 1,
     "img": "../../images/baking.jpg"
   }
 ]
