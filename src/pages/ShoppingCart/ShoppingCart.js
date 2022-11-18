@@ -4,38 +4,53 @@ import CartProductList from '../../components/CartProductList';
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
-  // 1. prop
-  // 2. states
-  // 3. state로 관리되는 computed value 들
+  const [cartLectures, setCartLectures] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
 
-  const [cartLectureData, setCartLectureData] = useState([]);
-  const [cartProductData, setCartProductData] = useState([]);
+  const increaseBtn = id => () => {
+    setCartProducts(
+      cartProducts.map(product => {
+        if (product.id === id && product.quantity < 5) {
+          product.quantity++;
+        }
+        return product;
+      })
+    );
+  };
 
-  const productTotalPrice = cartProductData.reduce(
-    (total, cartProduct) => total + cartProduct.price,
+  const decreaseBtn = id => () => {
+    setCartProducts(
+      cartProducts.map(product => {
+        if (product.id === id && product.quantity > 1) {
+          product.quantity--;
+        }
+        return product;
+      })
+    );
+  };
+
+  const productsPrice = cartProducts.reduce(
+    (total, cartProduct) => total + cartProduct.price * cartProduct.quantity,
     0
   );
-  const lectureTotalPrice = cartLectureData.reduce(
+
+  const lecturePrice = cartLectures.reduce(
     (total, cartLecture) => total + cartLecture.price,
     0
   );
-  const totalPrice = productTotalPrice + lectureTotalPrice;
-
-  console.log(totalPrice);
 
   useEffect(() => {
     fetch('data/cartData.json')
       .then(response => response.json())
-      .then(data => setCartLectureData(data));
+      .then(data => setCartLectures(data));
   }, []);
 
   useEffect(() => {
     fetch('data/cartProductData.json')
       .then(response => response.json())
-      .then(data => setCartProductData(data));
+      .then(data => setCartProducts(data));
   }, []);
 
-  // console.log(cartLectureData);
   // data/cartProductData.json
   // http://10.58.52.98:3002/products?type=lecture&name=한식
 
@@ -49,11 +64,16 @@ const ShoppingCart = () => {
           <button className="deleteBtn">선택삭제 ✖</button>
         </nav>
         <main className="sectionCartBody">
-          {cartLectureData.map(lecture => (
+          {cartLectures.map(lecture => (
             <CartLectureList key={lecture.id} lecture={lecture} />
           ))}
-          {cartProductData.map(product => (
-            <CartProductList key={product.id} product={product} />
+          {cartProducts.map(product => (
+            <CartProductList
+              key={product.id}
+              product={product}
+              increaseBtn={increaseBtn(product.id)}
+              decreaseBtn={decreaseBtn(product.id)}
+            />
           ))}
         </main>
       </section>
@@ -94,8 +114,13 @@ const ShoppingCart = () => {
           </div>
 
           <div className="priceRegular">
+            <span>선택강의 금액</span>
+            <div>{lecturePrice.toLocaleString()}원</div>
+          </div>
+
+          <div className="priceRegular">
             <span>선택상품 금액</span>
-            <div>12,000원</div>
+            <div>{productsPrice.toLocaleString()}원</div>
           </div>
 
           <div className="priceDiscount">
@@ -105,7 +130,7 @@ const ShoppingCart = () => {
 
           <div className="pricePay">
             <span>총 결제금액</span>
-            <div>{totalPrice.toLocaleString()}원</div>
+            <div>{(lecturePrice + productsPrice).toLocaleString()}원</div>
           </div>
 
           <button className="payBtn">결제하기</button>

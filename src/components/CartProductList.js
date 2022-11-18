@@ -1,25 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const CartProductList = props => {
-  // const { product, countUp, countDown } = props;
+  const { increaseBtn, decreaseBtn } = props;
   const { id, title, price, img, quantity } = props.product;
-
-  const [count, setCount] = useState(quantity);
-  const [productPrice, setProductPrice] = useState(price * quantity);
-
-  const countUp = () => {
-    setCount(count + 1);
-    setProductPrice(productPrice + price);
-  };
-
-  const countDown = () => {
-    if (count <= 1) {
-      setCount(1);
-    } else {
-      setCount(count - 1);
-      setProductPrice(productPrice - price);
-    }
-  };
 
   return (
     <div className="cartProductList" key={id}>
@@ -30,14 +13,14 @@ const CartProductList = props => {
         <div className="productCount">
           <span className="productCountHeader">수량</span>
           <div className="productCountBtn">
-            <button onClick={countDown}>－</button>
-            <span>{count}</span>
-            <button onClick={countUp}>＋</button>
+            <button onClick={decreaseBtn}>－</button>
+            <span>{quantity}</span>
+            <button onClick={increaseBtn}>＋</button>
           </div>
         </div>
       </div>
       <div className="cartProductPrice">
-        <span>{productPrice.toLocaleString()}</span>원
+        <span>{(price * quantity).toLocaleString()}</span>원
       </div>
     </div>
   );
