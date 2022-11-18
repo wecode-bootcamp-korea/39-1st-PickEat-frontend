@@ -17,7 +17,7 @@ const ShoppingCart = () => {
   const [cartProductData, setCartProductData] = useState([]);
 
   useEffect(() => {
-    fetch('http://10.58.52.98:3002/products?type=lecture&name=한식')
+    fetch('data/cartProductData.json')
       .then(response => response.json())
       .then(data => setCartProductData(data));
   }, []);

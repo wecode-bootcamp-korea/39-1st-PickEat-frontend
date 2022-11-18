@@ -36,7 +36,7 @@ const CartProductList = props => {
         </div>
       </div>
       <div className="cartProductPrice">
-        <span>{productPrice}</span>원
+        <span>{productPrice.toLocaleString()}</span>원
       </div>
     </div>
   );
