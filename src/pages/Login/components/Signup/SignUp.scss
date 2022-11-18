@@ -1,0 +1,100 @@
+header {
+  text-align: center;
+}
+.sign-contain {
+  margin-bottom: 25px;
+  padding-top: 8px;
+}
+// .signup-profileImg-label {
+//   display: flex;
+//   position: relative;
+//   justify-content: center;
+//   margin: 5px 0 20px 0;
+//   padding-top: 18px;
+//   background-image: url(../../../../../public/images/default_profile.png);
+//   background-repeat: no-repeat;
+//   background-size: 13px;
+//   color: #0095f6;
+//   font-size: 13px;
+//   font-weight: bold;
+//   cursor: pointer;
+
+// .profileImg-file input[type='file'] {
+//   display: none;
+//   margin-left: 48%;
+// }
+
+// .signup-profileImg-input input[type='file'] {
+//   display: none;
+// }
+.sign-id-pw-check {
+  border: 1px solid;
+}
+.text-file-sign-pw {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+.input-name-block {
+  margin-top: 28px;
+}
+.input-name-mini {
+  padding-left: 1px;
+  font-size: 15px;
+}
+.icon-req {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background: blue;
+  vertical-align: 2px;
+}
+.input-name-form {
+  margin-top: 4px;
+  border: 1px solid;
+}
+.input-phone-block {
+  margin-top: 28px;
+}
+.input-phone-mini {
+  padding-left: 1px;
+  font-size: 15px;
+}
+.icon-req {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background: blue;
+  vertical-align: 2px;
+}
+.input-phone-form {
+  margin-top: 4px;
+  border: 1px solid;
+}
+.push-join-btn {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+  padding: 14px;
+  overflow: hidden;
+  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: black;
+  color: #20de20;
+  font-size: 17px;
+  text-align: center;
+}
+.push-join-btn:hover {
+  padding: 14px;
+  border: 1px solid;
+  background: #20de20;
+  color: black;
+  font-size: 17px;
+  cursor: pointer;
+}
