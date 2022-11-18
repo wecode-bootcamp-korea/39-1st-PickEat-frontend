@@ -1,20 +1,137 @@
-img {
-  width: 400px;
-}
+@import '../../styles/variables.scss';
 
-.product {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70%;
+.productDetailPage {
   margin: 0 auto;
   border: 1px solid black;
 
-  .productContent {
-    border: 1px solid black;
+  .product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nanum Gothic', sans-serif;
 
-    .productBrandName {
-        font-size: 40px;
+    img {
+      width: 50%;
+    }
+
+    .productContent {
+      padding-left: 30px;
+
+      .productBrandName {
+        font-size: 15px;
+        color: gray;
+        padding-bottom: 10px;
+      }
+
+      .productName {
+        font-size: 25px;
+        line-height: 40px;
+        margin-bottom: 15px;
+      }
+
+      .productPrice {
+        font-size: 15px;
+        padding-bottom: 15px;
+      }
+
+      .productDelivery {
+        display: flex;
+
+        .productDeliveryTitle {
+          padding-right: 40px;
+        }
+        .productDeliveryContent {
+          .productDeliveryCondition {
+            padding: 15px 0;
+            font-size: 15px;
+          }
+        }
+      }
+
+      .productSeller {
+        display: flex;
+
+        .productSellerTitle {
+          padding-right: 25px;
+        }
+
+        .productSellerName {
+          font-family: 'Alfa Slab One', cursive;
+          padding-bottom: 15px;
+        }
+      }
+
+      .productOption {
+        display: flex;
+
+        .productOptionTitle {
+          padding-right: 40px;
+        }
+
+        .productOptionAmount {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid #858a8d;
+          border-radius: 3px;
+
+          .amount {
+            font-size: 13px;
+            padding: 4px 7px;
+            height: 100%;
+          }
+
+          .decreaseBtn,
+          .increaseBtn {
+            padding: 0 5px;
+            font-size: 20px;
+            background-color: transparent;
+            margin-top: -3.667px;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .productSelected {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: 20px 0;
+      }
+
+      .payFormBtns {
+        display: flex;
+
+        .cartBtn,
+        .payBtn {
+          width: 45%;
+          font-family: 'Nanum Gothic', sans-serif;
+          border-radius: 4px;
+          font-size: 15px;
+          padding: 12px;
+        }
+
+        .payBtn {
+          margin-left: 10px;
+          font-family: 'Nanum Gothic', sans-serif;
+          background-color: $pointOrange;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .productDetailPageMain {
+    .productDetailPageMainNavBar {
+      display: flex;
+      justify-content: flex-start;
+      padding: 20px;
+      background-color: $pointOrange;
+      color: white;
+      font-family: 'Nanum Gothic', sans-serif;
     }
   }
 }
