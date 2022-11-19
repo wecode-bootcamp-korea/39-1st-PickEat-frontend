@@ -104,6 +104,10 @@
           border-radius: 5px;
           font-family: 'Nanum Gothic', sans-serif;
           font-size: 15px;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
 
         .payBtn {
@@ -129,27 +133,31 @@
     }
 
     .content {
-      width: 60%;
+      width: 70%;
       margin-top: 10px;
       position: relative;
       top: 10px;
-    }
 
-    .introduceTitle {
-      padding: 20px 0;
-      font-size: 20px;
-      font-weight: bold;
-    }
+      img {
+        width: 100%;
+      }
 
-    .curriTitle {
-      padding: 20px 0;
-      font-size: 20px;
-      font-weight: bold;
-    }
+      .introduceTitle {
+        padding: 20px 0;
+        font-size: 20px;
+        font-weight: bold;
+      }
 
-    .curriList {
-      padding: 10px 0;
-      font-family: 'Noto Sans KR', sans-serif;
+      .curriTitle {
+        padding: 20px 0;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .curriList {
+        padding: 10px 0;
+        font-family: 'Noto Sans KR', sans-serif;
+      }
     }
 
     .review {

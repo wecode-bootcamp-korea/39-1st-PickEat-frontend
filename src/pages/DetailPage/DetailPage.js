@@ -5,6 +5,7 @@ import './DetailPage.scss';
 const DetailPage = () => {
   const [comment, setComment] = useState('');
   const [commentList, setCommentList] = useState([]);
+  const [productData, setProductData] = useState([]);
 
   const handleComment = e => {
     setComment(e.target.value);
@@ -17,17 +18,29 @@ const DetailPage = () => {
 
   const valid = comment.length >= 10 ? false : true;
 
-  const [productData, setProductData] = useState([]);
-
-  useEffect(() => {
-    fetch('http://10.58.52.130:3002/products?type=lecture&name=한식')
+  const handleBtn = () => {
+    fetch('http://10.58.52.59:3002/cart/3', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2ODg0MDY1MSwiZXhwIjoxNjY4OTI3MDUxfQ.scegPgvD5NXd350VLCKi8SzRK9_JfBNWeAsjMEETVNw',
+      },
+    })
       .then(response => response.json())
-      .then(data => setProductData(data));
-  }, []);
+      .then(data => console.log(data));
+  };
+
+  // useEffect(() => {
+  //   fetch('../../data/detailPageData.json')
+  //     .then(response => response.json())
+  //     .then(data => setProductData(data));
+  // }, []);
 
   console.log(productData);
   // http://10.58.52.98:3002/lectures/1
   // ../../data/detailPageData.json
+  // http://10.58.52.130:3002/products?type=lecture&name=한식
   return (
     <div className="detailPage">
       <div className="lecture">
@@ -64,7 +77,9 @@ const DetailPage = () => {
           <div>{productData.price}원</div>
           <div className="payFormBtns">
             <button className="payBtn">바로 수강하기</button>
-            <button className="cartBtn">장바구니 담기</button>
+            <button onClick={handleBtn} className="cartBtn">
+              장바구니 담기
+            </button>
           </div>
           <ul className="payFormInfo">
             <li className="payFormDuration">총 10개 수업 (11시간 1분)</li>
@@ -77,6 +92,7 @@ const DetailPage = () => {
             강의소개
           </div>
           <div>가지고 있는 장비만으로 실패 없이 집빵을 만들고 싶다면?</div>
+          <img src="/images/pt-2.png" alt="img" />
           <div>
             <div className="curriTitle" id="curriculum">
               커리큘럼
