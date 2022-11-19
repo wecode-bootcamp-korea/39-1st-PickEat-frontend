@@ -2,6 +2,20 @@ import React, { useState } from 'react';
 //import { Link } from 'react-router-dom';
 import './SignUp.scss';
 import '../../UserForm.scss';
+
+// function Login() {
+//   const btnCheck = () => {
+//     fetch('http://10.58.52.237:3000/auth/signup',{
+//       method : 'POST',
+//       headers: {'Content-Type' : 'application/json;charset=utf-8'},
+//       body :JSON.stringify({
+//         email:emailInput,
+//         password:pwInput,
+//         name:nameCheck,
+//         phonenumber:phoneNum',
+//     }),
+//   })
+
 export default function Signup({ setFormTitle }) {
   const [emailInput, setEmailInput] = useState('');
   const [pwInput, setPwInput] = useState('');
@@ -34,6 +48,34 @@ export default function Signup({ setFormTitle }) {
       ? setDisabled(false)
       : setDisabled(true);
   };
+
+  const btnCheck = () => {
+    fetch('http://10.58.52.80:3000/users/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({
+        email: emailInput,
+        password: pwInput,
+        name: nameCheck,
+        phonenumber: phoneNum,
+      }),
+    })
+      .then(response => {
+        if (response.status !== 200) {
+          throw new Error('error');
+        } else {
+          alert('P!CKEAT 회원가입을 성공하였습니다');
+        }
+      })
+
+      .catch(error => {
+        alert('회원가입을 처음부터 다시 진행해주세요');
+        window.location.reload();
+      });
+
+    // .then(data => console.log(data));
+  };
+
   return (
     <>
       <header>
@@ -99,10 +141,12 @@ export default function Signup({ setFormTitle }) {
           </div>
           <button
             className="push-join-btn"
-            disabled={disabled}
+            // disabled={disabled}
             onClick={() => {
               setFormTitle('login');
+              btnCheck();
             }}
+            // onClick={btnCheck}
           >
             가입하기
           </button>
