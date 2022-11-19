@@ -51,17 +51,34 @@ const ProductDetailPage = () => {
 
       <main className="productDetailPageMain">
         <nav className="productDetailPageMainNavBar">
-          <div>상품정보</div>
-          <div>후기</div>
-          <div>문의</div>
+          <div className="navBarInfo">상품정보</div>
+          <div className="navBarReview">후기</div>
+          <div className="navBarCall">문의</div>
         </nav>
+        <div></div>
+        <div>상품 정보</div>
 
-        <aside>
-          <div>수량</div>
-          <div>1개</div>
-          <div>가격</div>
-          <button>바로 구매하기</button>
-          <button>장바구니 담기</button>
+        <aside className="productDetailPageAside">
+          <div className="asideSelectedProduct">
+            <div className="asideProductName">제품 이름</div>
+
+            <div className="asideProductOption">
+              <span className="asideOptionTitle">수량</span>
+              <span className="asideOptionAmount">
+                <button className="decreaseBtn">－</button>
+                <span className="amount">개수</span>
+                <button className="increaseBtn">＋</button>
+              </span>
+            </div>
+          </div>
+
+          <div className="asideProductPrice">
+            <div className="asidePrice">가격</div>
+            <div className="payFormBtns">
+              <button className="cartBtn">장바구니 담기</button>
+              <button className="payBtn">바로 구매하기</button>
+            </div>
+          </div>
         </aside>
       </main>
     </div>
