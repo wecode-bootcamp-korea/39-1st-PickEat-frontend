@@ -11,7 +11,7 @@ const ProductDetailPage = () => {
         />
         <container className="productContent">
           <div className="productBrandName">브랜드명</div>
-          <div className="productName">다용도 주방 가위</div>
+          <div className="productName">크리스탈 유리잔</div>
           <div className="productPrice">30000원</div>
           <div className="productDelivery">
             <div className="productDeliveryTitle">배송</div>
@@ -55,8 +55,6 @@ const ProductDetailPage = () => {
           <div className="navBarReview">후기</div>
           <div className="navBarCall">문의</div>
         </nav>
-        <div></div>
-        <div>상품 정보</div>
 
         <aside className="productDetailPageAside">
           <div className="asideSelectedProduct">
@@ -80,6 +78,36 @@ const ProductDetailPage = () => {
             </div>
           </div>
         </aside>
+
+        <div className="productDetailPageContent">
+          <div className="productDetailPageInfo">
+            <div className="productInfoTitle">상품 정보</div>
+            {/* <img alt="productImg" /> */}
+            <div className="productInfoContent">
+              이 부분에 이미지가 들어갑니당
+              <div>
+                어떤 잔에 마시는지에 따라서 와인은 전혀 다른 면모를 보이기도
+                합니다.
+              </div>
+            </div>
+          </div>
+
+          <div className="review">
+            <div className="reviewTitle" id="review">
+              리뷰
+            </div>
+            <div className="reviewSubTitle">직접 작성하신 리뷰입니다.</div>
+            <div className="inputBox">
+              <div className="inputBoxStar">별점을 선택해주세요</div>
+              <textarea
+                className="reviewInputBox"
+                type="text"
+                placeholder="리뷰를 10자 이상 작성해주세요."
+              />
+              <button className="enrollBtn">등록</button>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
