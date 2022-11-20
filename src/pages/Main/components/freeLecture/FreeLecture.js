@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom';
-import './BastLecture.scss';
-
-const BastLecture = props => {
+import './FreeLecture.scss';
+const FreeLecture = props => {
   const { lecture } = props;
   return (
-    <div className="lectures">
+    <li className="slideLectures">
       <Link to="">
         <img className="LectureThumbnail" src={lecture.img} />
         <p className="lecturetitle">{lecture.title}</p>
       </Link>
       <div className="lecturePremium">
-        <p className="ratingTag">
+        <p className="ratingTag1">
           P!CKEAT<span className="ratingTagContent">{lecture.type}</span>
         </p>
         <p className="viewerTag">+{lecture.viewer}명</p>
@@ -27,8 +26,8 @@ const BastLecture = props => {
       <div className="price">
         <p>{lecture.price}</p>
       </div>
-    </div>
+    </li>
   );
 };
 
-export default BastLecture;
+export default FreeLecture;
