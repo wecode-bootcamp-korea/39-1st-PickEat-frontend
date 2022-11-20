@@ -1,15 +1,25 @@
 import './DetailPage.scss';
 import { useEffect, useState } from 'react';
 import Category from './component/category/Category.js';
+import Lectures from './component/lecture/Lectures';
 
 const DetailPage = () => {
   const [categoryData, setCategoryData] = useState([]);
+  const [lectures, setLectures] = useState([]);
 
   useEffect(() => {
     fetch('/data/categoryData.json')
       .then(response => response.json())
       .then(data => {
         setCategoryData(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('/data/freeLecture.json')
+      .then(response => response.json())
+      .then(data => {
+        setLectures(data);
       });
   }, []);
   console.log(categoryData);
@@ -27,7 +37,9 @@ const DetailPage = () => {
         ))}
       </div>
       <div className="categoryContentBody">
-        <div>dasd</div>
+        {Lectures.map(lectureList => (
+          <Lectures key={lectureList.id} />
+        ))}
       </div>
     </div>
   );
