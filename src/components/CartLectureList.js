@@ -2,10 +2,11 @@ import React from 'react';
 
 const CartLectureList = props => {
   const { id, title, price, duration, instructor, img } = props.lecture;
+  const { lectureDelBtn } = props;
 
   return (
     <div className="cartLectureList" key={id}>
-      <input className="cartCheckbox" type="checkbox" />
+      <input className="cartCheckbox" type="checkbox" defaultChecked={true} />
       <img className="cartLectureImg" src={img} alt="lectureImg" />
       <div className="cartLectureInfo">
         <div className="cartLectureTitle">{title}</div>
@@ -14,6 +15,9 @@ const CartLectureList = props => {
       </div>
       <div className="cartLecturePrice">
         <span>{price.toLocaleString()}</span>원
+        <button className="cartDeleteBtn" onClick={() => lectureDelBtn(id)}>
+          ✖
+        </button>
       </div>
     </div>
   );

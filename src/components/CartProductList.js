@@ -1,12 +1,19 @@
 import React from 'react';
 
 const CartProductList = props => {
-  const { increaseBtn, decreaseBtn } = props;
   const { id, title, price, img, quantity } = props.product;
+  const { increaseBtn, decreaseBtn } = props;
+  // const { checked } = props;
+  const { deleteBtn } = props;
 
   return (
     <div className="cartProductList" key={id}>
-      <input className="cartCheckbox" type="checkbox" />
+      <input
+        className="cartCheckbox"
+        type="checkbox"
+        // onChange={checked}
+        defaultChecked={true}
+      />
       <img className="cartLectureImg" src={img} alt="lectureImg" />
       <div className="cartProductInfo">
         <div className="productName">{title}</div>
@@ -21,6 +28,9 @@ const CartProductList = props => {
       </div>
       <div className="cartProductPrice">
         <span>{(price * quantity).toLocaleString()}</span>원
+        <button className="cartDeleteBtn" onClick={() => deleteBtn(id)}>
+          ✖
+        </button>
       </div>
     </div>
   );

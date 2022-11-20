@@ -44,6 +44,10 @@
         padding: 10px;
         font-weight: bold;
         letter-spacing: -1px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
 
@@ -94,6 +98,17 @@
 
         span {
           font-weight: bold;
+        }
+
+        .cartDeleteBtn {
+          background-color: transparent;
+          font-size: 15px;
+          color: #858a8d;
+          margin-left: 20px;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -163,6 +178,17 @@
 
         span {
           font-weight: bold;
+        }
+
+        .cartDeleteBtn {
+          background-color: transparent;
+          font-size: 15px;
+          color: #858a8d;
+          margin-left: 20px;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }

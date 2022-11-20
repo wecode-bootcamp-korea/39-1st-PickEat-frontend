@@ -29,6 +29,21 @@ const ShoppingCart = () => {
     );
   };
 
+  const deleteBtn = id => {
+    // const newCartProduct = [];
+    // for (let i = 0; i < cartProducts.length; i++) {
+    //   if (cartProducts[i].id !== id) {
+    //     newCartProduct.push(cartProducts[i]);
+    //   }
+    // }
+    // setCartProducts(newCartProduct);
+    setCartProducts(cartProducts.filter(product => product.id !== id));
+  };
+
+  const lectureDelBtn = id => {
+    setCartLectures(cartLectures.filter(lecture => lecture.id !== id));
+  };
+
   const productsPrice = cartProducts.reduce(
     (total, cartProduct) => total + cartProduct.price * cartProduct.quantity,
     0
@@ -59,13 +74,21 @@ const ShoppingCart = () => {
       <section className="sectionCart">
         <header className="sectionCartHeader">장바구니</header>
         <nav className="sectionCartControl">
-          <input className="cartCheckbox" type="checkbox" />
+          <input
+            className="cartCheckbox"
+            type="checkbox"
+            defaultChecked={true}
+          />
           <label>전체선택</label>
           <button className="deleteBtn">선택삭제 ✖</button>
         </nav>
         <main className="sectionCartBody">
           {cartLectures.map(lecture => (
-            <CartLectureList key={lecture.id} lecture={lecture} />
+            <CartLectureList
+              key={lecture.id}
+              lecture={lecture}
+              lectureDelBtn={lectureDelBtn}
+            />
           ))}
           {cartProducts.map(product => (
             <CartProductList
@@ -73,6 +96,7 @@ const ShoppingCart = () => {
               product={product}
               increaseBtn={increaseBtn(product.id)}
               decreaseBtn={decreaseBtn(product.id)}
+              deleteBtn={deleteBtn}
             />
           ))}
         </main>
