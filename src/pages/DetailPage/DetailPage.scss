@@ -1,3 +1,39 @@
-h1 {
-  text-align: center;
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.categoryPageBody {
+  @include flex(center, center);
+  flex-flow: column nowrap;
+  .categoryBody {
+    @include flex(center, center);
+    margin-top: 30px;
+    padding: 0px 300px 0px 300px;
+
+    .searchCategoryBody {
+      @include flex(center, center);
+      .searchCategory {
+        height: 31px;
+        margin-right: 5px;
+        padding: 5px 9px 5px 9px;
+        border-radius: 5px;
+        background-color: #f6f6f6;
+      }
+
+      .searchCategoryIcon {
+        width: 31px;
+        height: 31px;
+        border-radius: 5px;
+        background-color: $pointGreen;
+        @include flex(center, center);
+        .fa-magnifying-glass {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .categoryContentBody {
+    margin-top: 30px;
+    padding: 0px 300px 0px 300px;
+  }
 }
