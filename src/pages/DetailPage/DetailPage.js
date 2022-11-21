@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { json, Link } from 'react-router-dom';
+import { json, Link, Navigate } from 'react-router-dom';
 import './DetailPage.scss';
 
 const DetailPage = () => {
@@ -14,15 +14,30 @@ const DetailPage = () => {
   const saveComment = () => {
     setCommentList([...commentList, comment]);
     setComment('');
+
+    // 주소API 통신
+    // fetch('API주소', {
+    //   body: JSON.stringify({
+    //     product_id: productData.id,
+    //     댓글, 별점,
+    //   })
+    // })
   };
 
   const valid = comment.length >= 10 ? false : true;
 
   console.log(productData.id);
 
+  useEffect(() => {
+    fetch('http:10.58.52.59:3002/lectures/2')
+      .then(response => response.json())
+      .then(data => setProductData(data));
+  }, []);
+
   const inputCart = () => {
     // 백엔드 통신시 사용
     // if (userToken) {
+    //http://10.58.52.59:3002/cart/${productData.id}
     fetch(`http://10.58.52.59:3002/cart/${productData.id}`, {
       method: 'post',
       headers: {
@@ -36,11 +51,14 @@ const DetailPage = () => {
       }),
     })
       .then(response => response.json())
-      .then(response =>
-        response.status == 201
-          ? alert('장바구니에 담겼습니다')
-          : alert('다시 시도해주세요')
-      );
+      .then(response => {
+        if (response.status == 201) {
+          alert('장바구니에 담겼습니다');
+          Navigate('/shoppingcart');
+        } else {
+          alert('다시 시도해주세요');
+        }
+      });
   };
   // } else {
   //   alert('로그인 페이지로 이동합니다!');
@@ -60,16 +78,11 @@ const DetailPage = () => {
   //   .then(data => console.log(data)); //응답
   // };
 
-  useEffect(() => {
-    fetch('http://10.58.52.59:3002/lectures/2')
-      .then(response => response.json())
-      .then(data => setProductData(data));
-  }, []);
-
   console.log(productData);
+
+  // http:10.58.52.59:3002/lectures/2
   // http://10.58.52.98:3002/lectures/1
-  // ../../data/detailPageData.json
-  // http://10.58.52.130:3002/products?type=lecture&name=한식
+  //../../data/detailPageData.json
 
   return (
     <div className="detailPage">
@@ -108,7 +121,7 @@ const DetailPage = () => {
           </a>
         </nav>
         <form className="payForm">
-          <div>{productData.price.toLocaleString()}원</div>
+          <div>{productData.price}원</div>
           <div className="payFormBtns">
             <button className="payBtn">바로 수강하기</button>
             <button onClick={inputCart} className="cartBtn">
@@ -167,6 +180,14 @@ const DetailPage = () => {
             </div>
             <div className="reviewSubTitle">직접 작성하신 수강평입니다.</div>
             <div className="inputBox">
+              <div className="ratingStar">
+                <div className="ratingBackGroundImg">
+                  <div
+                    className="rating"
+                    style={{ width: `${productData.rate}*20%` }}
+                  />
+                </div>
+              </div>
               <div className="inputBoxStar">별점을 선택해주세요</div>
               <textarea
                 className="reviewInputBox"
@@ -211,7 +232,33 @@ const DetailPage = () => {
             })}
           </div>
           <div className="qna">
-            <div id="qna">자주하는 질문</div>
+            <div id="qna" className="lectureQnaTitle">
+              자주하는 질문
+            </div>
+            <div>
+              <div className="lectureQnaQuestion">
+                수강기간은 언제까지인가요?
+              </div>
+              <div className="lectureQnaAnswer">
+                - P!CKEAT에서 제공하는 동영상 강의들은 각각의 수강기간이
+                책정되어 있습니다. 강좌별로 확인부탁드립니다.
+              </div>
+
+              <div className="lectureQnaQuestion">
+                동영상 강의의 경우 이수증이 있나요?
+              </div>
+              <div className="lectureQnaAnswer">
+                - 동영상 강의를 기간 내에 완강하시면 이수증이 발급됩니다. 강의
+                종료 후 1주일 이내에 자동으로 발급됩니다.
+              </div>
+
+              <div className="lectureQnaQuestion">
+                오프라인 수업의 경우 결석하면 환불이 되나요?
+              </div>
+              <div className="lectureQnaAnswer">
+                - 오프라인 강의 특성상 결석하면 따로 환불이나 보강이 없습니다.
+              </div>
+            </div>
           </div>
         </div>
       </div>
