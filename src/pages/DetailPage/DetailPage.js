@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
 import './DetailPage.scss';
 
 const DetailPage = () => {
@@ -18,17 +18,42 @@ const DetailPage = () => {
 
   const valid = comment.length >= 10 ? false : true;
 
-  const handleBtn = () => {
+  const inputCart = () => {
+    // 백엔드 통신시 사용
+    // if (userToken) {
+    //   fetch('주소', {
+    //     method: 'post',
+    //     headers: {
+    //       'Content-Type': 'application/json;charset=utf-8',
+    //       authorization: 'userToken',
+    //     },
+    //     body: JSON.stringify({
+    //       productId: productData.id,
+    //       quantity: quantity,
+    //     }),
+    //   })
+    //     .then(response => response.json())
+    //     .then(response =>
+    //       response.status === 201
+    //         ? alert('장바구니에 담겼습니다')
+    //         : alert('다시 시도해주세요')
+    //     );
+    // } else {
+    //   alert('로그인 페이지로 이동합니다!');
+    // }
+
     fetch('http://10.58.52.59:3002/cart/3', {
       method: 'post',
+      body: JSON.stringify(), //body는 JSON으로 바꿔서 보낸다
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2ODg0MDY1MSwiZXhwIjoxNjY4OTI3MDUxfQ.scegPgvD5NXd350VLCKi8SzRK9_JfBNWeAsjMEETVNw',
+        // authorization: localStorage.getItem('token'),
       },
     })
-      .then(response => response.json())
-      .then(data => console.log(data));
+      .then(response => response.json()) //요청
+      .then(data => console.log(data)); //응답
   };
 
   // useEffect(() => {
@@ -77,7 +102,7 @@ const DetailPage = () => {
           <div>{productData.price}원</div>
           <div className="payFormBtns">
             <button className="payBtn">바로 수강하기</button>
-            <button onClick={handleBtn} className="cartBtn">
+            <button onClick={inputCart} className="cartBtn">
               장바구니 담기
             </button>
           </div>
