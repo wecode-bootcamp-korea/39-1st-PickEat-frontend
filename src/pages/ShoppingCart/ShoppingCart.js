@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import CartLectureList from '../../components/CartLectureList';
-import CartProductList from '../../components/CartProductList';
+import CartLectureList from '../../components/ShoppingCart/CartLectureList';
+import CartProductList from '../../components/ShoppingCart/CartProductList';
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
@@ -63,6 +63,13 @@ const ShoppingCart = () => {
       .then(data => setCartDatas(data));
   }, []);
 
+  // 백엔드 통신시
+  useEffect(() => {
+    fetch('')
+      .then(response => response.json())
+      .then(data => setCartDatas(data));
+  });
+
   return (
     <div className="container">
       <section className="sectionCart">
@@ -84,7 +91,7 @@ const ShoppingCart = () => {
               deleteBtn={deleteBtn}
             />
           ))}
-          <div className="lecturePrice"></div>
+          <div className="lecturePrice" />
           {productDatas.map(product => (
             <CartProductList
               key={product.id}
