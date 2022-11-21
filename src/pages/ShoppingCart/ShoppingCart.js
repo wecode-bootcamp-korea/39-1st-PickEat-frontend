@@ -4,83 +4,64 @@ import CartProductList from '../../components/CartProductList';
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
-  const [cartLectures, setCartLectures] = useState([]);
-  const [cartProducts, setCartProducts] = useState([]);
+  const [cartDatas, setCartDatas] = useState([]);
+
+  const lectureDatas = cartDatas.filter(cartData => {
+    return cartData.type === '단과강의' || cartData.type === '코스강의';
+  });
+
+  const productDatas = cartDatas.filter(cartData => {
+    return cartData.type === '상품';
+  });
+
+  const deleteBtn = id => {
+    //   // const newCartData = [];
+    //   // for (let i = 0; i < cartDatas.length; i++) {
+    //   //   if (cartDatas[i].id !== id) {
+    //   //     newCartData.push(cartDatas[i]);
+    //   //   }
+    //   // }
+    //   // setCartDatas(newCartData);
+    setCartDatas(cartDatas.filter(cartData => cartData.id !== id));
+  };
 
   const increaseBtn = id => () => {
-    setCartProducts(
-      cartProducts.map(product => {
-        if (product.id === id && product.quantity < 5) {
-          product.quantity++;
+    setCartDatas(
+      cartDatas.map(cartData => {
+        if (cartData.id === id && cartData.quantity < 5) {
+          cartData.quantity++;
         }
-        return product;
+        return cartData;
       })
     );
   };
 
   const decreaseBtn = id => () => {
-    setCartProducts(
-      cartProducts.map(product => {
-        if (product.id === id && product.quantity > 1) {
-          product.quantity--;
+    setCartDatas(
+      cartDatas.map(cartData => {
+        if (cartData.id === id && cartData.quantity > 1) {
+          cartData.quantity--;
         }
-        return product;
+        return cartData;
       })
     );
   };
 
-  const deleteBtn = id => {
-    // const newCartProduct = [];
-    // for (let i = 0; i < cartProducts.length; i++) {
-    //   if (cartProducts[i].id !== id) {
-    //     newCartProduct.push(cartProducts[i]);
-    //   }
-    // }
-    // setCartProducts(newCartProduct);
-    setCartProducts(cartProducts.filter(product => product.id !== id));
-  };
-
-  const lectureDelBtn = id => {
-    setCartLectures(cartLectures.filter(lecture => lecture.id !== id));
-  };
-
-  const productsPrice = cartProducts.reduce(
-    (total, cartProduct) => total + cartProduct.price * cartProduct.quantity,
+  const productsPrice = productDatas.reduce(
+    (total, productData) => total + productData.price * productData.quantity,
     0
   );
 
-  const lecturePrice = cartLectures.reduce(
-    (total, cartLecture) => total + cartLecture.price,
+  const lecturePrice = lectureDatas.reduce(
+    (total, lectureData) => total + lectureData.price,
     0
   );
 
   useEffect(() => {
     fetch('data/cartData.json')
       .then(response => response.json())
-      .then(data => setCartLectures(data));
+      .then(data => setCartDatas(data));
   }, []);
-
-  useEffect(() => {
-    fetch('data/cartProductData.json')
-      .then(response => response.json())
-      .then(data => setCartProducts(data));
-  }, []);
-
-  const [isCheckedAll, setIsCheckedAll] = useState(false);
-
-  const checkedAll = e => {
-    setCartProducts(cartProducts => {
-      const newList = [...cartProducts];
-      newList.forEach(item => {
-        isCheckedAll ? (item.isChecked = false) : (item.isChecked = true);
-      });
-      return newList;
-    });
-    setIsCheckedAll(isCheckedAll);
-  };
-
-  // data/cartProductData.json
-  // http://10.58.52.98:3002/products?type=lecture&name=한식
 
   return (
     <div className="container">
@@ -91,26 +72,26 @@ const ShoppingCart = () => {
             className="cartCheckbox"
             type="checkbox"
             defaultChecked={true}
-            onChange={checkedAll}
           />
-          <label>전체선택</label>
+          <label className="allCheckedTitle">전체선택</label>
           <button className="deleteBtn">선택삭제 ✖</button>
         </nav>
         <main className="sectionCartBody">
-          {cartLectures.map(lecture => (
+          {lectureDatas.map(lecture => (
             <CartLectureList
               key={lecture.id}
               lecture={lecture}
-              lectureDelBtn={lectureDelBtn}
+              deleteBtn={deleteBtn}
             />
           ))}
-          {cartProducts.map(product => (
+          <div className="lecturePrice"></div>
+          {productDatas.map(product => (
             <CartProductList
               key={product.id}
               product={product}
+              deleteBtn={deleteBtn}
               increaseBtn={increaseBtn(product.id)}
               decreaseBtn={decreaseBtn(product.id)}
-              deleteBtn={deleteBtn}
             />
           ))}
         </main>

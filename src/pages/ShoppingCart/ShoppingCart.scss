@@ -30,7 +30,7 @@
         accent-color: $pointGreen;
       }
 
-      label {
+      .allCheckedTitle {
         padding-left: 20px;
         font-size: 18px;
         letter-spacing: -1px;
@@ -111,6 +111,11 @@
           }
         }
       }
+    }
+
+    .lecturePrice {
+      border-top: 1px solid gray;
+      margin: 20px 0;
     }
 
     .cartProductList {

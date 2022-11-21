@@ -2,7 +2,7 @@ import React from 'react';
 
 const CartLectureList = props => {
   const { id, title, price, duration, instructor, img } = props.lecture;
-  const { lectureDelBtn } = props;
+  const { deleteBtn } = props;
 
   return (
     <div className="cartLectureList" key={id}>
@@ -15,7 +15,7 @@ const CartLectureList = props => {
       </div>
       <div className="cartLecturePrice">
         <span>{price.toLocaleString()}</span>원
-        <button className="cartDeleteBtn" onClick={() => lectureDelBtn(id)}>
+        <button className="cartDeleteBtn" onClick={() => deleteBtn(id)}>
           ✖
         </button>
       </div>
