@@ -28,7 +28,7 @@ const DetailPage = () => {
     //       authorization: 'userToken',
     //     },
     //     body: JSON.stringify({
-    //       productId: productData.id,
+    //       product_id: productData.id,
     //       quantity: quantity,
     //     }),
     //   })
@@ -95,7 +95,7 @@ const DetailPage = () => {
             수강평
           </a>
           <a href="#qna" className="detailNavBarHeader">
-            Q & A
+            자주하는 질문
           </a>
         </nav>
         <form className="payForm">
