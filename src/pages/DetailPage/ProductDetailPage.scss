@@ -158,7 +158,7 @@
         .productInfoTitle {
           font-size: 20px;
           font-weight: bold;
-          padding-bottom: 20px;
+          padding-bottom: 40px;
         }
       }
 
@@ -166,7 +166,7 @@
         font-family: 'Noto Sans KR', sans-serif;
 
         .reviewTitle {
-          padding: 20px 0;
+          padding: 40px 0;
           font-size: 20px;
           font-weight: bold;
         }
@@ -184,6 +184,20 @@
           background-color: #f8f9fa;
           border: 1px solid #e9ecef;
           border-radius: 4px;
+
+          .ratingStar {
+            .ratingBackGroundImg {
+              width: 100px;
+              height: 50px;
+              background: url(../../../public/images/emptyStarIcon.png)
+                no-repeat;
+            }
+
+            .rating {
+              height: 50px;
+              background: url(../../../public/images/fullStarIcon.png) no-repeat;
+            }
+          }
 
           .inputBoxStar {
             display: inline;
@@ -221,6 +235,59 @@
             }
           }
         }
+      }
+
+      .commentList {
+        margin: 20px 0;
+
+        .commentInfo {
+          display: flex;
+
+          .profileImg {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+          }
+
+          .commentStarId {
+            padding-left: 20px;
+
+            .commentStar {
+              padding-bottom: 5px;
+            }
+
+            .commentId {
+              padding-top: 5px;
+              color: gray;
+              font-weight: bold;
+            }
+          }
+        }
+
+        .comment {
+          padding: 15px 0;
+          font-size: 15px;
+          font-family: 'Noto Sans KR', sans-serif;
+        }
+      }
+    }
+
+    .productQna {
+      font-family: 'Noto Sans KR', sans-serif;
+      width: 65%;
+
+      .productQnaTitle {
+        font-size: 20px;
+        font-weight: bold;
+        padding: 40px 0 20px;
+      }
+
+      .productQnaQuestion {
+        padding: 20px 0;
+      }
+
+      .productQnaAnswer {
+        line-height: 25px;
       }
     }
   }
