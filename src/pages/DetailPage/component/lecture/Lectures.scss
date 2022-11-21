@@ -1,3 +1,5 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixin';
 .freeLectureBody {
   display: flex;
   flex-flow: row nowrap;
@@ -7,6 +9,7 @@
     margin-right: 5px;
     transition: 0.3s;
     color: $pointOrange;
+
     &:hover {
       transition: 0.3s;
       color: $pointGreen;

@@ -37,8 +37,8 @@ const DetailPage = () => {
         ))}
       </div>
       <div className="categoryContentBody">
-        {Lectures.map(lectureList => (
-          <Lectures key={lectureList.id} />
+        {lectures.map(lectureList => (
+          <Lectures key={lectureList.id} lecture={lectures} />
         ))}
       </div>
     </div>
