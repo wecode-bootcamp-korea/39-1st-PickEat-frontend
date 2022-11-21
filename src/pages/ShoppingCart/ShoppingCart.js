@@ -15,25 +15,47 @@ const ShoppingCart = () => {
   });
 
   const deleteBtn = id => {
-    //   // const newCartData = [];
-    //   // for (let i = 0; i < cartDatas.length; i++) {
-    //   //   if (cartDatas[i].id !== id) {
-    //   //     newCartData.push(cartDatas[i]);
-    //   //   }
-    //   // }
-    //   // setCartDatas(newCartData);
-    setCartDatas(cartDatas.filter(cartData => cartData.id !== id));
+    fetch('', {
+      method: 'delete',
+      headers: { authorization: localStorage.getItem('token') },
+    }).then(res => {
+      if (res.status === 204) {
+        alert('상품이 장바구니에서 삭제되었습니다');
+        setCartDatas(cartDatas.filter(cartData => cartData.id !== id));
+      } else {
+        alert('다시 시도해주세요');
+      }
+    });
   };
 
   const increaseBtn = id => () => {
-    setCartDatas(
-      cartDatas.map(cartData => {
-        if (cartData.id === id && cartData.quantity < 5) {
-          cartData.quantity++;
+    //   cartDatas.map(cartData => {
+    //     if (cartData.id === id && cartData.quantity < 5) {
+    //       cartData.quantity++;
+    //     }
+    //     return cartData;
+    //   })
+    // );
+    fetch('', {
+      method: 'PATCH',
+      headers: { authorization: localStorage.getItem('token') },
+      body: JSON.stringify({ quantity: cartDatas[id].quantity }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          setCartDatas(
+            cartDatas.map(cartData => {
+              if (cartData.id === id && cartData.quantity < 5) {
+                cartData.quantity++;
+              }
+              return cartData;
+            })
+          );
+        } else {
+          alert('다시 시도해주세요');
         }
-        return cartData;
-      })
-    );
+      });
   };
 
   const decreaseBtn = id => () => {
