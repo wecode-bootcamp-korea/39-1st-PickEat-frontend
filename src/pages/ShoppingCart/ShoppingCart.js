@@ -66,6 +66,19 @@ const ShoppingCart = () => {
       .then(data => setCartProducts(data));
   }, []);
 
+  const [isCheckedAll, setIsCheckedAll] = useState(false);
+
+  const checkedAll = e => {
+    setCartProducts(cartProducts => {
+      const newList = [...cartProducts];
+      newList.forEach(item => {
+        isCheckedAll ? (item.isChecked = false) : (item.isChecked = true);
+      });
+      return newList;
+    });
+    setIsCheckedAll(isCheckedAll);
+  };
+
   // data/cartProductData.json
   // http://10.58.52.98:3002/products?type=lecture&name=한식
 
@@ -78,6 +91,7 @@ const ShoppingCart = () => {
             className="cartCheckbox"
             type="checkbox"
             defaultChecked={true}
+            onChange={checkedAll}
           />
           <label>전체선택</label>
           <button className="deleteBtn">선택삭제 ✖</button>
