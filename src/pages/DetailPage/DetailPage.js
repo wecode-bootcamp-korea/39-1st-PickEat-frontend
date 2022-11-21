@@ -18,58 +18,67 @@ const DetailPage = () => {
 
   const valid = comment.length >= 10 ? false : true;
 
+  console.log(productData.id);
+
   const inputCart = () => {
     // 백엔드 통신시 사용
     // if (userToken) {
-    //   fetch('주소', {
-    //     method: 'post',
-    //     headers: {
-    //       'Content-Type': 'application/json;charset=utf-8',
-    //       authorization: 'userToken',
-    //     },
-    //     body: JSON.stringify({
-    //       product_id: productData.id,
-    //       quantity: quantity,
-    //     }),
-    //   })
-    //     .then(response => response.json())
-    //     .then(response =>
-    //       response.status === 201
-    //         ? alert('장바구니에 담겼습니다')
-    //         : alert('다시 시도해주세요')
-    //     );
-    // } else {
-    //   alert('로그인 페이지로 이동합니다!');
-    // }
-
-    fetch('http://10.58.52.59:3002/cart/3', {
+    fetch(`http://10.58.52.59:3002/cart/${productData.id}`, {
       method: 'post',
-      body: JSON.stringify(), //body는 JSON으로 바꿔서 보낸다
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2ODg0MDY1MSwiZXhwIjoxNjY4OTI3MDUxfQ.scegPgvD5NXd350VLCKi8SzRK9_JfBNWeAsjMEETVNw',
-        // authorization: localStorage.getItem('token'),
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2OTAyMDc2OCwiZXhwIjoxNjY5MTA3MTY4fQ.vXhdWClrF7s7qFS2qTxohDm4ntY73WNGjdn1h5wEV-U',
       },
+      body: JSON.stringify({
+        product_id: productData.id,
+        quantity: productData.quantity,
+      }),
     })
-      .then(response => response.json()) //요청
-      .then(data => console.log(data)); //응답
+      .then(response => response.json())
+      .then(response =>
+        response.status == 201
+          ? alert('장바구니에 담겼습니다')
+          : alert('다시 시도해주세요')
+      );
   };
+  // } else {
+  //   alert('로그인 페이지로 이동합니다!');
+  // }
 
-  // useEffect(() => {
-  //   fetch('../../data/detailPageData.json')
-  //     .then(response => response.json())
-  //     .then(data => setProductData(data));
-  // }, []);
+  // fetch('http://10.58.52.59:3002/cart/3', {
+  //   method: 'post',
+  //   body: JSON.stringify(), //body는 JSON으로 바꿔서 보낸다
+  //   headers: {
+  //     'Content-Type': 'application/json;charset=utf-8',
+  //     authorization:
+  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2ODg0MDY1MSwiZXhwIjoxNjY4OTI3MDUxfQ.scegPgvD5NXd350VLCKi8SzRK9_JfBNWeAsjMEETVNw',
+  //     // authorization: localStorage.getItem('token'),
+  //   },
+  // })
+  //   .then(response => response.json()) //요청
+  //   .then(data => console.log(data)); //응답
+  // };
+
+  useEffect(() => {
+    fetch('http://10.58.52.59:3002/lectures/2')
+      .then(response => response.json())
+      .then(data => setProductData(data));
+  }, []);
 
   console.log(productData);
   // http://10.58.52.98:3002/lectures/1
   // ../../data/detailPageData.json
   // http://10.58.52.130:3002/products?type=lecture&name=한식
+
   return (
     <div className="detailPage">
       <div className="lecture">
-        <img className="lectureImg" src={productData.image} alt="lectureImg" />
+        <img
+          className="lectureImg"
+          src={productData.profileImg}
+          alt="lectureImg"
+        />
         <div className="lectureInfo">
           <p className="lectureInfoIndex">강의 코스 {productData.category}</p>
           <p className="lectureInfoName">{productData.title}</p>
@@ -99,7 +108,7 @@ const DetailPage = () => {
           </a>
         </nav>
         <form className="payForm">
-          <div>{productData.price}원</div>
+          <div>{productData.price.toLocaleString()}원</div>
           <div className="payFormBtns">
             <button className="payBtn">바로 수강하기</button>
             <button onClick={inputCart} className="cartBtn">
@@ -116,9 +125,8 @@ const DetailPage = () => {
           <div className="introduceTitle" id="introduce">
             강의소개
           </div>
-          <div>가지고 있는 장비만으로 실패 없이 집빵을 만들고 싶다면?</div>
-          <img src="/images/pt-2.png" alt="img" />
-          <div>
+          <img src={productData.description} alt="img" />
+          {/* <div>
             <div className="curriTitle" id="curriculum">
               커리큘럼
             </div>
@@ -152,7 +160,7 @@ const DetailPage = () => {
                 <span> 0. Intro</span>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="review">
             <div className="reviewTitle" id="review">
               수강평
