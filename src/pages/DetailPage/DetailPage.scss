@@ -2,12 +2,36 @@
 @import '../../styles/variables';
 
 .categoryPageBody {
-  @include flex(center, center);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-flow: column nowrap;
+
   .categoryBody {
-    @include flex(center, center);
+    @include flex(flex-start, center);
     margin-top: 30px;
-    padding: 0px 300px 0px 300px;
+
+    padding-top: 30px;
+    width: 980px;
+    flex-flow: column;
+
+    .categoryContents {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+
+    .allcategoryBody {
+      width: 100%;
+      border-top: 1px solid #cbcbcb;
+      padding-top: 10px;
+      .allcategory {
+        margin-right: 100px;
+        font-size: 20px;
+        font-weight: 600;
+        width: 100%;
+      }
+    }
 
     .searchCategoryBody {
       @include flex(center, center);
@@ -33,7 +57,13 @@
   }
 
   .categoryContentBody {
+    margin: auto;
     margin-top: 30px;
-    padding: 0px 300px 0px 300px;
+    width: 980px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    row-gap: 0px;
+    column-gap: 0px;
   }
 }

@@ -1,19 +1,21 @@
 import { Link } from 'react-router-dom';
 import './Lectures.scss';
 const Lectures = props => {
-  const { lecture } = props;
+  const { lectureList } = props;
+  const lectureType = lectureList.type === '코스' ? 'ratingTag' : 'ratingTag1';
+  console.log(lectureList.img);
   return (
     <li className="slideLectures">
-      <Link to="">
-        <img className="LectureThumbnail" src={lecture.img} />
-        <p className="lecturetitle">{lecture.title}</p>
+      <Link className="linkTag" to="">
+        <img className="LectureThumbnail" src={lectureList.img} />
+        <p className="lecturetitle">{lectureList.title}</p>
       </Link>
       <div className="lecturePremium">
-        <p className="ratingTag1">
-          P!CKEAT<span className="ratingTagContent">{lecture.type}</span>
+        <p className={lectureType}>
+          P!CKEAT<span className="ratingTagContent">{lectureList.type}</span>
         </p>
-        <p className="viewerTag">+{lecture.viewer}명</p>
-        <p className="hotTag">{lecture.hot}</p>
+        <p className="viewerTag">+{lectureList.viewer}명</p>
+        <p className="hotTag">{lectureList.hot}</p>
       </div>
       <div className="scope">
         <i className="fa-solid fa-star" />
@@ -24,7 +26,7 @@ const Lectures = props => {
         <span className="reviewNumber">(100)</span>
       </div>
       <div className="price">
-        <p>{lecture.price}</p>
+        <p>{lectureList.price}</p>
       </div>
     </li>
   );

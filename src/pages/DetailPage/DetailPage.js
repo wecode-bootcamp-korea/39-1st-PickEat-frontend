@@ -6,6 +6,7 @@ import Lectures from './component/lecture/Lectures';
 const DetailPage = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [lectures, setLectures] = useState([]);
+  const [searchLectureInput, setSearchLectureInput] = useState('');
 
   useEffect(() => {
     fetch('/data/categoryData.json')
@@ -22,23 +23,41 @@ const DetailPage = () => {
         setLectures(data);
       });
   }, []);
-  console.log(categoryData);
+
+  const saveValue = e => {
+    setSearchLectureInput(e.target.value);
+  };
+
+  const searchLectures = lectures.filter(lecture =>
+    lecture.title.includes(searchLectureInput)
+  );
+  console.log(searchLectures);
   return (
     <div className="categoryPageBody">
       <div className="categoryBody">
-        <div className="searchCategoryBody">
-          <input className="searchCategory" placeholder="음식검색" />
-          <div className="searchCategoryIcon">
-            <i class="fa-solid fa-magnifying-glass fa-lg" />
-          </div>
+        <div className="allcategoryBody">
+          <p className="allcategory">전체</p>
         </div>
-        {categoryData.map(category => (
-          <Category key={category.id} category={category} />
-        ))}
+        <div className="categoryContents">
+          <div className="searchCategoryBody">
+            <input
+              className="searchCategory"
+              placeholder="음식검색"
+              onChange={saveValue}
+              value={searchLectureInput}
+            />
+            <div className="searchCategoryIcon">
+              <i class="fa-solid fa-magnifying-glass fa-lg" />
+            </div>
+          </div>
+          {categoryData.map(category => (
+            <Category key={category.id} category={category} />
+          ))}
+        </div>
       </div>
       <div className="categoryContentBody">
-        {lectures.map(lectureList => (
-          <Lectures key={lectureList.id} lecture={lectures} />
+        {searchLectures.map(lectureList => (
+          <Lectures key={lectureList.id} lectureList={lectureList} />
         ))}
       </div>
     </div>
