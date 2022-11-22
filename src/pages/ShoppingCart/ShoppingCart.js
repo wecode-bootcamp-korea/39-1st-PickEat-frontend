@@ -86,11 +86,11 @@ const ShoppingCart = () => {
   }, []);
 
   // 백엔드 통신시
-  useEffect(() => {
-    fetch('')
-      .then(response => response.json())
-      .then(data => setCartDatas(data));
-  });
+  // useEffect(() => {
+  //   fetch('')
+  //     .then(response => response.json())
+  //     .then(data => setCartDatas(data));
+  // });
 
   return (
     <div className="container">
