@@ -22,6 +22,13 @@ const ShoppingCart = () => {
 
   console.log(checkItems);
 
+  // 선택 삭제 버튼
+  const selectDelete = () => {
+    const afterDeleted = cartDatas.filter(el => !checkItems.includes(el.id));
+    setCartDatas(afterDeleted);
+    setCheckItems([]);
+  };
+
   //강의, 도구 구분
   const lectureDatas = cartDatas.filter(cartData => {
     return cartData.type === '단과강의' || cartData.type === '코스강의';
@@ -33,6 +40,7 @@ const ShoppingCart = () => {
 
   console.log(cartDatas);
 
+  // 개별 삭제 버튼
   const deleteBtn = id => {
     setCartDatas(cartDatas.filter(cartData => cartData.id !== id));
     // `${API.carts}/${id}`
@@ -52,6 +60,7 @@ const ShoppingCart = () => {
     // });
   };
 
+  // 수량 증가 버튼
   const increaseBtn = id => () => {
     setCartDatas(
       cartDatas.map(cartData => {
@@ -62,7 +71,7 @@ const ShoppingCart = () => {
       })
     );
   };
-
+  // 수량 증가 백엔드 통신
   // fetch(``, {
   //   method: 'PATCH',
   //   headers: { authorization: localStorage.getItem('token') },
@@ -84,6 +93,7 @@ const ShoppingCart = () => {
   //     }
   //   });
 
+  // 수량 감소버튼
   const decreaseBtn = id => () => {
     setCartDatas(
       cartDatas.map(cartData => {
@@ -95,6 +105,27 @@ const ShoppingCart = () => {
     );
   };
 
+  // 수량 감소 백엔드 통신
+  // fetch('', {
+  //   method: 'PATCH',
+  //   headers: { authorization: localStorage.getItem('token') },
+  //   body: JSON.stringify({ quantity: cartDatas[id].quantity }),
+  // })
+  //   .then(res => res.json())
+  //   .then(result => {
+  //     if (result.message === 'SUCCESS') {
+  //       setCartDatas(
+  //         cartDatas.map(cartData => {
+  //           if (cartData.id === id && cartData.quantity > 1) {
+  //             cartData.quantity--;
+  //           }
+  //           return cartData;
+  //         })
+  //       );
+  //     }
+  //   });
+
+  // 금액 합계
   const productsPrice = productDatas.reduce(
     (total, productData) => total + productData.price * productData.quantity,
     0
@@ -142,12 +173,14 @@ const ShoppingCart = () => {
           <input
             className="cartCheckbox"
             type="checkbox"
-            // defaultChecked={true}
+            defaultChecked={false}
             onChange={e => handleAllCheck(e.target.checked)}
             checked={checkItems.length === cartDatas.length ? true : false}
           />
           <label className="allCheckedTitle">전체선택</label>
-          <button className="deleteBtn">선택삭제 ✖</button>
+          <button className="deleteBtn" onClick={selectDelete}>
+            선택삭제 ✖
+          </button>
         </nav>
         <main className="sectionCartBody">
           {lectureDatas.map(lecture => (
