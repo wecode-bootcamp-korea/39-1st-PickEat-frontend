@@ -1,8 +1,8 @@
 import './Main.scss';
-import Slideshow from './components/Slideshow/Slideshow';
 import { useState, useEffect, useRef } from 'react';
 import BastLecture from './components/BastLecture/BastLecture';
 import FreeLecture from './components/freeLecture/FreeLecture';
+import SlideBox from './components/SlideBox/SlideBox';
 
 const Main = () => {
   const [bastLectureList, setBastLectureList] = useState([]);
@@ -12,25 +12,6 @@ const Main = () => {
   const [freeLectureIndex, setFreeLectureIndex] = useState(0);
   const [backColor, setBackColor] = useState('colorBoxColor1');
   const freeLectureRef = useRef(null);
-
-  const slide = () => {
-    if (slideIndex === slideImgList.length - 1) {
-      setSlideIndex(0);
-      setBackColor('colorBoxColor1');
-    } else {
-      setSlideIndex(value => value + 1);
-      setBackColor(`colorBoxColor${1 * (slideIndex + 2)}`);
-    }
-  };
-  const leftSlide = () => {
-    if (slideIndex === 0) {
-      setSlideIndex(slideImgList.length - 1);
-      setBackColor('colorBoxColor5');
-    } else {
-      setSlideIndex(value => value - 1);
-      setBackColor(`colorBoxColor${slideIndex + 1 - 1}`);
-    }
-  };
 
   const rightfreeLectureSlide = () => {
     if (freeLectureIndex === 2) {
@@ -55,22 +36,15 @@ const Main = () => {
   }, [freeLectureIndex]);
 
   useEffect(() => {
-    const slideShow = setTimeout(() => {
-      slide();
-    }, 5000);
-
-    return () => clearTimeout(slideShow);
-  }, [slideIndex]);
-
-  useEffect(() => {
     fetch('data/slidedata.json')
       .then(respons => respons.json())
       .then(data => {
         setSlideImgList(data);
       });
   }, []);
+
   useEffect(() => {
-    fetch('data/bastLecture.json')
+    fetch('http://10.58.52.59:3002/products?type=코스강의')
       .then(response => response.json())
       .then(data => {
         setBastLectureList(data);
@@ -78,7 +52,7 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    fetch('data/freeLecture.json')
+    fetch('http://10.58.52.59:3002/products?type=단과강의')
       .then(response => response.json())
       .then(data => {
         setFreeLectureList(data);
@@ -87,49 +61,14 @@ const Main = () => {
 
   return (
     <div className="mainBody">
-      <div className={`mainColorBox ${backColor}`}>
-        <div className="colorBoxContent">
-          <p className="colorBoxText">
-            인터넷 요리강의 No.1{' '}
-            <span className="siteName">
-              <i className="fa-solid fa-egg" />
-              P!CKEAT
-            </span>
-            에서
-            <p className="colorBoxText2">원하는 강의를 찾아보세요!</p>
-          </p>
-          <div className="colorBoxIneer">
-            <input className="colorBoxInput" placeholder="음식검색하기..." />
-            <i class="fa-solid fa-magnifying-glass fa-lg" />
-          </div>
-          <ul className="colorBoxHash">
-            <li className="hashTag">
-              <p>#짜장면</p>
-            </li>
-            <li className="hashTag">
-              <p>#불고기</p>
-            </li>
-            <li className="hashTag">
-              <p>#김치</p>
-            </li>
-            <li className="hashTag">
-              <p>#스시</p>
-            </li>
-          </ul>
-        </div>
-        <div className="slideShowBody">
-          <div className="slideShowContents">
-            <i class="fa-solid fa-chevron-left fa-2x" onClick={leftSlide} />
-            <Slideshow
-              slideImgList={slideImgList}
-              slideIndex={slideIndex}
-              setSlideIndex={setSlideIndex}
-              setBackColor={setBackColor}
-            />
-            <i class="fa-solid fa-chevron-right fa-2x" onClick={slide} />
-          </div>
-        </div>
-      </div>
+      <SlideBox
+        slideImgList={slideImgList}
+        slideIndex={slideIndex}
+        setSlideIndex={setSlideIndex}
+        backColor={backColor}
+        setBackColor={setBackColor}
+      />
+
       <div className="mainHome">
         <p className="popularity">
           <i className="fa-solid fa-egg" />

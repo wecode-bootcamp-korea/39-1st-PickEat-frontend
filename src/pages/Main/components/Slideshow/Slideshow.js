@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-
 const Slideshow = props => {
   const { slideImgList, slideIndex, setSlideIndex, setBackColor } = props;
 

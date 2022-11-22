@@ -5,8 +5,7 @@
   min-width: 1424px;
   max-width: 3000px;
   height: 100%;
-  margin-top: 30px;
-
+  margin-top: 60px;
   .mainImgconta {
     @include flex(center, center);
     flex-flow: column;
@@ -19,12 +18,12 @@
 
   .colorBoxColor1 {
     transition: 1s;
-    background-color: $pointGreen;
+    background-color: $pointOrange;
   }
 
   .colorBoxColor2 {
     transition: 1s;
-    background-color: $pointOrange;
+    background-color: $pointGreen;
   }
   .colorBoxColor3 {
     transition: 1s;

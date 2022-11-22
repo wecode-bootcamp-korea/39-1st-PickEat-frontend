@@ -2,12 +2,12 @@
 @import '../../../../styles/mixin';
 
 .slideLectures {
-  list-style: none;
   display: flex;
   flex-flow: column nowrap;
   width: 230px;
   margin-bottom: 10px;
   transition: 0.3s;
+  list-style: none;
 
   &:hover {
     scale: 1.05;
@@ -15,7 +15,6 @@
   }
 
   .LectureThumbnail {
-    width: 230px;
     height: 150px;
   }
 
@@ -39,10 +38,11 @@
 }
 
 .lecturetitle {
-  width: 230px;
   display: inline-block;
+
   height: 44px;
   margin-bottom: 5px;
+  margin-bottom: 10px;
   padding: 2px;
   border-radius: 5px;
   background-color: white;
@@ -51,7 +51,6 @@
   font-size: 17px;
   font-weight: 600;
   line-height: 20px;
-  margin-bottom: 10px;
 }
 
 .LectureThumbnail {

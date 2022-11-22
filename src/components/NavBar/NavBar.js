@@ -5,7 +5,7 @@ const NavBar = () => {
   return (
     <div className="navBar">
       <h1 className="navName">
-        <Link to="/">
+        <Link className="navNameLink" to="/">
           <i class="fa-solid fa-egg" />
           P!CKEAT
         </Link>
@@ -23,6 +23,9 @@ const NavBar = () => {
           </p>
           <div className="dropBox1 dropBoxs">
             <ul className="dropBoxUl">
+              <li className="dropBoxCt1">
+                <Link to="/detailpage">전체 카테고리</Link>
+              </li>
               <li className="dropBoxCt1">
                 <Link>Korean | 한식</Link>
               </li>

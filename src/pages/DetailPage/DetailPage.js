@@ -8,6 +8,7 @@ const DetailPage = () => {
   const [lectures, setLectures] = useState([]);
   const [searchLectureInput, setSearchLectureInput] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
 
   useEffect(() => {
     fetch('/data/categoryData.json')
@@ -18,7 +19,7 @@ const DetailPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/data/freeLecture.json')
+    fetch('http://10.58.52.59:3002/products?type=코스강의&type=단과강의')
       .then(response => response.json())
       .then(data => {
         setLectures(data);
@@ -50,7 +51,48 @@ const DetailPage = () => {
     isOpen ? setIsOpen(false) : setIsOpen(true);
   };
 
+  const dropDown2 = () => {
+    isOpen2 ? setIsOpen2(false) : setIsOpen2(true);
+  };
+
   const runDrop = isOpen ? 'courseLectureDropsOn' : 'courseLectureDropsOff';
+  const runDrop2 = isOpen2 ? 'courseLectureDropsOn' : 'courseLectureDropsOff';
+
+  const allLectures = () => {
+    fetch('http://10.58.52.59:3002/products?type=코스강의&type=단과강의')
+      .then(response => response.json())
+      .then(data => setLectures(data));
+  };
+
+  const korean = () => {
+    fetch('http://10.58.52.59:3002/products?name=한식&type=코스강의')
+      .then(response => response.json())
+      .then(data => setLectures(data));
+  };
+
+  const china = () => {
+    fetch('http://10.58.52.59:3002/products?name=중식&type=코스강의')
+      .then(response => response.json())
+      .then(data => setLectures(data));
+  };
+
+  const japan = () => {
+    fetch('http://10.58.52.59:3002/products?name=일식&type=코스강의')
+      .then(response => response.json())
+      .then(data => setLectures(data));
+  };
+
+  const american = () => {
+    fetch('http://10.58.52.59:3002/products?name=양식&type=코스강의')
+      .then(response => response.json())
+      .then(data => setLectures(data));
+  };
+
+  const mexican = () => {
+    fetch('http://10.58.52.59:3002/products?name=멕시코&type=코스강의')
+      .then(response => response.json())
+      .then(data => setLectures(data));
+  };
 
   return (
     <div className="categoryPageBody">
@@ -58,7 +100,9 @@ const DetailPage = () => {
         <div className="categoryBody">
           <div className="leftCategory">
             <div className="leftCategoryContents1">
-              <button className="leftCategoryButton">전체강의</button>
+              <button className="leftCategoryButton" onClick={allLectures}>
+                전체강의
+              </button>
             </div>
             <div className="courseLectureBody">
               <div className="leftCategoryContents2" onClick={dropDown}>
@@ -68,26 +112,45 @@ const DetailPage = () => {
                 />
               </div>
               <div className={runDrop}>
-                <div className="courseLectureContents">
+                <div onClick={korean} className="courseLectureContents">
                   <button>한식</button>
                 </div>
-                <div className="courseLectureContents">
+                <div onClick={china} className="courseLectureContents">
                   <button>중식</button>
                 </div>
-                <div className="courseLectureContents">
+                <div onClick={japan} className="courseLectureContents">
                   <button>일식</button>
                 </div>
-                <div className="courseLectureContents">
+                <div onClick={american} className="courseLectureContents">
                   <button>양식</button>
                 </div>
-                <div className="courseLectureContents">
+                <div onClick={mexican} className="courseLectureContents">
                   <button>멕시칸</button>
                 </div>
               </div>
             </div>
-            <div className="leftCategoryContents3">
+            <div className="leftCategoryContents3" onClick={dropDown2}>
               <button className="leftCategoryButton">단과강의</button>
-              <i className="fa-solid fa-angle-right" />
+              <i
+                className={`fa-solid fa-angle-${isOpen2 ? 'down' : 'right'}`}
+              />
+            </div>
+            <div className={runDrop2}>
+              <div onClick={korean} className="courseLectureContents">
+                <button>한식</button>
+              </div>
+              <div onClick={china} className="courseLectureContents">
+                <button>중식</button>
+              </div>
+              <div onClick={japan} className="courseLectureContents">
+                <button>일식</button>
+              </div>
+              <div onClick={american} className="courseLectureContents">
+                <button>양식</button>
+              </div>
+              <div onClick={mexican} className="courseLectureContents">
+                <button>멕시칸</button>
+              </div>
             </div>
           </div>
           <div className="allcategoryBody">

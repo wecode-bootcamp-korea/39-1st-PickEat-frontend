@@ -3,8 +3,14 @@
 
 .navBar {
   @include flex(space-evenly, center);
+  position: fixed;
+  z-index: 100;
+  top: 0px;
   width: 100%;
   height: 65px;
+  padding: 0px 250px 0px 250px;
+  border-bottom: 1px solid #cbcbcb;
+  background-color: white;
 
   .dropBoxs {
     display: none;
@@ -23,7 +29,12 @@
   .navName {
     color: $pointBlack;
     font-family: 'Alfa Slab One', cursive;
-    font-size: 25px;
+    font-size: 23px;
+
+    .navNameLink {
+      color: $pointBlack;
+      text-decoration: none;
+    }
 
     .fa-egg {
       margin-right: 8px;
@@ -42,8 +53,9 @@
       height: 60px;
       padding-top: 20px;
       padding-bottom: 20px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 18px;
+      transition: 0.1s;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size: 15px;
       cursor: pointer;
 
       .navP1 {
@@ -61,13 +73,13 @@
         }
 
         .navP1 {
-          transition: 0.3s;
+          transition: 0.1s;
           border-bottom: 3px solid $pointGreen;
           font-weight: 700;
         }
 
         .fa-down {
-          transition: 0.3s;
+          transition: 0.1s;
           color: $pointGreen;
         }
       }
@@ -78,9 +90,9 @@
       height: 60px;
       padding-top: 20px;
       padding-bottom: 20px;
-      transition: 0.3s;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 18px;
+      transition: 0.1s;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size: 15px;
       cursor: pointer;
 
       .navP2 {
@@ -89,7 +101,7 @@
 
       &:hover {
         .navP2 {
-          transition: 0.3s;
+          transition: 0.1s;
           border-bottom: 3px solid $deepYellow;
           font-weight: 700;
         }
@@ -101,9 +113,9 @@
       height: 60px;
       padding-top: 20px;
       padding-bottom: 20px;
-      transition: 0.3s;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 18px;
+      transition: 0.1s;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size: 15px;
       cursor: pointer;
 
       .navP3 {
@@ -112,7 +124,7 @@
 
       &:hover {
         .navP3 {
-          transition: 0.3s;
+          transition: 0.1s;
           border-bottom: 3px solid $deepYellow;
           font-weight: 700;
         }
@@ -124,9 +136,9 @@
       height: 60px;
       padding-top: 20px;
       padding-bottom: 20px;
-      transition: 0.3s;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 18px;
+      transition: 0.1s;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size: 15px;
       cursor: pointer;
 
       .navP4 {
@@ -135,7 +147,7 @@
 
       &:hover {
         .navP4 {
-          transition: 0.3s;
+          transition: 0.1s;
           border-bottom: 3px solid $deepYellow;
           font-weight: 700;
         }
@@ -163,8 +175,8 @@
 
       .navLogin {
         color: $pointBlack;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 16px;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-size: 15px;
       }
     }
 
@@ -184,8 +196,8 @@
 
       .navSinUP {
         color: $pointBlack;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 16px;
+        font-family: 'Nanum Gothic', sans-serif;
+        font-size: 15px;
       }
     }
   }
