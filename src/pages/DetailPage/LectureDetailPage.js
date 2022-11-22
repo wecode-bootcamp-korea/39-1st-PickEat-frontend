@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { json, Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import './LectureDetailPage.scss';
 
@@ -31,14 +31,22 @@ const LectureDetailPage = () => {
     setComment('');
 
     // 주소API 통신
-    // fetch('commentAPI주소', {
+    // fetch(`${commentAPI}/${productData.id}`, {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=utf-8',
+    //     authorization:
+    //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2OTAyMDc2OCwiZXhwIjoxNjY5MTA3MTY4fQ.vXhdWClrF7s7qFS2qTxohDm4ntY73WNGjdn1h5wEV-U',
+    //   },
     //   body: JSON.stringify({
     //     product_id: productData.id,
     //     user_id: productData.userId,
     //     comment: commentData.comment,
     //     rate: commentData.rate,
     //   }),
-    // });
+    // })
+    //   .then(res => res.json())
+    //   .then();
   };
 
   const valid = comment.length >= 10 ? false : true;
@@ -71,6 +79,7 @@ const LectureDetailPage = () => {
         });
     } else {
       alert('로그인 페이지로 이동합니다!');
+      navigate('/login');
     }
   };
 
@@ -85,9 +94,11 @@ const LectureDetailPage = () => {
       .then(data => setProductData(data));
   }, []);
 
-  // http:10.58.52.59:3002/lectures/2
-  // http://10.58.52.98:3002/lectures/1
-  //../../data/detailPageData.json
+  // useEffect(() => {
+  //   fetch(`${API.products}/${productData.id}`)
+  //     .then(res => res.json())
+  //     .then(data => setProductData(data));
+  // }, []);
 
   return (
     <div className="detailPage">
@@ -105,8 +116,7 @@ const LectureDetailPage = () => {
           <div className="lectureInfoBtn">
             <span>#</span>
             <button className="lectureHashTag">레시피</button>
-            <button className="lectureHashTag">한식</button>
-            <button className="lectureHashTag">제과제빵</button>
+            <button className="lectureHashTag">{productData.category}</button>
           </div>
         </div>
       </div>
@@ -126,7 +136,7 @@ const LectureDetailPage = () => {
           </a>
         </nav>
         <form className="payForm">
-          <div>{productData.price}원</div>
+          <div>{Number(productData.price).toLocaleString()}원</div>
           <div className="payFormBtns">
             <button className="payBtn" onClick={payPage}>
               바로 수강하기
