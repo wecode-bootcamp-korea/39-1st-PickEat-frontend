@@ -1,0 +1,11 @@
+[
+  {
+    "id": 3,
+    "title": "국자",
+    "price": 4500,
+    "img": "../../images/product.jpg",
+    "quantity": 1,
+    "description": "../../images/baking.jpg",
+    "rate": 4
+  }
+]

@@ -179,17 +179,18 @@
           border-radius: 4px;
           background-color: #f8f9fa;
 
-          .ratingStar {
-            .ratingBackGroundImg {
-              width: 100px;
-              height: 50px;
-              background: url(../../../public/images/emptyStarIcon.png)
-                no-repeat;
+          .countingStar {
+            padding-bottom: 20px;
+            .yellowStar {
+              color: #fcc419;
+            }
+            & svg {
+              color: rgb(172, 170, 170);
+              cursor: pointer;
             }
 
-            .rating {
-              height: 50px;
-              background: url(../../../public/images/fullStarIcon.png) no-repeat;
+            :hover svg {
+              color: #fcc419;
             }
           }
 

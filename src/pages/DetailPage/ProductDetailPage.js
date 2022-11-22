@@ -1,9 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { FaStar } from 'react-icons/fa';
 import './ProductDetailPage.scss';
 
 const ProductDetailPage = () => {
   const [review, setReview] = useState([]);
   const [reviewList, setReviewList] = useState([]);
+  const [productDatas, setProductDatas] = useState([]);
+  const [clicked, setClicked] = useState([false, false, false, false, false]);
+  const [rateList, setRateList] = useState([]);
+
+  const ARRAY = [0, 1, 2, 3, 4];
+
+  const handleStarClick = index => {
+    let clickStates = [...clicked];
+    for (let i = 0; i < 5; i++) {
+      clickStates[i] = i <= index ? true : false;
+    }
+    setClicked(clickStates);
+  };
+
+  const sendReview = () => {
+    let star = clicked.filter(Boolean).length;
+    // fetch('', {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=utf-8',
+    //     // Authorization: 'efefefe';
+    //   },
+    //   body: JSON.stringify({
+    //     product_id: productDatas.id,
+    //     rate: star,
+    //   }),
+    // });
+  };
+
+  useEffect(() => {
+    sendReview();
+  }, [clicked]);
 
   const handleReview = e => {
     setReview(e.target.value);
@@ -12,20 +45,41 @@ const ProductDetailPage = () => {
   const saveReview = () => {
     setReviewList([...reviewList, review]);
     setReview('');
+    setRateList([...rateList, clicked]);
   };
+
+  const valid = review.length >= 5 ? false : true;
+
+  // const increaseBtn = id => {
+  //   setProductDatas(
+  //     productDatas.map(productData => {
+  //       if (productData.id === id) {
+  //         productData.quantity++;
+  //       }
+  //       return productDatas;
+  //     })
+  //   );
+  // };
+
+  // Mock Data
+  useEffect(() => {
+    fetch('data/productDatas.json')
+      .then(response => response.json())
+      .then(data => setProductDatas(data));
+  }, []);
+
+  // console.log(productDatas);
+
+  console.log(reviewList);
 
   return (
     <div className="productDetailPage">
       <header className="product">
-        <img
-          className="productImg"
-          src="/images/product.jpg"
-          alt="productImg"
-        />
-        <container className="productContent">
-          <div className="productBrandName">브랜드명</div>
-          <div className="productName">크리스탈 유리잔</div>
-          <div className="productPrice">30000원</div>
+        <img className="productImg" src="" alt="productImg" />
+        <div className="productContent">
+          <div className="productBrandName">PiCKEAT</div>
+          <div className="productName">{productDatas.title}</div>
+          <div className="productPrice">s원</div>
           <div className="productDelivery">
             <div className="productDeliveryTitle">배송</div>
             <div className="productDeliveryContent">
@@ -45,7 +99,7 @@ const ProductDetailPage = () => {
             <div className="productOptionTitle">수량</div>
             <div className="productOptionAmount">
               <button className="decreaseBtn">－</button>
-              <span className="amount">개수</span>
+              <span className="amount">a</span>
               <button className="increaseBtn">＋</button>
             </div>
           </div>
@@ -59,7 +113,7 @@ const ProductDetailPage = () => {
             <button className="cartBtn">장바구니</button>
             <button className="payBtn">바로구매</button>
           </div>
-        </container>
+        </div>
       </header>
 
       <main className="productDetailPageMain">
@@ -104,18 +158,25 @@ const ProductDetailPage = () => {
               </div>
             </div>
           </div>
-
           <div className="review">
             <div className="reviewTitle" id="review">
               리뷰
             </div>
             <div className="reviewSubTitle">직접 작성하신 리뷰입니다.</div>
             <div className="inputBox">
-              <div className="ratingStar">
-                <div className="ratingBackGroundImg">
-                  {/* <div className="rating" style={width: productData.rate}/> */}
-                </div>
+              <div className="countingStar">
+                {ARRAY.map((el, idx) => {
+                  return (
+                    <FaStar
+                      key={idx}
+                      size="30"
+                      onClick={() => handleStarClick(el)}
+                      className={clicked[el] && 'yellowStar'}
+                    />
+                  );
+                })}
               </div>
+
               <div className="inputBoxStar">별점을 선택해주세요</div>
               <textarea
                 className="reviewInputBox"
@@ -124,7 +185,11 @@ const ProductDetailPage = () => {
                 onChange={handleReview}
                 value={review}
               />
-              <button className="enrollBtn" onClick={saveReview}>
+              <button
+                className="enrollBtn"
+                onClick={saveReview}
+                disabled={valid}
+              >
                 등록
               </button>
             </div>
@@ -140,7 +205,7 @@ const ProductDetailPage = () => {
                     alt="profileImage"
                   />
                   <div className="commentStarId">
-                    <div className="commentStar">Star</div>
+                    <div className="commentStar">star</div>
                     <div className="commentId">id</div>
                   </div>
                 </div>
