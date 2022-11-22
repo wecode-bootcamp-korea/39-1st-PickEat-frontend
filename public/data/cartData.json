@@ -5,7 +5,7 @@
     "price": 13000,
     "instructor": "김보윤",
     "duration": "7일간 수강",
-    "img": "../../images/baking.jpg",
+    "image": "../../images/baking.jpg",
     "type": "코스강의"
   },
   {
@@ -14,7 +14,7 @@
     "price": 17000,
     "instructor": "홍길동",
     "duration": "7일간 수강",
-    "img": "../../images/baking.jpg",
+    "image": "../../images/baking.jpg",
     "type": "코스강의"
   },
   {
@@ -23,7 +23,7 @@
     "price": 9900,
     "instructor": "김우빈",
     "duration": "7일간 수강",
-    "img": "../../images/baking.jpg",
+    "image": "../../images/baking.jpg",
     "type": "단과강의"
   },
   {
@@ -31,15 +31,15 @@
     "title": "국자",
     "price": 4500,
     "quantity": 3,
-    "img": "../../images/baking.jpg",
-    "type": "상품"
+    "image": "../../images/baking.jpg",
+    "type": "요리도구"
   },
   {
     "id": 5,
     "title": "주걱",
     "price": 1500,
     "quantity": 1,
-    "img": "../../images/baking.jpg",
-    "type": "상품"
+    "image": "../../images/baking.jpg",
+    "type": "요리도구"
   }
 ]
