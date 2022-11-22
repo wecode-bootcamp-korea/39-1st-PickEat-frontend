@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import './ProductDetailPage.scss';
 
@@ -8,7 +9,9 @@ const ProductDetailPage = () => {
   const [productDatas, setProductDatas] = useState([]);
   const [count, setCount] = useState(1);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
+  // const [rateList, setRateList] = useState([]);
 
+  const navigate = useNavigate();
   const ARRAY = [0, 1, 2, 3, 4];
 
   const handleStarClick = index => {
@@ -19,9 +22,9 @@ const ProductDetailPage = () => {
     setClicked(clickStates);
   };
 
-  const sendReview = () => {
-    let star = clicked.filter(Boolean).length;
+  let star = clicked.filter(Boolean).length;
 
+  const sendReview = () => {
     fetch('', {
       method: 'post',
       headers: {
@@ -35,9 +38,9 @@ const ProductDetailPage = () => {
     });
   };
 
-  useEffect(() => {
-    sendReview();
-  }, [clicked]);
+  // useEffect(() => {
+  //   sendReview();
+  // }, [clicked]);
 
   const handleReview = e => {
     setReview(e.target.value);
@@ -48,7 +51,7 @@ const ProductDetailPage = () => {
     setReview('');
   };
 
-  const valid = review.length >= 5 ? false : true;
+  const valid = review.length >= 5 && star > 0 ? false : true;
 
   const increaseBtn = () => {
     setCount(count => count + 1);
@@ -60,6 +63,10 @@ const ProductDetailPage = () => {
     }
   };
 
+  const goToCart = () => {
+    navigate('/shoppingcart');
+  };
+
   // Mock Data
   useEffect(() => {
     fetch('data/productDatas.json')
@@ -68,7 +75,7 @@ const ProductDetailPage = () => {
   }, []);
 
   console.log('productDatas', productDatas);
-  console.log(reviewList);
+  console.log('reviewList', reviewList);
 
   return (
     <div className="productDetailPage">
@@ -112,11 +119,15 @@ const ProductDetailPage = () => {
 
           <div className="productSelected">
             <div className="productSelectedTitle">주문금액</div>
-            <div className="productSelectedPrice">60000원</div>
+            <div className="productSelectedPrice">
+              {(count * productDatas[0]?.price).toLocaleString()}원
+            </div>
           </div>
 
           <div className="payFormBtns">
-            <button className="cartBtn">장바구니</button>
+            <button className="cartBtn" onClick={goToCart}>
+              장바구니
+            </button>
             <button className="payBtn">바로구매</button>
           </div>
         </div>
@@ -130,13 +141,15 @@ const ProductDetailPage = () => {
 
         <aside className="productDetailPageAside">
           <div className="asideSelectedProduct">
-            <div className="asideProductName">제품 이름</div>
+            <div className="asideProductName">{productDatas[0]?.title}</div>
 
             <div className="asideProductOption">
               <span className="asideOptionTitle">수량</span>
               <span className="asideOptionAmount">
-                <button className="decreaseBtn">－</button>
-                <span className="amount">개수</span>
+                <button className="decreaseBtn" onClick={decreaseBtn}>
+                  －
+                </button>
+                <span className="amount">{count}</span>
                 <button className="increaseBtn" onClick={increaseBtn}>
                   ＋
                 </button>
@@ -145,9 +158,13 @@ const ProductDetailPage = () => {
           </div>
 
           <div className="asideProductPrice">
-            <div className="asidePrice">가격</div>
+            <div className="asidePrice">
+              {(count * productDatas[0]?.price).toLocaleString()}원
+            </div>
             <div className="payFormBtns">
-              <button className="cartBtn">장바구니 담기</button>
+              <button className="cartBtn" onClick={goToCart}>
+                장바구니 담기
+              </button>
               <button className="payBtn">바로 구매하기</button>
             </div>
           </div>
@@ -199,7 +216,7 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          {reviewList.map((comment, key) => {
+          {reviewList.map((comment, rate, key) => {
             return (
               <div key={key} className="commentList">
                 <div className="commentInfo">
@@ -209,7 +226,7 @@ const ProductDetailPage = () => {
                     alt="profileImage"
                   />
                   <div className="commentStarId">
-                    <div className="commentStar">star</div>
+                    <div className="commentStar">{rate}</div>
                     <div className="commentId">id</div>
                   </div>
                 </div>

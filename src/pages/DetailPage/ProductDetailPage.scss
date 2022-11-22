@@ -129,11 +129,14 @@
   .productDetailPageMain {
     .productDetailPageMainNavBar {
       @include flex(space-around, normal);
+      position: sticky;
+      top: 0;
       padding: 20px;
       width: 100%;
       margin: 30px auto;
       background-color: #f8f9fa;
       font-family: 'Nanum Gothic', sans-serif;
+      z-index: 1;
 
       .navBarInfo,
       .navBarReview,
@@ -211,6 +214,7 @@
             border: 1px solid #e9ecef;
             font-size: 13px;
             font-family: 'Noto Sans KR', sans-serif;
+
             resize: none;
 
             &::placeholder {
@@ -292,6 +296,8 @@
   }
 
   .productDetailPageAside {
+    position: sticky;
+    top: 100px;
     width: 30%;
     float: right;
     font-family: 'Nanum Gothic', sans-serif;
