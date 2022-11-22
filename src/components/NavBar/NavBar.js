@@ -5,8 +5,10 @@ const NavBar = () => {
   return (
     <div className="navBar">
       <h1 className="navName">
-        <i class="fa-solid fa-egg" />
-        P!CKEAT
+        <Link to="/">
+          <i class="fa-solid fa-egg" />
+          P!CKEAT
+        </Link>
       </h1>
 
       <ul className="navContents">

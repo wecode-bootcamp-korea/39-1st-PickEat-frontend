@@ -1,0 +1,29 @@
+@import '../../../../styles/mixin';
+@import '../../../../styles/variables';
+
+.categoryes {
+  @include flex(center, center);
+
+  margin-left: 10px;
+
+  button {
+    width: 57px;
+    height: 31px;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 17px;
+    background: none;
+    border-radius: 5px;
+    background-color: #b8b8b8;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+      background-color: $pointGreen;
+      transition: 0.5s;
+    }
+    &:focus {
+      background-color: $pointOrange;
+    }
+  }
+}
