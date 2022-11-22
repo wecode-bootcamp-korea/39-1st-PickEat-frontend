@@ -1,3 +1,333 @@
-h1 {
-  text-align: center;
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+.mainBody {
+  min-width: 1424px;
+  max-width: 3000px;
+  height: 100%;
+  margin-top: 30px;
+
+  .mainImgconta {
+    @include flex(center, center);
+    flex-flow: column;
+  }
+
+  .logo {
+    color: black;
+    font-family: 'Alfa Slab One', cursive;
+  }
+
+  .colorBoxColor1 {
+    transition: 1s;
+    background-color: $pointGreen;
+  }
+
+  .colorBoxColor2 {
+    transition: 1s;
+    background-color: $pointOrange;
+  }
+  .colorBoxColor3 {
+    transition: 1s;
+    background-color: #0ac3dd;
+  }
+
+  .colorBoxColor4 {
+    transition: 1s;
+    background-color: plum;
+  }
+
+  .colorBoxColor5 {
+    transition: 1s;
+    background-color: rgb(103, 0, 193);
+  }
+
+  .slide1 {
+    display: inline-block;
+
+    transform: translateX(0px);
+    transition: 1s;
+  }
+
+  .fa-egg {
+    color: $deepYellow;
+  }
+
+  .mainColorBox {
+    @include flex(space-evenly, center);
+    width: 100%;
+    height: 500px;
+    padding-right: 300px;
+    padding-left: 300px;
+    white-space: nowrap;
+    .slideShowBody {
+      @include flex(center, center);
+
+      flex-flow: column nowrap;
+
+      .slideShowContents {
+        @include flex(center, center);
+
+        .fa-chevron-left {
+          transition: 0.3s;
+          color: #fff;
+          cursor: pointer;
+
+          &:hover {
+            scale: 1.2;
+            transition: 0.3s;
+          }
+        }
+
+        .fa-chevron-right {
+          transition: 0.3s;
+          color: #fff;
+          cursor: pointer;
+
+          &:hover {
+            scale: 1.2;
+            transition: 0.3s;
+          }
+        }
+      }
+
+      .slideShowChckeBox {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        cursor: pointer;
+
+        .slideCheck {
+          width: 35px;
+          height: 6px;
+          margin-top: 5px;
+          margin-right: 5px;
+          margin-left: 5px;
+          transition: 1s;
+          border-radius: 8px;
+          background-color: rgba(233, 233, 233, 0.5);
+          appearance: none;
+          cursor: pointer;
+
+          &:checked {
+            width: 40px;
+            height: 7px;
+            transition: 1s;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            appearance: none;
+          }
+        }
+      }
+    }
+
+    .colorBoxContent {
+      .colorBoxText {
+        color: white;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 35px;
+        white-space: nowrap;
+        .siteName {
+          color: $pointBlack;
+          font-family: 'Alfa Slab One', cursive;
+        }
+
+        .fa-egg {
+          margin-right: 7px;
+          color: $deepYellow;
+        }
+
+        .colorBoxText2 {
+          margin-top: 10px;
+        }
+      }
+
+      .colorBoxIneer {
+        position: relative;
+        width: 350px;
+        .colorBoxInput {
+          width: 350px;
+          height: 45px;
+          margin-top: 15px;
+          padding: 5px 40px 5px 15px;
+          border: 2px solid #fff;
+          border-radius: 15px;
+          background: none;
+          color: #fff;
+          font-size: 20px;
+        }
+
+        .fa-magnifying-glass {
+          position: absolute;
+          top: 37px;
+          right: 15px;
+          color: #fff;
+        }
+      }
+
+      .colorBoxInput::placeholder {
+        color: #fff;
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+
+      .colorBoxHash {
+        display: flex;
+        justify-content: space-around;
+        width: 230px;
+        margin-top: 15px;
+        color: #fff;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 14px;
+
+        .hashTag {
+          display: flex;
+          align-items: center;
+          padding: 3px;
+          border-radius: 10px;
+          background-color: rgba(222, 222, 222, 0.3);
+        }
+      }
+    }
+
+    .mainImgBox {
+      width: 550px;
+
+      overflow: hidden;
+      border-radius: 50px;
+      white-space: nowrap;
+
+      .mainImg {
+        width: 550px;
+        height: 300px;
+        object-fit: cover;
+      }
+    }
+  }
+  .mainHome {
+    width: 1170px;
+    height: 100%;
+    margin: auto;
+    margin-top: 40px;
+    .popularity {
+      margin-top: 40px;
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 23px;
+      white-space: nowrap;
+
+      .popularityText {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 600;
+      }
+
+      .topNumber {
+        font-weight: 600;
+      }
+    }
+
+    .bastLecture {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      margin-top: 30px;
+      padding: 5px;
+    }
+
+    .freeLecture {
+      display: flex;
+      width: 100%;
+      margin-top: 30px;
+      padding: 5px;
+      overflow: hidden;
+    }
+  }
+
+  .mainUnder {
+    @include flex(space-evenly, center);
+
+    flex-flow: row nowrap;
+
+    width: 100%;
+    height: 500px;
+    margin-top: 30px;
+    padding: 0px 250px 0px 250px;
+    background-color: #f2f3f7;
+
+    .mainUnderText {
+      width: 440px;
+
+      .mainUnderP {
+        margin-bottom: 5px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 35px;
+        font-weight: 500;
+
+        .fa-egg {
+          margin-right: 5px;
+        }
+      }
+
+      .mainUnderNetxP {
+        margin-top: 30px;
+
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 20px;
+      }
+    }
+    .mainUnderImg {
+      width: 700px;
+      border-radius: 30px;
+    }
+  }
+
+  .mainUnderBar {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 225px;
+    padding: 0px 250px 0px 250px;
+    border-radius: 30px;
+    background-color: #f2f3f7;
+
+    .underBars {
+      display: flex;
+      flex-flow: column;
+      width: 375px;
+      height: 175px;
+      margin-left: 5px;
+      border-radius: 30px;
+      background-color: #fff;
+      box-shadow: rgb(48 52 65 / 5%) 0px 0px 20px;
+
+      .underBarsNumber {
+        margin-top: 15px;
+        margin-left: 15px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 20px;
+      }
+      .underBarsText1 {
+        margin-top: 10px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+      }
+      .underBarsText2 {
+        margin-top: 10px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+        text-align: center;
+      }
+      .underBarsText3 {
+        margin-top: 5px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+        text-align: center;
+      }
+      .underBarsText4 {
+        margin-top: 5px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+        text-align: center;
+      }
+    }
+  }
 }
