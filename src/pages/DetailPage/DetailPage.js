@@ -1,11 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { json, Link, Navigate } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
+import { FaStar } from 'react-icons/fa';
 import './DetailPage.scss';
 
 const DetailPage = () => {
   const [comment, setComment] = useState('');
   const [commentList, setCommentList] = useState([]);
   const [productData, setProductData] = useState([]);
+  const [clicked, setClicked] = useState([false, false, false, false, false]);
+  const navigate = useNavigate();
+
+  const ARRAY = [0, 1, 2, 3, 4];
+
+  const handleStarClick = index => {
+    let clickStates = [...clicked];
+    for (let i = 0; i < 5; i++) {
+      clickStates[i] = i <= index ? true : false;
+    }
+    setClicked(clickStates);
+  };
+
+  console.log(clicked);
 
   const handleComment = e => {
     setComment(e.target.value);
@@ -16,69 +31,59 @@ const DetailPage = () => {
     setComment('');
 
     // 주소API 통신
-    // fetch('API주소', {
+    // fetch('commentAPI주소', {
     //   body: JSON.stringify({
     //     product_id: productData.id,
-    //     댓글, 별점,
-    //   })
-    // })
+    //     user_id: productData.userId,
+    //     comment: commentData.comment,
+    //     rate: commentData.rate,
+    //   }),
+    // });
   };
 
   const valid = comment.length >= 10 ? false : true;
 
-  console.log(productData.id);
-
-  useEffect(() => {
-    fetch('http:10.58.52.59:3002/lectures/2')
-      .then(response => response.json())
-      .then(data => setProductData(data));
-  }, []);
+  const userToken = localStorage.getItem('token');
 
   const inputCart = () => {
     // 백엔드 통신시 사용
-    // if (userToken) {
-    //http://10.58.52.59:3002/cart/${productData.id}
-    fetch(`http://10.58.52.59:3002/cart/${productData.id}`, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2OTAyMDc2OCwiZXhwIjoxNjY5MTA3MTY4fQ.vXhdWClrF7s7qFS2qTxohDm4ntY73WNGjdn1h5wEV-U',
-      },
-      body: JSON.stringify({
-        product_id: productData.id,
-        quantity: productData.quantity,
-      }),
-    })
-      .then(response => response.json())
-      .then(response => {
-        if (response.status == 201) {
-          alert('장바구니에 담겼습니다');
-          Navigate('/shoppingcart');
-        } else {
-          alert('다시 시도해주세요');
-        }
-      });
+    if (userToken) {
+      fetch(`http://10.58.52.59:3002/cart/${productData.id}`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          authorization:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2OTAyMDc2OCwiZXhwIjoxNjY5MTA3MTY4fQ.vXhdWClrF7s7qFS2qTxohDm4ntY73WNGjdn1h5wEV-U',
+        },
+        body: JSON.stringify({
+          product_id: productData.id,
+          quantity: productData.quantity,
+        }),
+      })
+        .then(response => response.json())
+        .then(response => {
+          if (response.status == 201) {
+            alert('장바구니에 담겼습니다');
+            navigate('/shoppingcart');
+          } else {
+            alert('다시 시도해주세요');
+          }
+        });
+    } else {
+      alert('로그인 페이지로 이동합니다!');
+    }
   };
-  // } else {
-  //   alert('로그인 페이지로 이동합니다!');
-  // }
 
-  // fetch('http://10.58.52.59:3002/cart/3', {
-  //   method: 'post',
-  //   body: JSON.stringify(), //body는 JSON으로 바꿔서 보낸다
-  //   headers: {
-  //     'Content-Type': 'application/json;charset=utf-8',
-  //     authorization:
-  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2ODg0MDY1MSwiZXhwIjoxNjY4OTI3MDUxfQ.scegPgvD5NXd350VLCKi8SzRK9_JfBNWeAsjMEETVNw',
-  //     // authorization: localStorage.getItem('token'),
-  //   },
-  // })
-  //   .then(response => response.json()) //요청
-  //   .then(data => console.log(data)); //응답
-  // };
+  const payPage = () => {
+    alert('결제되었습니다!');
+    navigate('/');
+  };
 
-  console.log(productData);
+  useEffect(() => {
+    fetch('/data/detailpageData.json')
+      .then(response => response.json())
+      .then(data => setProductData(data));
+  }, []);
 
   // http:10.58.52.59:3002/lectures/2
   // http://10.58.52.98:3002/lectures/1
@@ -123,7 +128,9 @@ const DetailPage = () => {
         <form className="payForm">
           <div>{productData.price}원</div>
           <div className="payFormBtns">
-            <button className="payBtn">바로 수강하기</button>
+            <button className="payBtn" onClick={payPage}>
+              바로 수강하기
+            </button>
             <button onClick={inputCart} className="cartBtn">
               장바구니 담기
             </button>
@@ -138,55 +145,29 @@ const DetailPage = () => {
           <div className="introduceTitle" id="introduce">
             강의소개
           </div>
-          <img src={productData.description} alt="img" />
-          {/* <div>
-            <div className="curriTitle" id="curriculum">
-              커리큘럼
-            </div>
-            <div>
-              <div className="curriList">
-                <i className="fa-regular fa-circle-play" />
-                <span> 0. Intro</span>
-              </div>
-              <div className="curriList">
-                <i className="fa-regular fa-circle-play" />
-                <span> 1. 생크림모닝빵</span>
-              </div>
-              <div className="curriList">
-                <i className="fa-regular fa-circle-play" />
-                <span> 2. 기본 식빵</span>
-              </div>
-              <div className="curriList">
-                <i className="fa-regular fa-circle-play" />
-                <span> 3. 마늘빵</span>
-              </div>
-              <div className="curriList">
-                <i className="fa-regular fa-circle-play" />
-                <span> 4. 단팥빵</span>
-              </div>
-              <div className="curriList">
-                <i className="fa-regular fa-circle-play" />
-                <span> 5. 찹쌀도넛</span>
-              </div>
-              <div className="curriList">
-                <i className="fa-regular fa-circle-play" />
-                <span> 0. Intro</span>
-              </div>
-            </div>
-          </div> */}
+          <img
+            className="descriptionImg"
+            src={productData.description}
+            alt="img"
+          />
+
           <div className="review">
             <div className="reviewTitle" id="review">
               수강평
             </div>
             <div className="reviewSubTitle">직접 작성하신 수강평입니다.</div>
             <div className="inputBox">
-              <div className="ratingStar">
-                <div className="ratingBackGroundImg">
-                  <div
-                    className="rating"
-                    style={{ width: `${productData.rate}*20%` }}
-                  />
-                </div>
+              <div className="countingStar">
+                {ARRAY.map((el, idx) => {
+                  return (
+                    <FaStar
+                      key={idx}
+                      size="30"
+                      onClick={() => handleStarClick(el)}
+                      className={clicked[el] && 'yellowStar'}
+                    />
+                  );
+                })}
               </div>
               <div className="inputBoxStar">별점을 선택해주세요</div>
               <textarea
@@ -204,6 +185,7 @@ const DetailPage = () => {
                 등록
               </button>
             </div>
+
             <div className="commentSort">
               <span className="commentSortView">View</span>
               <span className="commentSortView">최신 순</span>
@@ -222,7 +204,7 @@ const DetailPage = () => {
                       alt="profileImage"
                     />
                     <div className="commentStarId">
-                      <div className="commentStar">Star</div>
+                      <div className="commentStar">star</div>
                       <div className="commentId">id</div>
                     </div>
                   </div>
@@ -231,6 +213,7 @@ const DetailPage = () => {
               );
             })}
           </div>
+
           <div className="qna">
             <div id="qna" className="lectureQnaTitle">
               자주하는 질문

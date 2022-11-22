@@ -2,5 +2,6 @@
   "id": 1,
   "title": "Baking 베이킹",
   "price": "120000",
-  "profileImg": "../../images/baking.jpg"
+  "profileImg": "../../images/baking.jpg",
+  "description": "../../images/prototype.png"
 }

@@ -138,7 +138,7 @@
       position: relative;
       top: 10px;
 
-      img {
+      .descriptionImg {
         width: 100%;
       }
 
@@ -181,16 +181,18 @@
         border: 1px solid #e9ecef;
         border-radius: 4px;
 
-        .ratingStar {
-          .ratingBackGroundImg {
-            width: 100px;
-            height: 50px;
-            background: url(../../../public/images/emptyStarIcon.png) no-repeat;
+        .countingStar {
+          padding-bottom: 20px;
+          .yellowStar {
+            color: #fcc419;
+          }
+          & svg {
+            color: rgb(172, 170, 170);
+            cursor: pointer;
           }
 
-          .rating {
-            height: 50px;
-            background: url(../../../public/images/fullStarIcon.png) no-repeat;
+          :hover svg {
+            color: #fcc419;
           }
         }
 
@@ -282,9 +284,9 @@
       font-family: 'Nanum Gothic', sans-serif;
 
       .lectureQnaTitle {
+        padding: 40px 0 20px;
         font-size: 20px;
         font-weight: bold;
-        padding: 40px 0 20px;
       }
 
       .lectureQnaQuestion {
