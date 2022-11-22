@@ -6,6 +6,7 @@ const ProductDetailPage = () => {
   const [review, setReview] = useState([]);
   const [reviewList, setReviewList] = useState([]);
   const [productDatas, setProductDatas] = useState([]);
+  const [count, setCount] = useState(1);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
 
   const ARRAY = [0, 1, 2, 3, 4];
@@ -20,17 +21,18 @@ const ProductDetailPage = () => {
 
   const sendReview = () => {
     let star = clicked.filter(Boolean).length;
-    // fetch('', {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=utf-8',
-    //     // Authorization: 'efefefe';
-    //   },
-    //   body: JSON.stringify({
-    //     product_id: productDatas.id,
-    //     rate: star,
-    //   }),
-    // });
+
+    fetch('', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        // Authorization: 'efefefe';
+      },
+      body: JSON.stringify({
+        product_id: productDatas.id,
+        rate: star,
+      }),
+    });
   };
 
   useEffect(() => {
@@ -48,15 +50,14 @@ const ProductDetailPage = () => {
 
   const valid = review.length >= 5 ? false : true;
 
-  const increaseBtn = id => {
-    setProductDatas(
-      productDatas.map(productData => {
-        if (productData.id === id) {
-          productData.quantity++;
-        }
-        return productDatas;
-      })
-    );
+  const increaseBtn = () => {
+    setCount(count => count + 1);
+  };
+
+  const decreaseBtn = () => {
+    if (count > 1) {
+      setCount(count => count - 1);
+    }
   };
 
   // Mock Data
@@ -66,7 +67,7 @@ const ProductDetailPage = () => {
       .then(data => setProductDatas(data));
   }, []);
 
-  console.log(productDatas);
+  console.log('productDatas', productDatas);
   console.log(reviewList);
 
   return (
@@ -74,13 +75,13 @@ const ProductDetailPage = () => {
       <header className="product">
         <img
           className="productImg"
-          src={productDatas[0].img}
+          src={productDatas[0]?.img}
           alt="productImg"
         />
         <div className="productContent">
           <div className="productBrandName">PiCKEAT</div>
-          <div className="productName">{productDatas[0].title}</div>
-          <div className="productPrice">{productDatas[0].price}원</div>
+          <div className="productName">{productDatas[0]?.title}</div>
+          <div className="productPrice">{productDatas[0]?.price}원</div>
           <div className="productDelivery">
             <div className="productDeliveryTitle">배송</div>
             <div className="productDeliveryContent">
@@ -99,8 +100,10 @@ const ProductDetailPage = () => {
           <div className="productOption">
             <div className="productOptionTitle">수량</div>
             <div className="productOptionAmount">
-              <button className="decreaseBtn">－</button>
-              <span className="amount">{productDatas[0].quantity}</span>
+              <button className="decreaseBtn" onClick={decreaseBtn}>
+                －
+              </button>
+              <span className="amount">{count}</span>
               <button className="increaseBtn" onClick={increaseBtn}>
                 ＋
               </button>
@@ -118,7 +121,6 @@ const ProductDetailPage = () => {
           </div>
         </div>
       </header>
-
       <main className="productDetailPageMain">
         <nav className="productDetailPageMainNavBar">
           <div className="navBarInfo">상품정보</div>
@@ -154,14 +156,11 @@ const ProductDetailPage = () => {
         <div className="productDetailPageContent">
           <div className="productDetailPageInfo">
             <div className="productInfoTitle">상품 정보</div>
-            {/* <img alt="productImg" /> */}
-            <div className="productInfoContent">
-              이 부분에 이미지가 들어갑니당
-              <div>
-                어떤 잔에 마시는지에 따라서 와인은 전혀 다른 면모를 보이기도
-                합니다.
-              </div>
-            </div>
+            <img
+              className="productImg"
+              src={productDatas[0]?.description}
+              alt="productImg"
+            />
           </div>
           <div className="review">
             <div className="reviewTitle" id="review">
