@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import CartLectureList from '../../components/ShoppingCart/CartLectureList';
-import CartProductList from '../../components/ShoppingCart/CartProductList';
+import CartLectureList from '../DetailPage/components/ShoppingCart/CartLectureList';
+import CartProductList from '../DetailPage/components/ShoppingCart/CartProductList';
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
