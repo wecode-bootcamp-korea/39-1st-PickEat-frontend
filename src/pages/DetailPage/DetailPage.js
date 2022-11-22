@@ -1,7 +1,7 @@
 import './DetailPage.scss';
 import { useEffect, useState } from 'react';
-import Category from './component/Category/Category.js';
-import Lectures from './component/Lecture/Lectures';
+import Category from './component/category/Category.js';
+import Lectures from './component/lecture/Lectures';
 
 const DetailPage = () => {
   const [categoryData, setCategoryData] = useState([]);
