@@ -19,7 +19,7 @@ const ProductDetailPage = () => {
       <header className="product">
         <img
           className="productImg"
-          src="../../images/product.jpg"
+          src="/images/product.jpg"
           alt="productImg"
         />
         <container className="productContent">
