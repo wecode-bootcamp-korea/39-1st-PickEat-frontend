@@ -6,6 +6,7 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import Payment from './pages/Payment/Payment';
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
 import SignUp from './pages/SignUp/SignUp';
+
 const Router = () => {
   return (
     <BrowserRouter>
