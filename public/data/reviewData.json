@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "comment": "너무 좋아요 좋아요 좋아요",
+    "rate": 4,
+    "product_id": 3,
+    "user_id": "eeeeee"
+  },
+  {
+    "id": 2,
+    "comment": "굿굿굿구수구ㅅ국수수숫수숫",
+    "rate": 3,
+    "product_id": 3,
+    "user_id": "ererrer"
+  },
+  {
+    "id": 3,
+    "comment": "사용하기 너무 좋습니다",
+    "rate": 5,
+    "product_id": 3,
+    "user_id": "yuyuyueee"
+  },
+  {
+    "id": 4,
+    "comment": "너무 별로별로별로별로",
+    "rate": 1,
+    "product_id": 3,
+    "user_id": "fgfgs@naver.com"
+  }
+]

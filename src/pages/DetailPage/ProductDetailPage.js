@@ -9,10 +9,13 @@ const ProductDetailPage = () => {
   const [productDatas, setProductDatas] = useState([]);
   const [count, setCount] = useState(1);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
+  let star = clicked.filter(Boolean).length;
   // const [rateList, setRateList] = useState([]);
 
   const navigate = useNavigate();
   const ARRAY = [0, 1, 2, 3, 4];
+
+  // const saveReview = () => {};
 
   const handleStarClick = index => {
     let clickStates = [...clicked];
@@ -22,21 +25,19 @@ const ProductDetailPage = () => {
     setClicked(clickStates);
   };
 
-  let star = clicked.filter(Boolean).length;
-
-  const sendReview = () => {
-    fetch('', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        // Authorization: 'efefefe';
-      },
-      body: JSON.stringify({
-        product_id: productDatas.id,
-        rate: star,
-      }),
-    });
-  };
+  // const sendReview = () => {
+  //   fetch('', {
+  //     method: 'post',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //       // Authorization: 'efefefe';
+  //     },
+  //     body: JSON.stringify({
+  //       product_id: productDatas.id,
+  //       rate: star,
+  //     }),
+  //   });
+  // };
 
   // useEffect(() => {
   //   sendReview();
@@ -73,6 +74,12 @@ const ProductDetailPage = () => {
       .then(response => response.json())
       .then(data => setProductDatas(data));
   }, []);
+
+  // useEffect(() => {
+  //   fetch('data/reviewData.json')
+  //     .then(response => response.json())
+  //     .then(data => setReviewList(data));
+  // }, []);
 
   console.log('productDatas', productDatas);
   console.log('reviewList', reviewList);
@@ -216,9 +223,9 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          {reviewList.map((comment, rate, key) => {
+          {reviewList.map((comment, id) => {
             return (
-              <div key={key} className="commentList">
+              <div key={id} className="commentList">
                 <div className="commentInfo">
                   <img
                     src="../../images/product.jpg"
@@ -226,7 +233,7 @@ const ProductDetailPage = () => {
                     alt="profileImage"
                   />
                   <div className="commentStarId">
-                    <div className="commentStar">{rate}</div>
+                    <div className="commentStar">rate</div>
                     <div className="commentId">id</div>
                   </div>
                 </div>
