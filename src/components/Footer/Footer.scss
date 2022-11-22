@@ -1,3 +1,56 @@
-h1 {
-  text-align: center;
+.footer_main_box {
+  width: 1050px;
+}
+
+.footer_top_menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 60px;
+  border-bottom: 1px solid white;
+  background-color: #303740;
+}
+.footer_menu {
+  margin-left: 20px;
+}
+.menu_title {
+  padding: 16px 0;
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+}
+.menu_sublist {
+  display: flex;
+  flex-direction: column;
+  color: #989b9d;
+  font-size: 15px;
+  cursor: pointer;
+}
+.menu_sublist:hover {
+  text-decoration: underline;
+}
+
+.footer_inside {
+  background-color: #303740;
+
+  color: white;
+  font-size: 12px;
+}
+.footer_text {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 15px;
+}
+
+.left_footer {
+  font-size: 15px;
+}
+
+.call_center {
+  padding-bottom: 25px;
+  font-size: 25px;
+}
+.call_center_phone {
+  font-size: 40px;
+}
+.right_footer {
 }

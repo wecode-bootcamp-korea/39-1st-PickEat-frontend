@@ -1,8 +1,26 @@
+// import React, { useState } from 'react';
 import React from 'react';
-import { Link } from 'react-router-dom';
+// // import { useDispatch } from 'react-redux';
+// import { loginUser } from '../../UserForm';
+// import { Navigate } from 'react-router-dom';
 import './Login.scss';
 
 export default function Login({ setFormTitle }) {
+  // const dispatch = useDispatch();
+
+  // const [Email, setEmail] = useState('');
+  // const [Password, setPassword] = useState('');
+
+  // const onEmailHandle = e => {
+  //   setEmail(e.currentTarget.value);
+  // };
+  // const onPasswordHandle = e => {
+  //   setPassword(e.currentTarget.value);
+  // };
+  // const onSubmitHandle = e => {
+  //   e.preventDefault();
+  // };
+
   return (
     <>
       <header>
@@ -14,12 +32,14 @@ export default function Login({ setFormTitle }) {
           name="email"
           className="text-file-id"
           placeholder="이메일"
+          // onChange={onEmailHandle}
         />
         <input
           type="password"
           name="pw"
           className="text-file-pw"
           placeholder="비밀번호"
+          // onChange={onPasswordHandle}
         />
       </div>
       <label className="state-input">
