@@ -65,7 +65,13 @@ const ProductDetailPage = () => {
   };
 
   const goToCart = () => {
+    alert('장바구니에 성공적으로 담겼습니다!');
     navigate('/shoppingcart');
+  };
+
+  const payBtn = () => {
+    alert('구매 완료되었습니다!');
+    navigate('/');
   };
 
   // Mock Data
@@ -135,7 +141,9 @@ const ProductDetailPage = () => {
             <button className="cartBtn" onClick={goToCart}>
               장바구니
             </button>
-            <button className="payBtn">바로구매</button>
+            <button className="payBtn" onClick={payBtn}>
+              바로구매
+            </button>
           </div>
         </div>
       </header>
@@ -172,7 +180,9 @@ const ProductDetailPage = () => {
               <button className="cartBtn" onClick={goToCart}>
                 장바구니 담기
               </button>
-              <button className="payBtn">바로 구매하기</button>
+              <button className="payBtn" onClick={payBtn}>
+                바로 구매하기
+              </button>
             </div>
           </div>
         </aside>
