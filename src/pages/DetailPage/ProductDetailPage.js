@@ -7,7 +7,6 @@ const ProductDetailPage = () => {
   const [reviewList, setReviewList] = useState([]);
   const [productDatas, setProductDatas] = useState([]);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
-  const [rateList, setRateList] = useState([]);
 
   const ARRAY = [0, 1, 2, 3, 4];
 
@@ -45,21 +44,20 @@ const ProductDetailPage = () => {
   const saveReview = () => {
     setReviewList([...reviewList, review]);
     setReview('');
-    setRateList([...rateList, clicked]);
   };
 
   const valid = review.length >= 5 ? false : true;
 
-  // const increaseBtn = id => {
-  //   setProductDatas(
-  //     productDatas.map(productData => {
-  //       if (productData.id === id) {
-  //         productData.quantity++;
-  //       }
-  //       return productDatas;
-  //     })
-  //   );
-  // };
+  const increaseBtn = id => {
+    setProductDatas(
+      productDatas.map(productData => {
+        if (productData.id === id) {
+          productData.quantity++;
+        }
+        return productDatas;
+      })
+    );
+  };
 
   // Mock Data
   useEffect(() => {
@@ -68,18 +66,21 @@ const ProductDetailPage = () => {
       .then(data => setProductDatas(data));
   }, []);
 
-  // console.log(productDatas);
-
+  console.log(productDatas);
   console.log(reviewList);
 
   return (
     <div className="productDetailPage">
       <header className="product">
-        <img className="productImg" src="" alt="productImg" />
+        <img
+          className="productImg"
+          src={productDatas[0].img}
+          alt="productImg"
+        />
         <div className="productContent">
           <div className="productBrandName">PiCKEAT</div>
-          <div className="productName">{productDatas.title}</div>
-          <div className="productPrice">s원</div>
+          <div className="productName">{productDatas[0].title}</div>
+          <div className="productPrice">{productDatas[0].price}원</div>
           <div className="productDelivery">
             <div className="productDeliveryTitle">배송</div>
             <div className="productDeliveryContent">
@@ -99,8 +100,10 @@ const ProductDetailPage = () => {
             <div className="productOptionTitle">수량</div>
             <div className="productOptionAmount">
               <button className="decreaseBtn">－</button>
-              <span className="amount">a</span>
-              <button className="increaseBtn">＋</button>
+              <span className="amount">{productDatas[0].quantity}</span>
+              <button className="increaseBtn" onClick={increaseBtn}>
+                ＋
+              </button>
             </div>
           </div>
 
@@ -132,7 +135,9 @@ const ProductDetailPage = () => {
               <span className="asideOptionAmount">
                 <button className="decreaseBtn">－</button>
                 <span className="amount">개수</span>
-                <button className="increaseBtn">＋</button>
+                <button className="increaseBtn" onClick={increaseBtn}>
+                  ＋
+                </button>
               </span>
             </div>
           </div>
