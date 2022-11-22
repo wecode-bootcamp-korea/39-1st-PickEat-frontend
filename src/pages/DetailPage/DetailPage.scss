@@ -7,63 +7,156 @@
   justify-content: center;
   align-items: center;
   flex-flow: column nowrap;
+}
+.categoryBody {
+  @include flex(flex-start, center);
+  margin-top: 30px;
+  padding-top: 30px;
+  width: 980px;
+  flex-flow: column;
+  position: relative;
+}
+.leftCategory {
+  width: 200px;
+  background-color: #fafafa;
+  position: absolute;
+  z-index: 10;
+  left: -215px;
+  border-left: 1px solid #cbcbcb;
+  border-right: 1px solid #cbcbcb;
+  border-top: 1px solid #cbcbcb;
+}
 
-  .categoryBody {
-    @include flex(flex-start, center);
-    margin-top: 30px;
+.leftCategoryContents1,
+.leftCategoryContents2,
+.leftCategoryContents3 {
+  width: 200px;
+  height: 50px;
+  border-bottom: 1px solid #cdcdcd;
+  padding: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
 
-    padding-top: 30px;
-    width: 980px;
-    flex-flow: column;
+.leftCategoryButton {
+  background: none;
+  font-size: 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #595959;
+  cursor: pointer;
+}
 
-    .categoryContents {
-      display: flex;
-      flex-flow: row nowrap;
-    }
+.fa-angle-right {
+  color: #595959;
+  cursor: pointer;
+}
 
-    .allcategoryBody {
-      width: 100%;
-      border-top: 1px solid #cbcbcb;
-      padding-top: 10px;
-      .allcategory {
-        margin-right: 100px;
-        font-size: 20px;
-        font-weight: 600;
-        width: 100%;
-      }
-    }
+.fa-angle-down {
+  color: #595959;
+  cursor: pointer;
+}
 
-    .searchCategoryBody {
-      @include flex(center, center);
-      .searchCategory {
-        height: 31px;
-        margin-right: 5px;
-        padding: 5px 9px 5px 9px;
-        border-radius: 5px;
-        background-color: #f6f6f6;
-      }
+.courseLectureDropsOn {
+  width: 100%;
 
-      .searchCategoryIcon {
-        width: 31px;
-        height: 31px;
-        border-radius: 5px;
-        background-color: $pointGreen;
-        @include flex(center, center);
-        .fa-magnifying-glass {
-          color: #fff;
-        }
-      }
+  background-color: #fff;
+}
+
+.courseLectureDropsOff {
+  width: 100%;
+  height: 0px;
+  background-color: #fff;
+  display: none;
+}
+.courseLectureContents {
+  width: 100%;
+  height: 40px;
+  padding: 8px 8px 8px 16px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: #cbcbcb solid 1px;
+}
+button {
+  background: none;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #595959;
+}
+
+.leftCategoryContents2:hover {
+  .courseLectureDrops {
+    display: block;
+  }
+}
+
+.categoryContents {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.allcategoryBody {
+  width: 100%;
+  border-top: 1px solid #cbcbcb;
+  padding-top: 10px;
+  .allcategory {
+    margin-right: 100px;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+  }
+}
+
+.searchCategoryBody {
+  @include flex(center, center);
+  .searchCategory {
+    font-family: 'Noto Sans KR', sans-serif;
+    height: 31px;
+    margin-right: 5px;
+    padding: 5px 9px 5px 9px;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+
+  .searchCategoryIconX {
+    width: 31px;
+    height: 31px;
+    border-radius: 5px;
+    background-color: #eb6f67;
+    @include flex(center, center);
+    transition: 0.3s;
+    cursor: pointer;
+
+    .fa-xmark {
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
     }
   }
 
-  .categoryContentBody {
-    margin: auto;
-    margin-top: 30px;
-    width: 980px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    row-gap: 0px;
-    column-gap: 0px;
+  .searchCategoryIcon {
+    width: 31px;
+    height: 31px;
+    border-radius: 5px;
+    background-color: $pointGreen;
+    @include flex(center, center);
+    transition: 0.3s;
+
+    .fa-magnifying-glass {
+      color: #fff;
+      transition: 0.3s;
+    }
   }
+}
+
+.categoryContentBody {
+  margin: auto;
+  margin-top: 30px;
+  width: 980px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  row-gap: 0px;
+  column-gap: 0px;
 }

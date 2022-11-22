@@ -3,7 +3,7 @@ import './Lectures.scss';
 const Lectures = props => {
   const { lectureList } = props;
   const lectureType = lectureList.type === '코스' ? 'ratingTag' : 'ratingTag1';
-  console.log(lectureList.img);
+
   return (
     <li className="slideLectures">
       <Link className="linkTag" to="">
