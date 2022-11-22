@@ -210,7 +210,7 @@ const Main = () => {
           <p className="underBarsText4">만족스러운 결과물을 제공합니다.</p>
         </div>
       </div>
-      <div className="main"></div>
+      <div className="main" />
     </div>
   );
 };
