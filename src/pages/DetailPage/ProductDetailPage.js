@@ -29,11 +29,11 @@ const ProductDetailPage = () => {
 
   const saveReview = () => {
     setReviewList([...reviewList, { comment: review, rate: star }]);
-    alert('리류가 등록되었습니다!');
+    alert('리뷰가 등록되었습니다!');
     setReview('');
     setClicked([]);
 
-    fetch('', {
+    fetch(`${productDatas.product}`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -42,7 +42,6 @@ const ProductDetailPage = () => {
       body: JSON.stringify({
         comment: review,
         rate: star,
-        // user_id:
       }),
     });
   };
@@ -62,6 +61,18 @@ const ProductDetailPage = () => {
   const goToCart = () => {
     alert('장바구니에 성공적으로 담겼습니다!');
     navigate('/shoppingcart');
+
+    fetch('', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: 'dfd',
+      },
+      body: JSON.stringify({
+        // product_id: id,
+        // quantity: quantity,
+      }),
+    });
   };
 
   const payBtn = () => {
@@ -223,7 +234,12 @@ const ProductDetailPage = () => {
             </div>
           </div>
           {reviewList.map(review => (
-            <ReviewList key={review.id} review={review} />
+            <ReviewList
+              key={review.id}
+              review={review}
+              ARRAY={ARRAY}
+              clicked={clicked}
+            />
           ))}
         </div>
 

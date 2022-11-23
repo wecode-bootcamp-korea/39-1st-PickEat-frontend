@@ -1,5 +1,8 @@
+import { FaStar } from 'react-icons/fa';
+
 const ReviewList = props => {
   const { id, comment, rate, user_id } = props.review;
+  const { ARRAY } = props;
 
   return (
     <div key={id} className="commentList">
@@ -10,7 +13,15 @@ const ReviewList = props => {
           alt="profileImage"
         />
         <div className="commentStarId">
-          <div className="commentStar">{rate}</div>
+          <div className="commentStar">
+            {ARRAY.map((el, idx) => {
+              return (
+                el <= rate - 1 && (
+                  <FaStar key={idx} size="20" className="yellowStar" />
+                )
+              );
+            })}
+          </div>
           <div className="commentId">{user_id}</div>
         </div>
       </div>
