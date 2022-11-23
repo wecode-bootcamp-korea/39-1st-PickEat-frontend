@@ -1,258 +1,162 @@
-@import '../../styles/variables.scss';
+@import '../../styles/mixin';
+@import '../../styles/variables';
 
-.detailPage {
+.categoryPageBody {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+.categoryBody {
+  @include flex(flex-start, center);
+  margin-top: 30px;
+  padding-top: 30px;
+  width: 980px;
+  flex-flow: column;
   position: relative;
-  top: 60px;
-  font-family: 'Nanum Gothic', sans-serif;
+}
+.leftCategory {
+  width: 200px;
+  background-color: #fafafa;
+  position: absolute;
+  z-index: 10;
+  left: -215px;
+  border-left: 1px solid #cbcbcb;
+  border-right: 1px solid #cbcbcb;
+  border-top: 1px solid #cbcbcb;
+}
 
-  .lecture {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.leftCategoryContents1,
+.leftCategoryContents2,
+.leftCategoryContents3 {
+  width: 200px;
+  height: 50px;
+  border-bottom: 1px solid #cdcdcd;
+  padding: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.leftCategoryButton {
+  background: none;
+  font-size: 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #595959;
+  cursor: pointer;
+}
+
+.fa-angle-right {
+  color: #595959;
+  cursor: pointer;
+}
+
+.fa-angle-down {
+  color: #595959;
+  cursor: pointer;
+}
+
+.courseLectureDropsOn {
+  width: 100%;
+
+  background-color: #fff;
+}
+
+.courseLectureDropsOff {
+  width: 100%;
+  height: 0px;
+  background-color: #fff;
+  display: none;
+}
+.courseLectureContents {
+  width: 100%;
+  height: 40px;
+  padding: 8px 8px 8px 16px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: #cbcbcb solid 1px;
+}
+button {
+  background: none;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #595959;
+}
+
+.leftCategoryContents2:hover {
+  .courseLectureDrops {
+    display: block;
+  }
+}
+
+.categoryContents {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.allcategoryBody {
+  width: 100%;
+  border-top: 1px solid #cbcbcb;
+  padding-top: 10px;
+  .allcategory {
+    margin-right: 100px;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+  }
+}
+
+.searchCategoryBody {
+  @include flex(center, center);
+  .searchCategory {
+    font-family: 'Noto Sans KR', sans-serif;
+    height: 31px;
+    margin-right: 5px;
+    padding: 5px 9px 5px 9px;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+
+  .searchCategoryIconX {
+    width: 31px;
+    height: 31px;
+    border-radius: 5px;
+    background-color: #eb6f67;
+    @include flex(center, center);
+    transition: 0.3s;
+    cursor: pointer;
+
+    .fa-xmark {
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+  }
+
+  .searchCategoryIcon {
+    width: 31px;
+    height: 31px;
+    border-radius: 5px;
     background-color: $pointGreen;
-    color: white;
-    padding: 30px;
+    @include flex(center, center);
+    transition: 0.3s;
 
-    .lectureImg {
-      width: 400px;
-      border-radius: 10px;
-    }
-
-    .lectureInfo {
-      padding-left: 50px;
-
-      p {
-        padding-top: 10px;
-      }
-
-      .lectureInfoIndex {
-        font-size: 15px;
-      }
-
-      .lectureInfoName {
-        font-size: 30px;
-      }
-
-      .lectureInfoCount {
-        font-size: 20px;
-      }
-
-      .lectureInfoBtn {
-        padding-top: 10px;
-
-        button {
-          font-family: 'Nanum Gothic', sans-serif;
-          padding: 5px 7px;
-          border-radius: 15px;
-          margin-left: 10px;
-
-          &:hover {
-            background-color: white;
-            cursor: pointer;
-          }
-        }
-      }
+    .fa-magnifying-glass {
+      color: #fff;
+      transition: 0.3s;
     }
   }
+}
 
-  .detailInformation {
-    width: 80%;
-    margin: 0 auto;
-
-    .detailNavBar {
-      position: sticky;
-      top: 0;
-      height: 60px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      font-size: 15px;
-      background-color: white;
-      color: gray;
-
-      a {
-        color: inherit;
-        padding-right: 30px;
-
-        &:hover {
-          padding-bottom: 5px;
-          text-decoration-line: underline;
-          color: black;
-          cursor: pointer;
-        }
-      }
-    }
-
-    .payForm {
-      border: 1px solid rgb(200, 199, 199);
-      border-radius: 7px;
-      position: sticky;
-      top: 50px;
-      float: right;
-      width: 30%;
-      padding: 20px;
-      font-size: 30px;
-
-      .payFormBtns {
-        display: flex;
-        flex-direction: column;
-        padding-top: 30px;
-
-        button {
-          font-family: 'Nanum Gothic', sans-serif;
-          border-radius: 5px;
-          font-size: 15px;
-          padding: 12px;
-        }
-
-        .payBtn {
-          font-family: 'Nanum Gothic', sans-serif;
-          background-color: $pointGreen;
-          color: white;
-        }
-
-        .cartBtn {
-          margin-top: 10px;
-        }
-      }
-
-      .payFormInfo {
-        font-size: 13px;
-        font-family: 'Noto Sans KR', sans-serif;
-        padding-top: 20px;
-
-        li {
-          padding: 5px 0;
-        }
-      }
-    }
-
-    .content {
-      // border: 1px solid black;
-      width: 60%;
-    }
-
-    .introduceTitle {
-      padding: 20px 0;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .curriTitle {
-      padding: 20px 0;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .curriList {
-      padding: 10px 0;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-
-    .review {
-      .reviewTitle {
-        padding: 20px 0;
-        font-size: 20px;
-        font-weight: bold;
-      }
-
-      .reviewSubTitle {
-        font-size: 15px;
-        color: gray;
-        padding-bottom: 10px;
-      }
-
-      .inputBox {
-        background-color: #f8f9fa;
-        border: 1px solid #e9ecef;
-        border-radius: 4px;
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .inputBoxStar {
-          display: inline;
-          padding-bottom: 40px;
-          font-family: 'Noto Sans KR', sans-serif;
-        }
-
-        textarea {
-          resize: none;
-          width: 100%;
-          height: 100px;
-          padding: 10px;
-          font-size: 13px;
-          font-family: 'Noto Sans KR', sans-serif;
-          border: 1px solid #e9ecef;
-
-          &::placeholder {
-            opacity: 0.4;
-          }
-        }
-
-        .enrollBtn {
-          background-color: $pointGreen;
-          color: white;
-          border-radius: 5px;
-          padding: 7px 12px;
-          margin-top: 10px;
-          font-family: 'Nanum Gothic', sans-serif;
-          font-size: 13px;
-          cursor: pointer;
-
-          &:disabled {
-            opacity: 0.4;
-            cursor: default;
-          }
-        }
-      }
-
-      .commentSort {
-        border-bottom: 1px solid gray;
-        padding: 30px 0 20px;
-        display: flex;
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 13px;
-
-        span {
-          padding-right: 20px;
-        }
-      }
-
-      .commentList {
-        margin: 20px 0;
-
-        .commentInfo {
-          display: flex;
-
-          .profileImg {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-          }
-
-          .commentStarId {
-            padding-left: 20px;
-
-            .commentStar {
-              padding-bottom: 5px;
-            }
-
-            .commentId {
-              color: gray;
-              font-weight: bold;
-              padding-top: 5px;
-            }
-          }
-        }
-
-        .comment {
-          padding: 15px 0;
-          font-size: 15px;
-          font-family: 'Noto Sans KR', sans-serif;
-        }
-      }
-    }
-  }
+.categoryContentBody {
+  margin: auto;
+  margin-top: 30px;
+  width: 980px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  row-gap: 0px;
+  column-gap: 0px;
 }

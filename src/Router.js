@@ -6,9 +6,12 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import Payment from './pages/Payment/Payment';
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
 import SignUp from './pages/SignUp/SignUp';
+import NavBar from './components/NavBar/NavBar';
+
 const Router = () => {
   return (
     <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
