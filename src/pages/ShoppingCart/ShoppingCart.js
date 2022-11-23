@@ -34,6 +34,8 @@ const ShoppingCart = () => {
     return cartData.type === '단과강의' || cartData.type === '코스강의';
   });
 
+  console.log(lectureDatas);
+
   const productDatas = cartDatas.filter(cartData => {
     return cartData.type === '요리도구';
   });
@@ -42,22 +44,22 @@ const ShoppingCart = () => {
 
   // 개별 삭제 버튼
   const deleteBtn = id => {
-    setCartDatas(cartDatas.filter(cartData => cartData.id !== id));
+    // setCartDatas(cartDatas.filter(cartData => cartData.id !== id));
     // `${API.carts}/${id}`
-    // fetch(`http://10.58.52.59:3002/cart/${cartDatas[0].productId}`, {
-    //   method: 'delete',
-    //   headers: {
-    //     authorization:
-    //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY2OTEyMjY3OCwiZXhwIjoxNjY5MjA5MDc4fQ.BQTqIbndJIm80g6VS6ID2ugpQAiInVqD4r2ww6Jr1Qk',
-    //   },
-    // }).then(res => {
-    //   if (res.status === 204) {
-    //     alert('상품이 장바구니에서 삭제되었습니다');
-    //     setCartDatas(cartDatas.filter(cartData => cartData.id !== id));
-    //   } else {
-    //     alert('다시 시도해주세요');
-    //   }
-    // });
+    fetch(`http://10.58.52.158:3002/cart/${id.productId}`, {
+      method: 'delete',
+      headers: {
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY2OTEyMjY3OCwiZXhwIjoxNjY5MjA5MDc4fQ.BQTqIbndJIm80g6VS6ID2ugpQAiInVqD4r2ww6Jr1Qk',
+      },
+    }).then(res => {
+      if (res.status === 204) {
+        alert('상품이 장바구니에서 삭제되었습니다');
+        setCartDatas(cartDatas.filter(cartData => cartData.id !== id));
+      } else {
+        alert('다시 시도해주세요');
+      }
+    });
   };
 
   // 수량 증가 버튼
@@ -127,12 +129,13 @@ const ShoppingCart = () => {
 
   // 금액 합계
   const productsPrice = productDatas.reduce(
-    (total, productData) => total + productData.price * productData.quantity,
+    (total, productData) =>
+      Number(total + productData.price * productData.quantity).toLocaleString(),
     0
   );
 
   const lecturePrice = lectureDatas.reduce(
-    (total, lectureData) => total + lectureData.price,
+    (total, lectureData) => Number(total + lectureData.price).toLocaleString(),
     0
   );
 
@@ -146,24 +149,24 @@ const ShoppingCart = () => {
   };
 
   // 백엔드 통신시
-  // useEffect(() => {
-  //   fetch('http://10.58.52.59:3002/cart/', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       authorization:
-  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY2OTEyMjY3OCwiZXhwIjoxNjY5MjA5MDc4fQ.BQTqIbndJIm80g6VS6ID2ugpQAiInVqD4r2ww6Jr1Qk',
-  //     },
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => setCartDatas(data)); //콜백함수//
-  // }, []);
-
   useEffect(() => {
-    fetch('/data/cartData.json')
+    fetch('http://10.58.52.158:3002/cart/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY2OTEyMjY3OCwiZXhwIjoxNjY5MjA5MDc4fQ.BQTqIbndJIm80g6VS6ID2ugpQAiInVqD4r2ww6Jr1Qk',
+      },
+    })
       .then(response => response.json())
-      .then(data => setCartDatas(data));
+      .then(data => setCartDatas(data)); //콜백함수//
   }, []);
+
+  // useEffect(() => {
+  //   fetch('/data/cartData.json')
+  //     .then(response => response.json())
+  //     .then(data => setCartDatas(data));
+  // }, []);
 
   return (
     <div className="container">
@@ -244,12 +247,12 @@ const ShoppingCart = () => {
 
           <div className="priceRegular">
             <span>선택강의 금액</span>
-            <div>{lecturePrice.toLocaleString()}원</div>
+            <div>{lecturePrice}원</div>
           </div>
 
           <div className="priceRegular">
             <span>선택상품 금액</span>
-            <div>{productsPrice.toLocaleString()}원</div>
+            <div>{productsPrice}원</div>
           </div>
 
           <div className="priceDiscount">
