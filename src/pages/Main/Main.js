@@ -1,5 +1,5 @@
 import './Main.scss';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, forwardRef } from 'react';
 import BastLecture from './components/BastLecture/BastLecture';
 import FreeLecture from './components/freeLecture/FreeLecture';
 import SlideBox from './components/SlideBox/SlideBox';
@@ -12,6 +12,8 @@ const Main = () => {
   const [freeLectureIndex, setFreeLectureIndex] = useState(0);
   const [backColor, setBackColor] = useState('colorBoxColor1');
   const freeLectureRef = useRef(null);
+
+  // const Contact = React.);
 
   const rightfreeLectureSlide = () => {
     if (freeLectureIndex === 2) {
@@ -44,7 +46,7 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://10.58.52.59:3002/products?type=코스강의')
+    fetch('http://10.58.52.158:3002/products?type=코스강의')
       .then(response => response.json())
       .then(data => {
         setBastLectureList(data);
@@ -52,7 +54,7 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://10.58.52.59:3002/products?type=단과강의')
+    fetch('http://10.58.52.158:3002/products?type=단과강의')
       .then(response => response.json())
       .then(data => {
         setFreeLectureList(data);
@@ -87,12 +89,12 @@ const Main = () => {
         <p className="popularity">
           <span className="popularityText">
             한번에 하나씩 단과강의 찍먹하기! 🍴
-            <i class="fa-solid fa-fork" />
+            <i className="fa-solid fa-fork" />
           </span>
         </p>
         <div className="freeLectureBody">
           <i
-            class="fa-solid fa-chevron-left fa-3x"
+            className="fa-solid fa-chevron-left fa-3x"
             onClick={leftfreeLectureSlide}
           />
           <div className="freeLecture">
@@ -103,12 +105,12 @@ const Main = () => {
             </ul>
           </div>
           <i
-            class="fa-solid fa-chevron-right fa-3x"
+            className="fa-solid fa-chevron-right fa-3x"
             onClick={rightfreeLectureSlide}
           />
         </div>
       </div>
-      <div className="mainUnder">
+      <div className="mainUnder" id="mainAbout">
         <div className="mainUnderText">
           <p className="mainUnderP">만들고싶은 모든 요리를</p>
           <p className="mainUnderP">
@@ -149,7 +151,22 @@ const Main = () => {
           <p className="underBarsText4">만족스러운 결과물을 제공합니다.</p>
         </div>
       </div>
-      <div className="main" />
+      <div className="mainCoupon">
+        <p>
+          지금{' '}
+          <span>
+            <i className="fa-solid fa-egg" />
+            P!CKEAT
+          </span>{' '}
+          가입하고
+          <br />
+          여러가지 해택 받아가자!
+        </p>
+        <i className="fa-solid fa-ticket fa-5x" />
+      </div>
+      <div className="mainCouponImg">
+        <img src="https://ifh.cc/g/c0SHjh.jpg" />
+      </div>
     </div>
   );
 };

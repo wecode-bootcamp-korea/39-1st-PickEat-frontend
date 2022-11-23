@@ -19,7 +19,7 @@ const DetailPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://10.58.52.59:3002/products?type=코스강의&type=단과강의')
+    fetch('http://10.58.52.158:3002/products?type=코스강의&type=단과강의')
       .then(response => response.json())
       .then(data => {
         setLectures(data);
@@ -59,40 +59,40 @@ const DetailPage = () => {
   const runDrop2 = isOpen2 ? 'courseLectureDropsOn' : 'courseLectureDropsOff';
 
   const allLectures = () => {
-    fetch('http://10.58.52.59:3002/products?type=코스강의&type=단과강의')
+    fetch('http://10.58.52.158:3002/products?type=코스강의&type=단과강의')
       .then(response => response.json())
       .then(data => setLectures(data));
   };
 
-  const korean = () => {
-    fetch('http://10.58.52.59:3002/products?name=한식&type=코스강의')
-      .then(response => response.json())
-      .then(data => setLectures(data));
-  };
+  // const korean = () => {
+  //   fetch('http://10.58.52.158:3002/products?name=한식&type=코스강의')
+  //     .then(response => response.json())
+  //     .then(data => setLectures(data));
+  // };
 
-  const china = () => {
-    fetch('http://10.58.52.59:3002/products?name=중식&type=코스강의')
-      .then(response => response.json())
-      .then(data => setLectures(data));
-  };
+  // const china = () => {
+  //   fetch('http://10.58.52.158:3002/products?name=중식&type=코스강의')
+  //     .then(response => response.json())
+  //     .then(data => setLectures(data));
+  // };
 
-  const japan = () => {
-    fetch('http://10.58.52.59:3002/products?name=일식&type=코스강의')
-      .then(response => response.json())
-      .then(data => setLectures(data));
-  };
+  // const japan = () => {
+  //   fetch('http://10.58.52.158:3002/products?name=일식&type=코스강의')
+  //     .then(response => response.json())
+  //     .then(data => setLectures(data));
+  // };
 
-  const american = () => {
-    fetch('http://10.58.52.59:3002/products?name=양식&type=코스강의')
-      .then(response => response.json())
-      .then(data => setLectures(data));
-  };
+  // const american = () => {
+  //   fetch('http://10.58.52.158:3002/products?name=양식&type=코스강의')
+  //     .then(response => response.json())
+  //     .then(data => setLectures(data));
+  // };
 
-  const mexican = () => {
-    fetch('http://10.58.52.59:3002/products?name=멕시코&type=코스강의')
-      .then(response => response.json())
-      .then(data => setLectures(data));
-  };
+  // const mexican = () => {
+  //   fetch('http://10.58.52.158:3002/products?name=멕시코&type=코스강의')
+  //     .then(response => response.json())
+  //     .then(data => setLectures(data));
+  // };
 
   return (
     <div className="categoryPageBody">
@@ -112,19 +112,64 @@ const DetailPage = () => {
                 />
               </div>
               <div className={runDrop}>
-                <div onClick={korean} className="courseLectureContents">
+                <div
+                  onClick={() => {
+                    fetch(
+                      'http://10.58.52.158:3002/products?name=한식&type=코스강의'
+                    )
+                      .then(response => response.json())
+                      .then(data => setLectures(data));
+                  }}
+                  className="courseLectureContents"
+                >
                   <button>한식</button>
                 </div>
-                <div onClick={china} className="courseLectureContents">
+                <div
+                  onClick={() => {
+                    fetch(
+                      'http://10.58.52.158:3002/products?name=중식&type=코스강의'
+                    )
+                      .then(response => response.json())
+                      .then(data => setLectures(data));
+                  }}
+                  className="courseLectureContents"
+                >
                   <button>중식</button>
                 </div>
-                <div onClick={japan} className="courseLectureContents">
+                <div
+                  onClick={() => {
+                    fetch(
+                      'http://10.58.52.158:3002/products?name=일식&type=코스강의'
+                    )
+                      .then(response => response.json())
+                      .then(data => setLectures(data));
+                  }}
+                  className="courseLectureContents"
+                >
                   <button>일식</button>
                 </div>
-                <div onClick={american} className="courseLectureContents">
+                <div
+                  onClick={() => {
+                    fetch(
+                      'http://10.58.52.158:3002/products?name=양식&type=코스강의'
+                    )
+                      .then(response => response.json())
+                      .then(data => setLectures(data));
+                  }}
+                  className="courseLectureContents"
+                >
                   <button>양식</button>
                 </div>
-                <div onClick={mexican} className="courseLectureContents">
+                <div
+                  onClick={() => {
+                    fetch(
+                      'http://10.58.52.158:3002/products?name=멕시코&type=코스강의'
+                    )
+                      .then(response => response.json())
+                      .then(data => setLectures(data));
+                  }}
+                  className="courseLectureContents"
+                >
                   <button>멕시칸</button>
                 </div>
               </div>
@@ -136,19 +181,64 @@ const DetailPage = () => {
               />
             </div>
             <div className={runDrop2}>
-              <div onClick={korean} className="courseLectureContents">
+              <div
+                onClick={() => {
+                  fetch(
+                    'http://10.58.52.158:3002/products?name=한식&type=단과강의'
+                  )
+                    .then(response => response.json())
+                    .then(data => setLectures(data));
+                }}
+                className="courseLectureContents"
+              >
                 <button>한식</button>
               </div>
-              <div onClick={china} className="courseLectureContents">
+              <div
+                onClick={() => {
+                  fetch(
+                    'http://10.58.52.158:3002/products?name=중식&type=단과강의'
+                  )
+                    .then(response => response.json())
+                    .then(data => setLectures(data));
+                }}
+                className="courseLectureContents"
+              >
                 <button>중식</button>
               </div>
-              <div onClick={japan} className="courseLectureContents">
+              <div
+                onClick={() => {
+                  fetch(
+                    'http://10.58.52.158:3002/products?name=일식&type=단과강의'
+                  )
+                    .then(response => response.json())
+                    .then(data => setLectures(data));
+                }}
+                className="courseLectureContents"
+              >
                 <button>일식</button>
               </div>
-              <div onClick={american} className="courseLectureContents">
+              <div
+                onClick={() => {
+                  fetch(
+                    'http://10.58.52.158:3002/products?name=양식&type=단과강의'
+                  )
+                    .then(response => response.json())
+                    .then(data => setLectures(data));
+                }}
+                className="courseLectureContents"
+              >
                 <button>양식</button>
               </div>
-              <div onClick={mexican} className="courseLectureContents">
+              <div
+                onClick={() => {
+                  fetch(
+                    'http://10.58.52.158:3002/products?name=멕시코&type=단과강의'
+                  )
+                    .then(response => response.json())
+                    .then(data => setLectures(data));
+                }}
+                className="courseLectureContents"
+              >
                 <button>멕시칸</button>
               </div>
             </div>

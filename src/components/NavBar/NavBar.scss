@@ -155,53 +155,6 @@
     }
   }
 
-  .navLoginBar {
-    display: flex;
-    justify-content: space-between;
-    width: 230px;
-
-    .navLoginBarList1 {
-      @include flex(center, center);
-      width: 90px;
-      height: 42px;
-      transition: 0.5s;
-      border-radius: 8px;
-      cursor: pointer;
-
-      &:hover {
-        transition: 0.5s;
-        background-color: $pointGreen;
-      }
-
-      .navLogin {
-        color: $pointBlack;
-        font-family: 'Nanum Gothic', sans-serif;
-        font-size: 15px;
-      }
-    }
-
-    .navLoginBarList2 {
-      @include flex(center, center);
-      width: 120px;
-      height: 42px;
-      transition: 0.5s;
-      border-radius: 8px;
-      background-color: $deepYellow;
-      cursor: pointer;
-
-      &:hover {
-        transition: 0.5s;
-        background-color: $pointOrange;
-      }
-
-      .navSinUP {
-        color: $pointBlack;
-        font-family: 'Nanum Gothic', sans-serif;
-        font-size: 15px;
-      }
-    }
-  }
-
   .dropBoxUl {
     width: 100%;
   }

@@ -22,7 +22,7 @@ const Slideshow = props => {
             key={index}
             type="radio"
             checked={slideIndex === index}
-            onClick={e => {
+            onChange={e => {
               setSlideIndex(index);
               setBackColor(`colorBoxColor${index + 1}`);
             }}
