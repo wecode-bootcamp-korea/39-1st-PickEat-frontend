@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CartLectureList = props => {
-  const { id, title, price, image } = props.lecture;
+  const { id, title, price, image, productId } = props.lecture;
   const { deleteBtn, checkItems, setCheckItems } = props;
 
   const handleSingleCheck = (checked, id) => {
@@ -23,12 +23,11 @@ const CartLectureList = props => {
       <img className="cartLectureImg" src={image} alt="lectureImg" />
       <div className="cartLectureInfo">
         <div className="cartLectureTitle">{title}</div>
-        <span className="lectureInstructor">김보윤</span>
-        <span className="lectureDuration">7일간 수강</span>
+        <span className="lectureDuration">14일간 수강</span>
       </div>
       <div className="cartLecturePrice">
         <span>{Number(price).toLocaleString()}</span>원
-        <button className="cartDeleteBtn" onClick={() => deleteBtn(id)}>
+        <button className="cartDeleteBtn" onClick={() => deleteBtn(productId)}>
           ✖
         </button>
       </div>

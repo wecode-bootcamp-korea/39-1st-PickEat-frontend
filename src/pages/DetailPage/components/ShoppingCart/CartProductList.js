@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CartProductList = props => {
-  const { id, title, price, image, quantity } = props.product;
+  const { id, productId, title, price, image, quantity } = props.product;
   const { increaseBtn, decreaseBtn, deleteBtn, checkItems, setCheckItems } =
     props;
 
@@ -18,7 +18,6 @@ const CartProductList = props => {
       <input
         className="cartCheckbox"
         type="checkbox"
-        defaultChecked={true}
         onChange={e => handleSingleCheck(e.target.checked, id)}
         checked={checkItems.includes(id)}
       />
@@ -32,7 +31,10 @@ const CartProductList = props => {
               －
             </button>
             <span className="quantity">{quantity}</span>
-            <button className="btn" onClick={increaseBtn}>
+            <button
+              className="btn"
+              onClick={() => increaseBtn(productId, quantity)}
+            >
               ＋
             </button>
           </div>
