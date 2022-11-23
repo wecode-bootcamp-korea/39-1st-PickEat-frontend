@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import ReviewList from '../DetailPage/components/ReviewList';
 import './ProductDetailPage.scss';
 
 const ProductDetailPage = () => {
+  const [productDatas, setProductDatas] = useState([]);
   const [review, setReview] = useState([]);
   const [reviewList, setReviewList] = useState([]);
-  const [productDatas, setProductDatas] = useState([]);
   const [count, setCount] = useState(1);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
   let star = clicked.filter(Boolean).length;
-  // const [rateList, setRateList] = useState([]);
 
   const navigate = useNavigate();
   const ARRAY = [0, 1, 2, 3, 4];
-
-  // const saveReview = () => {};
 
   const handleStarClick = index => {
     let clickStates = [...clicked];
@@ -25,31 +23,28 @@ const ProductDetailPage = () => {
     setClicked(clickStates);
   };
 
-  // const sendReview = () => {
-  //   fetch('', {
-  //     method: 'post',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //       // Authorization: 'efefefe';
-  //     },
-  //     body: JSON.stringify({
-  //       product_id: productDatas.id,
-  //       rate: star,
-  //     }),
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   sendReview();
-  // }, [clicked]);
-
   const handleReview = e => {
     setReview(e.target.value);
   };
 
   const saveReview = () => {
-    setReviewList([...reviewList, review]);
+    setReviewList([...reviewList, { comment: review, rate: star }]);
+    alert('리류가 등록되었습니다!');
     setReview('');
+    setClicked([]);
+
+    fetch('', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        // Authorization: 'efefefe',
+      },
+      body: JSON.stringify({
+        comment: review,
+        rate: star,
+        // user_id:
+      }),
+    });
   };
 
   const valid = review.length >= 5 && star > 0 ? false : true;
@@ -81,11 +76,11 @@ const ProductDetailPage = () => {
       .then(data => setProductDatas(data));
   }, []);
 
-  // useEffect(() => {
-  //   fetch('data/reviewData.json')
-  //     .then(response => response.json())
-  //     .then(data => setReviewList(data));
-  // }, []);
+  useEffect(() => {
+    fetch('data/reviewData.json')
+      .then(response => response.json())
+      .then(data => setReviewList(data));
+  }, []);
 
   console.log('productDatas', productDatas);
   console.log('reviewList', reviewList);
@@ -104,12 +99,7 @@ const ProductDetailPage = () => {
           <div className="productPrice">{productDatas[0]?.price}원</div>
           <div className="productDelivery">
             <div className="productDeliveryTitle">배송</div>
-            <div className="productDeliveryContent">
-              <div className="productDeliveryPrice">3000원</div>
-              <div className="productDeliveryCondition">
-                5만원 이상 주문시 무료배송
-              </div>
-            </div>
+            <div className="productDeliveryPrice">무료배송</div>
           </div>
 
           <div className="productSeller">
@@ -232,25 +222,9 @@ const ProductDetailPage = () => {
               </button>
             </div>
           </div>
-
-          {reviewList.map((comment, id) => {
-            return (
-              <div key={id} className="commentList">
-                <div className="commentInfo">
-                  <img
-                    src="../../images/product.jpg"
-                    className="profileImg"
-                    alt="profileImage"
-                  />
-                  <div className="commentStarId">
-                    <div className="commentStar">rate</div>
-                    <div className="commentId">id</div>
-                  </div>
-                </div>
-                <div className="comment">{comment}</div>
-              </div>
-            );
-          })}
+          {reviewList.map(review => (
+            <ReviewList key={review.id} review={review} />
+          ))}
         </div>
 
         <div className="productQna">
