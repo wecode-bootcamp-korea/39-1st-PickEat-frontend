@@ -5,28 +5,7 @@ header {
   margin-bottom: 25px;
   padding-top: 8px;
 }
-// .signup-profileImg-label {
-//   display: flex;
-//   position: relative;
-//   justify-content: center;
-//   margin: 5px 0 20px 0;
-//   padding-top: 18px;
-//   background-image: url(../../../../../public/images/default_profile.png);
-//   background-repeat: no-repeat;
-//   background-size: 13px;
-//   color: #0095f6;
-//   font-size: 13px;
-//   font-weight: bold;
-//   cursor: pointer;
 
-// .profileImg-file input[type='file'] {
-//   display: none;
-//   margin-left: 48%;
-// }
-
-// .signup-profileImg-input input[type='file'] {
-//   display: none;
-// }
 .sign-id-pw-check {
   border: 1px solid;
 }
@@ -83,18 +62,19 @@ header {
   padding: 14px;
   overflow: hidden;
   border: none;
-  border: 1px solid black;
+  border: 1px solid #e9ecef;
   border-radius: 5px;
-  background-color: black;
-  color: #20de20;
+  background-color: #32b67a;
+  color: white;
   font-size: 17px;
   text-align: center;
-}
-.push-join-btn:hover {
-  padding: 14px;
-  border: 1px solid;
-  background: #20de20;
-  color: black;
-  font-size: 17px;
   cursor: pointer;
 }
+// .push-join-btn:hover {
+//   padding: 14px;
+//   border: 1px solid;
+//   background: #32b67a;
+//   color: black;
+//   font-size: 17px;
+//   cursor: pointer;
+// }

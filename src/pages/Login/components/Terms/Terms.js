@@ -107,7 +107,7 @@ export default function Terms({ setFormTitle }) {
         <input
           type="text"
           className="sign-two-textline"
-          placeholder="제 1조 목적"
+          placeholder="제 1조 목적 본 이용약관은 (주)P!CKEAT"
         />
       </div>
       <label className="sign-input-three">

@@ -1,28 +1,47 @@
-// import React, { useState } from 'react';
-import React from 'react';
-// // import { useDispatch } from 'react-redux';
-// import { loginUser } from '../../UserForm';
-// import { Navigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.scss';
 
 export default function Login({ setFormTitle }) {
-  // const dispatch = useDispatch();
+  const [inputId, setInputId] = useState('');
+  const [inputPwd, setInputPwd] = useState('');
 
-  // const [Email, setEmail] = useState('');
-  // const [Password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  // const onEmailHandle = e => {
-  //   setEmail(e.currentTarget.value);
-  // };
-  // const onPasswordHandle = e => {
-  //   setPassword(e.currentTarget.value);
-  // };
-  // const onSubmitHandle = e => {
+  const onInputId = e => {
+    setInputId(e.currentTarget.value);
+  };
+  const onInputPwd = e => {
+    setInputPwd(e.currentTarget.value);
+  };
+  // const onInputSumit = e => {
   //   e.preventDefault();
   // };
+  const push_btnCheck = e => {
+    e.preventDefault();
+
+    fetch('http://10.58.52.59:3002/users/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({ email: inputId, password: inputPwd }),
+    })
+      .then(response => {
+        if (response.status != 200) {
+          throw new Error('error');
+        }
+        return response.json();
+      })
+      .catch(err => {
+        alert('로그인 실패! 아이디 또는 비밀번호를 확인해주세요.');
+      })
+      .then(data => {
+        localStorage.setItem('token', data.accessToken);
+        navigate('./main');
+      });
+  };
 
   return (
-    <>
+    <div className="login_form">
       <header>
         <p className="login-contain">로그인</p>
       </header>
@@ -32,14 +51,16 @@ export default function Login({ setFormTitle }) {
           name="email"
           className="text-file-id"
           placeholder="이메일"
-          // onChange={onEmailHandle}
+          value={inputId}
+          onChange={onInputId}
         />
         <input
           type="password"
           name="pw"
           className="text-file-pw"
           placeholder="비밀번호"
-          // onChange={onPasswordHandle}
+          value={inputPwd}
+          onChange={onInputPwd}
         />
       </div>
       <label className="state-input">
@@ -51,7 +72,13 @@ export default function Login({ setFormTitle }) {
         />
         <span className="blackCheck">로그인상태유지</span>
       </label>
-      <button className="push-btn">로그인</button>
+      <button
+        className="push-btn"
+        // onChange={onInputSumit}
+        onClick={push_btnCheck}
+      >
+        로그인
+      </button>
       <div className="login-id-pw-input">
         <p
           className="login-link"
@@ -77,10 +104,15 @@ export default function Login({ setFormTitle }) {
         </button>
       </div>
       <div className="close-btn">
-        <button className="closeBtn">
+        <button
+          className="closeBtn"
+          onClick={() => {
+            setFormTitle('./main');
+          }}
+        >
           <i className="btl bt-times" />
         </button>
       </div>
-    </>
+    </div>
   );
 }

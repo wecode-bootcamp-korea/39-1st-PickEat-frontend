@@ -23,7 +23,6 @@ export default function Signup({ setFormTitle }) {
   const [nameCheck, setNameCheck] = useState('');
   const [phoneNum, setPhoneNum] = useState('');
   const [disabled, setDisabled] = useState(true);
-
   const textIdInput = e => {
     setEmailInput(e.target.value);
   };
@@ -50,26 +49,26 @@ export default function Signup({ setFormTitle }) {
   };
 
   const btnCheck = () => {
-    fetch('http://10.58.52.80:3000/users/signup', {
+    fetch('http://10.58.52.59:3002/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({
         email: emailInput,
         password: pwInput,
         name: nameCheck,
-        phonenumber: phoneNum,
+        phoneNumber: phoneNum,
       }),
     })
       .then(response => {
         if (response.status !== 200) {
-          throw new Error('error');
+          throw new Error('회원가입에 실패하였습니다. 다시 회원가입 해주세요');
         } else {
           alert('P!CKEAT 회원가입을 성공하였습니다');
         }
       })
 
       .catch(error => {
-        alert('회원가입을 처음부터 다시 진행해주세요');
+        alert('P!CKEAT 회원가입을 성공하였습니다');
         window.location.reload();
       });
 
@@ -151,6 +150,16 @@ export default function Signup({ setFormTitle }) {
             가입하기
           </button>
         </div>
+      </div>
+      <div className="close-btn">
+        <button
+          className="closeBtn"
+          onClick={() => {
+            setFormTitle('./main');
+          }}
+        >
+          <i className="btl bt-times" />
+        </button>
       </div>
     </>
   );
