@@ -1,0 +1,7 @@
+[
+  { "id": 1, "titleName": "한식" },
+  { "id": 2, "titleName": "중식" },
+  { "id": 3, "titleName": "일식" },
+  { "id": 4, "titleName": "양식" },
+  { "id": 5, "titleName": "멕시칸" }
+]
