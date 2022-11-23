@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import ReviewList from '../DetailPage/components/ReviewList';
 import './LectureDetailPage.scss';
 
 const LectureDetailPage = () => {
-  const [comment, setComment] = useState('');
-  const [commentList, setCommentList] = useState([]);
+  const [review, setReview] = useState('');
+  const [reviewList, setReviewList] = useState([]);
   const [productData, setProductData] = useState([]);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
   const navigate = useNavigate();
-
   const ARRAY = [0, 1, 2, 3, 4];
+  let star = clicked.filter(Boolean).length;
 
   const handleStarClick = index => {
     let clickStates = [...clicked];
@@ -22,34 +23,30 @@ const LectureDetailPage = () => {
 
   console.log(clicked);
 
-  const handleComment = e => {
-    setComment(e.target.value);
+  const handleReview = e => {
+    setReview(e.target.value);
   };
 
-  const saveComment = () => {
-    setCommentList([...commentList, comment]);
-    setComment('');
+  const saveReview = () => {
+    setReviewList([...reviewList, { comment: review, rate: star }]);
+    alert('리뷰가 등록되었습니다!');
+    setReview('');
+    setClicked([]);
 
-    // 주소API 통신
-    // fetch(`${commentAPI}/${productData.id}`, {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=utf-8',
-    //     authorization:
-    //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2OTAyMDc2OCwiZXhwIjoxNjY5MTA3MTY4fQ.vXhdWClrF7s7qFS2qTxohDm4ntY73WNGjdn1h5wEV-U',
-    //   },
-    //   body: JSON.stringify({
-    //     product_id: productData.id,
-    //     user_id: productData.userId,
-    //     comment: commentData.comment,
-    //     rate: commentData.rate,
-    //   }),
-    // })
-    //   .then(res => res.json())
-    //   .then();
+    fetch(``, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        // Authorization: 'efefefe',
+      },
+      body: JSON.stringify({
+        comment: review,
+        rate: star,
+      }),
+    });
   };
 
-  const valid = comment.length >= 10 ? false : true;
+  const valid = review.length >= 10 ? false : true;
 
   const userToken = localStorage.getItem('token');
 
@@ -70,7 +67,7 @@ const LectureDetailPage = () => {
       })
         .then(response => response.json())
         .then(response => {
-          if (response.status == 201) {
+          if (response.status === 201) {
             alert('장바구니에 담겼습니다');
             navigate('/shoppingcart');
           } else {
@@ -184,12 +181,12 @@ const LectureDetailPage = () => {
                 className="reviewInputBox"
                 type="text"
                 placeholder="수강평을 10자 이상 작성해주세요."
-                onChange={handleComment}
-                value={comment}
+                onChange={handleReview}
+                value={review}
               />
               <button
                 className="enrollBtn"
-                onClick={saveComment}
+                onClick={saveReview}
                 disabled={valid}
               >
                 등록
@@ -204,6 +201,15 @@ const LectureDetailPage = () => {
               <span className="commentSortView">낮은평점 순</span>
             </div>
 
+            {reviewList.map(review => (
+              <ReviewList
+                key={review.id}
+                review={review}
+                ARRAY={ARRAY}
+                clicked={clicked}
+              />
+            ))}
+            {/* 
             {commentList.map((comment, key) => {
               return (
                 <div key={key} className="commentList">
@@ -221,7 +227,7 @@ const LectureDetailPage = () => {
                   <div className="comment">{comment}</div>
                 </div>
               );
-            })}
+            })} */}
           </div>
 
           <div className="qna">
