@@ -2,7 +2,7 @@ import { FaStar } from 'react-icons/fa';
 import '../../components/ReviewList/ReviewList.scss';
 
 const ReviewList = props => {
-  const { id, comment, rate, user_id } = props.review;
+  const { id, content, rate, name } = props.review;
   const { ARRAY } = props;
 
   return (
@@ -23,10 +23,10 @@ const ReviewList = props => {
               );
             })}
           </div>
-          <div className="commentId">{user_id}</div>
+          <div className="commentId">{name}</div>
         </div>
       </div>
-      <div className="comment">{comment}</div>
+      <div className="comment">{content}</div>
     </div>
   );
 };

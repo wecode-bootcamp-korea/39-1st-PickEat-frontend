@@ -27,21 +27,24 @@ const ProductDetailPage = () => {
     setReview(e.target.value);
   };
 
+  console.log(productDatas.id);
+  console.log(reviewList);
+
   const saveReview = () => {
-    setReviewList([...reviewList, { comment: review, rate: star }]);
+    setReviewList([...reviewList, { content: review, rate: star }]);
     alert('리뷰가 등록되었습니다!');
     setReview('');
     setClicked([]);
 
-    fetch(`http://10.58.52.173:3000/comment/productId/:productid`, {
-      method: 'post',
+    fetch(`http://10.58.52.173:3000/comment/productId/${productDatas.id}`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization:
+        authorization:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImlhdCI6MTY2OTE4ODc3NiwiZXhwIjoxNjY5Mjc1MTc2fQ.3TaDTqvH9NI4IKYEUHZEOZwK_7wdcGaLb_NM5mkByZY',
       },
       body: JSON.stringify({
-        comment: review,
+        content: review,
         rate: star,
       }),
     });
@@ -63,17 +66,17 @@ const ProductDetailPage = () => {
     alert('장바구니에 성공적으로 담겼습니다!');
     navigate('/shoppingcart');
 
-    fetch('', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        // Authorization: 'dfd',
-      },
-      body: JSON.stringify({
-        // product_id: id,
-        // quantity: quantity,
-      }),
-    });
+    // fetch(``, {
+    //   method: 'post',
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=utf-8',
+    //     // Authorization: 'dfd',
+    //   },
+    //   body: JSON.stringify({
+    //     // product_id: id,
+    //     // quantity: quantity,
+    //   }),
+    // });
   };
 
   const payBtn = () => {
@@ -83,16 +86,18 @@ const ProductDetailPage = () => {
 
   // Mock Data
   useEffect(() => {
-    fetch('data/productDatas.json')
+    fetch(`http://10.58.52.158:3002/lectures/9`)
       .then(response => response.json())
       .then(data => setProductDatas(data));
   }, []);
 
-  useEffect(() => {
-    fetch('http://10.58.52.173:3000/comment/productId/:productid')
-      .then(response => response.json())
-      .then(data => setReviewList(data));
-  }, []);
+  console.log(productDatas);
+
+  // useEffect(() => {
+  //   fetch(`http://10.58.52.173:3000/comment/productId/${productDatas.id}`)
+  //     .then(response => response.json())
+  //     .then(data => setReviewList(data));
+  // }, []);
 
   console.log(reviewList);
 
@@ -101,13 +106,13 @@ const ProductDetailPage = () => {
       <header className="product">
         <img
           className="productImg"
-          src={productDatas[0]?.img}
+          src={productDatas.profileImg}
           alt="productImg"
         />
         <div className="productContent">
           <div className="productBrandName">PiCKEAT</div>
-          <div className="productName">{productDatas[0]?.title}</div>
-          <div className="productPrice">{productDatas[0]?.price}원</div>
+          <div className="productName">{productDatas?.title}</div>
+          <div className="productPrice">{productDatas?.price}원</div>
           <div className="productDelivery">
             <div className="productDeliveryTitle">배송</div>
             <div className="productDeliveryPrice">무료배송</div>
@@ -134,7 +139,7 @@ const ProductDetailPage = () => {
           <div className="productSelected">
             <div className="productSelectedTitle">주문금액</div>
             <div className="productSelectedPrice">
-              {(count * productDatas[0]?.price).toLocaleString()}원
+              {(count * productDatas.price).toLocaleString()}원
             </div>
           </div>
 
@@ -157,7 +162,7 @@ const ProductDetailPage = () => {
 
         <aside className="productDetailPageAside">
           <div className="asideSelectedProduct">
-            <div className="asideProductName">{productDatas[0]?.title}</div>
+            <div className="asideProductName">{productDatas.title}</div>
 
             <div className="asideProductOption">
               <span className="asideOptionTitle">수량</span>
@@ -175,7 +180,7 @@ const ProductDetailPage = () => {
 
           <div className="asideProductPrice">
             <div className="asidePrice">
-              {(count * productDatas[0]?.price).toLocaleString()}원
+              {(count * productDatas.price).toLocaleString()}원
             </div>
             <div className="payFormBtns">
               <button className="cartBtn" onClick={goToCart}>
@@ -193,7 +198,7 @@ const ProductDetailPage = () => {
             <div className="productInfoTitle">상품 정보</div>
             <img
               className="productImg"
-              src={productDatas[0]?.description}
+              src={productDatas?.description}
               alt="productImg"
             />
           </div>
