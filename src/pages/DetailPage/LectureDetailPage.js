@@ -7,12 +7,16 @@ import './LectureDetailPage.scss';
 const LectureDetailPage = () => {
   const [review, setReview] = useState('');
   const [reviewList, setReviewList] = useState([]);
-  const [productData, setProductData] = useState([]);
+  const [productDatas, setProductDatas] = useState([]);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
-  const navigate = useNavigate();
   const ARRAY = [0, 1, 2, 3, 4];
-  let star = clicked.filter(Boolean).length;
+  const navigate = useNavigate();
 
+  let star = clicked.filter(Boolean).length;
+  const valid = review.length >= 10 ? false : true;
+  const userToken = localStorage.getItem('token');
+
+  // 별점 기능
   const handleStarClick = index => {
     let clickStates = [...clicked];
     for (let i = 0; i < 5; i++) {
@@ -21,39 +25,36 @@ const LectureDetailPage = () => {
     setClicked(clickStates);
   };
 
-  console.log(clicked);
-
+  // 리뷰 댓글 창
   const handleReview = e => {
     setReview(e.target.value);
   };
 
+  // 리뷰 달기
   const saveReview = () => {
-    setReviewList([...reviewList, { comment: review, rate: star }]);
+    setReviewList([...reviewList, { content: review, rate: star }]);
     alert('리뷰가 등록되었습니다!');
     setReview('');
     setClicked([]);
 
-    fetch(``, {
-      method: 'post',
+    fetch(`http://10.58.52.173:3000/comment/productId/${productDatas.id}`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        // Authorization: 'efefefe',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImlhdCI6MTY2OTE4ODc3NiwiZXhwIjoxNjY5Mjc1MTc2fQ.3TaDTqvH9NI4IKYEUHZEOZwK_7wdcGaLb_NM5mkByZY',
       },
       body: JSON.stringify({
-        comment: review,
+        content: review,
         rate: star,
       }),
     });
   };
 
-  const valid = review.length >= 10 ? false : true;
-
-  const userToken = localStorage.getItem('token');
-
+  // 장바구니 이동
   const inputCart = () => {
-    // 백엔드 통신시 사용
     if (userToken) {
-      fetch(`http://10.58.52.59:3002/cart/${productData.id}`, {
+      fetch(`http://10.58.52.59:3002/cart/${productDatas.id}`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
@@ -61,8 +62,8 @@ const LectureDetailPage = () => {
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImlhdCI6MTY2OTAyMDc2OCwiZXhwIjoxNjY5MTA3MTY4fQ.vXhdWClrF7s7qFS2qTxohDm4ntY73WNGjdn1h5wEV-U',
         },
         body: JSON.stringify({
-          product_id: productData.id,
-          quantity: productData.quantity,
+          product_id: productDatas.id,
+          quantity: productDatas.quantity,
         }),
       })
         .then(response => response.json())
@@ -85,35 +86,37 @@ const LectureDetailPage = () => {
     navigate('/');
   };
 
+  // 강의 데이터 받아오기
   useEffect(() => {
-    fetch('/data/detailpageData.json')
+    fetch(`http://10.58.52.158:3002/lectures/9`)
       .then(response => response.json())
-      .then(data => setProductData(data));
+      .then(data => setProductDatas(data));
   }, []);
 
-  // useEffect(() => {
-  //   fetch(`${API.products}/${productData.id}`)
-  //     .then(res => res.json())
-  //     .then(data => setProductData(data));
-  // }, []);
+  // 리뷰 데이터 받아오기
+  useEffect(() => {
+    fetch(`http://10.58.52.173:3000/comment/productId/${productDatas.id}`)
+      .then(response => response.json())
+      .then(data => setReviewList(data));
+  }, []);
 
   return (
     <div className="detailPage">
       <div className="lecture">
         <img
           className="lectureImg"
-          src={productData.profileImg}
+          src={productDatas.profileImg}
           alt="lectureImg"
         />
         <div className="lectureInfo">
-          <p className="lectureInfoIndex">강의 코스 {productData.category}</p>
-          <p className="lectureInfoName">{productData.title}</p>
+          <p className="lectureInfoIndex">강의 코스 {productDatas.category}</p>
+          <p className="lectureInfoName">{productDatas.title}</p>
           <br />
           <p className="lectureInfoCount">63개의 수강평 & 1901명의 수강생</p>
           <div className="lectureInfoBtn">
             <span>#</span>
             <button className="lectureHashTag">레시피</button>
-            <button className="lectureHashTag">{productData.category}</button>
+            <button className="lectureHashTag">{productDatas.category}</button>
           </div>
         </div>
       </div>
@@ -133,7 +136,7 @@ const LectureDetailPage = () => {
           </a>
         </nav>
         <form className="payForm">
-          <div>{Number(productData.price).toLocaleString()}원</div>
+          <div>{Number(productDatas.price).toLocaleString()}원</div>
           <div className="payFormBtns">
             <button className="payBtn" onClick={payPage}>
               바로 수강하기
@@ -154,7 +157,7 @@ const LectureDetailPage = () => {
           </div>
           <img
             className="descriptionImg"
-            src={productData.description}
+            src={productDatas.description}
             alt="img"
           />
 
