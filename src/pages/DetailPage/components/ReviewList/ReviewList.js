@@ -1,4 +1,5 @@
 import { FaStar } from 'react-icons/fa';
+import '../../components/ReviewList/ReviewList.scss';
 
 const ReviewList = props => {
   const { id, comment, rate, user_id } = props.review;

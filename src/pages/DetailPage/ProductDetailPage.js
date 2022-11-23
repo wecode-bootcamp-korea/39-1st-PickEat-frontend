@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
-import ReviewList from '../DetailPage/components/ReviewList';
+import ReviewList from './components/ReviewList/ReviewList';
 import './ProductDetailPage.scss';
 
 const ProductDetailPage = () => {
@@ -33,11 +33,12 @@ const ProductDetailPage = () => {
     setReview('');
     setClicked([]);
 
-    fetch(`${productDatas.product}`, {
+    fetch(`http://10.58.52.173:3000/comment/productId/:productid`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        // Authorization: 'efefefe',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImlhdCI6MTY2OTE4ODc3NiwiZXhwIjoxNjY5Mjc1MTc2fQ.3TaDTqvH9NI4IKYEUHZEOZwK_7wdcGaLb_NM5mkByZY',
       },
       body: JSON.stringify({
         comment: review,
@@ -66,7 +67,7 @@ const ProductDetailPage = () => {
       method: 'post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization: 'dfd',
+        // Authorization: 'dfd',
       },
       body: JSON.stringify({
         // product_id: id,
@@ -88,13 +89,12 @@ const ProductDetailPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('data/reviewData.json')
+    fetch('http://10.58.52.173:3000/comment/productId/:productid')
       .then(response => response.json())
       .then(data => setReviewList(data));
   }, []);
 
-  console.log('productDatas', productDatas);
-  console.log('reviewList', reviewList);
+  console.log(reviewList);
 
   return (
     <div className="productDetailPage">

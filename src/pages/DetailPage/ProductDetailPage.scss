@@ -238,44 +238,6 @@
           }
         }
       }
-
-      .commentList {
-        margin: 20px 0;
-
-        .commentInfo {
-          display: flex;
-
-          .profileImg {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-          }
-
-          .commentStarId {
-            padding-left: 20px;
-
-            .commentStar {
-              padding-bottom: 5px;
-
-              .yellowStar {
-                color: #fcc419;
-              }
-            }
-
-            .commentId {
-              padding-top: 5px;
-              color: gray;
-              font-weight: bold;
-            }
-          }
-        }
-
-        .comment {
-          padding: 15px 0;
-          font-size: 15px;
-          font-family: 'Noto Sans KR', sans-serif;
-        }
-      }
     }
 
     .productQna {
