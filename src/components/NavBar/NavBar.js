@@ -1,17 +1,35 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import './NavBar.scss';
 import ShoppingBasket from './component/UserBar/ShoppingBasket';
 import LoginBar from './component/LoginBar/LoginBar';
 const NavBar = () => {
-  const userToken = false;
+  const location = useLocation();
+  const navigate = useNavigate();
+  const path = location.pathname;
+
+  const userToken = localStorage.getItem('token');
 
   const scroll = () => {
-    window.scrollTo(0, 1290);
+    if (path !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo(0, 1290);
+      }, 100);
+    } else {
+      window.scrollTo(0, 1290);
+    }
   };
 
   const scrollDown = () => {
-    window.scrollTo(0, document.body.scrollHeight);
+    if (path !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+      }, 100);
+    } else {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
   };
   return (
     <div className="navBar">
@@ -70,7 +88,9 @@ const NavBar = () => {
         </li>
 
         <li className="navContentsList3">
-          <p className="navP3">SHOPPING</p>
+          <Link className="shoppingLink" to="/shopping">
+            <p className="navP3">SHOPPING</p>
+          </Link>
           <div className="dropBoxs" />
         </li>
         <li className="navContentsList4" onClick={scrollDown}>

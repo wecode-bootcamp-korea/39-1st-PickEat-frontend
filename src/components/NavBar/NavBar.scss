@@ -198,7 +198,11 @@
     background-color: white;
     cursor: default;
   }
+  h1 {
+    text-align: center;
+  }
 }
-h1 {
-  text-align: center;
+.shoppingLink {
+  color: $pointBlack;
+  text-decoration: none;
 }

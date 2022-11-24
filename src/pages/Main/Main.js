@@ -1,5 +1,5 @@
 import './Main.scss';
-import { useState, useEffect, useRef, forwardRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import BastLecture from './components/BastLecture/BastLecture';
 import FreeLecture from './components/freeLecture/FreeLecture';
 import SlideBox from './components/SlideBox/SlideBox';
