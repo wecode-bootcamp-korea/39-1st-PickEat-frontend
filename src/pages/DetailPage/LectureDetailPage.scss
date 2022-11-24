@@ -1,5 +1,5 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixin.scss';
+@import '../../styles/variables';
+@import '../../styles/mixin';
 
 .detailPage {
   position: relative;
@@ -7,6 +7,7 @@
 
   .lecture {
     @include flex(center, center);
+    margin-top: 60px;
     padding: 30px;
     background-color: $pointGreen;
     color: white;
@@ -63,12 +64,12 @@
     .detailNavBar {
       @include flex(flex-start, center);
       position: sticky;
+      z-index: 1;
       top: 0;
       height: 60px;
       background-color: white;
       color: gray;
       font-size: 15px;
-      z-index: 1;
 
       .detailNavBarHeader {
         padding-right: 30px;
@@ -76,8 +77,8 @@
 
         &:hover {
           padding-bottom: 5px;
-          text-decoration-line: underline;
           color: black;
+          text-decoration-line: underline;
           cursor: pointer;
         }
       }
@@ -86,9 +87,9 @@
     .payForm {
       position: sticky;
       top: 60px;
-      float: right;
       width: 30%;
       padding: 20px;
+      float: right;
       border: 1px solid rgb(200, 199, 199);
       border-radius: 7px;
       font-size: 30px;
@@ -124,8 +125,8 @@
 
       .payFormInfo {
         padding-top: 20px;
-        font-size: 13px;
         font-family: 'Noto Sans KR', sans-serif;
+        font-size: 13px;
 
         .payFormDuration {
           padding: 5px 0;
@@ -135,9 +136,9 @@
 
     .content {
       position: relative;
+      top: 10px;
       width: 65%;
       margin-top: 10px;
-      top: 10px;
 
       .descriptionImg {
         width: 100%;
@@ -170,17 +171,17 @@
 
       .reviewSubTitle {
         padding-bottom: 10px;
-        font-size: 15px;
         color: gray;
+        font-size: 15px;
       }
 
       .inputBox {
         @include flex(normal, center);
         flex-direction: column;
         padding: 40px;
-        background-color: #f8f9fa;
         border: 1px solid #e9ecef;
         border-radius: 4px;
+        background-color: #f8f9fa;
 
         .countingStar {
           padding-bottom: 20px;
@@ -207,9 +208,9 @@
           width: 100%;
           height: 100px;
           padding: 10px;
-          font-size: 13px;
-          font-family: 'Noto Sans KR', sans-serif;
           border: 1px solid #e9ecef;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 13px;
           resize: none;
 
           &::placeholder {
@@ -218,11 +219,11 @@
         }
 
         .enrollBtn {
-          padding: 7px 12px;
           margin-top: 10px;
+          padding: 7px 12px;
+          border-radius: 5px;
           background-color: $pointGreen;
           color: white;
-          border-radius: 5px;
           font-family: 'Nanum Gothic', sans-serif;
           font-size: 13px;
           cursor: pointer;
@@ -275,8 +276,8 @@
 
         .comment {
           padding: 15px 0;
-          font-size: 15px;
           font-family: 'Noto Sans KR', sans-serif;
+          font-size: 15px;
         }
       }
     }

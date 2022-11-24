@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import CartLectureList from './CartLectureList';
 import CartProductList from './CartProductList';
 import AsideCart from './AsideCart';
+
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {

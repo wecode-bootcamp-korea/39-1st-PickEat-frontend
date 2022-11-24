@@ -1,0 +1,75 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixin';
+
+.navUserBar {
+  display: flex;
+  justify-content: space-around;
+  width: 150px;
+
+  .navLoginBarShoppingList {
+    @include flex(center, center);
+    position: relative;
+    width: 42px;
+    height: 42px;
+    transition: 0.3s;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      transition: 0.3s;
+      background-color: $pointGreen;
+    }
+
+    .navLogin {
+      color: $pointBlack;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size: 15px;
+    }
+
+    .cartNumber {
+      @include flex(center, center);
+      position: absolute;
+      top: 1px;
+      right: -1px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: #ea4135;
+
+      p {
+        width: 16px;
+        height: 16px;
+        color: #fff;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .cartNumberNo {
+        display: none;
+      }
+    }
+  }
+
+  .navLoginBarUserList {
+    @include flex(center, center);
+    width: 42px;
+    height: 42px;
+    transition: 0.3s;
+    border-radius: 8px;
+    background-color: $deepYellow;
+    cursor: pointer;
+
+    &:hover {
+      transition: 0.3s;
+      border-radius: 50%;
+      background-color: $pointOrange;
+    }
+
+    .navSinUP {
+      color: $pointBlack;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size: 15px;
+    }
+  }
+}
