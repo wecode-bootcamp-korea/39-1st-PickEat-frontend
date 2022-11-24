@@ -25,8 +25,8 @@ const Router = () => {
         <Route path="/terms" element={<Terms />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/detailpage" element={<DetailPage />} />
-        <Route path="/lecturedetailpage" element={<LectureDetailPage />} />
-        <Route path="/productdetailpage" element={<ProductDetailPage />} />
+        <Route path="/lecturedetailpage/:id" element={<LectureDetailPage />} />
+        <Route path="/productdetailpage/:id" element={<ProductDetailPage />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />
         <Route path="/signup" element={<Signup />} />
