@@ -1,0 +1,64 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixin.scss';
+
+.cartLectureList {
+  display: flex;
+  margin-top: 20px;
+
+  .cartCheckbox {
+    width: 20px;
+    height: 20px;
+    accent-color: $pointGreen;
+  }
+
+  .cartLectureImg {
+    width: 130px;
+    margin: 0 20px;
+  }
+
+  .cartLectureInfo {
+    font-size: 15px;
+
+    .cartLectureTitle {
+      font-weight: bold;
+      padding-bottom: 7px;
+    }
+
+    .lectureDuration {
+      font-size: 12px;
+    }
+
+    .lectureInstructor {
+      color: #858a8d;
+    }
+
+    .lectureInstructor::after {
+      content: '|';
+      padding: 0 7px;
+      color: #858a8d;
+    }
+
+    .lectureDuration {
+      color: #00c471;
+    }
+  }
+
+  .cartLecturePrice {
+    margin-left: auto;
+
+    .lecturePrice {
+      font-weight: bold;
+    }
+
+    .cartDeleteBtn {
+      margin-left: 20px;
+      background-color: transparent;
+      color: #858a8d;
+      font-size: 15px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
