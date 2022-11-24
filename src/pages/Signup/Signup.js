@@ -130,7 +130,6 @@ export default function Signup({ setFormTitle }) {
             className="push-join-btn"
             // disabled={disabled}
             onClick={btnCheck}
-            // onClick={btnCheck}
           >
             가입하기
           </button>

@@ -1,3 +1,6 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
 header {
   justify-content: center;
   text-align: center;
@@ -64,7 +67,7 @@ header {
   padding-left: 1px;
   font-size: 15px;
 }
-.icon-req {
+icon-req {
   display: inline-block;
   width: 5px;
   height: 5px;
@@ -78,9 +81,8 @@ header {
   border: 1px solid #e9ecef;
 }
 .push-join-btn {
-  display: flex;
+  @include flex(center, normal);
   position: relative;
-  justify-content: center;
   width: 100%;
   margin-top: 30px;
   padding: 14px;
@@ -94,11 +96,3 @@ header {
   text-align: center;
   cursor: pointer;
 }
-// .push-join-btn:hover {
-//   padding: 14px;
-//   border: 1px solid;
-//   background: #32b67a;
-//   color: black;
-//   font-size: 17px;
-//   cursor: pointer;
-// }
