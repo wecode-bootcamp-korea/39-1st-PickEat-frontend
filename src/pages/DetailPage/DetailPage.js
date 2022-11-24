@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './DetailPage.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Category from './component/category/Category.js';
 import Lectures from './component/lecture/Lectures';
 
