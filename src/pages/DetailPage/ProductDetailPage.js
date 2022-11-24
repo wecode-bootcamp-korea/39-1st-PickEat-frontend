@@ -39,7 +39,7 @@ const ProductDetailPage = () => {
     setReview('');
     setClicked([]);
 
-    fetch(`http://10.58.52.173:3000/comment/productId/${productDatas.id}`, {
+    fetch(`http://10.58.52.175:3000/comment/productId/${productDatas.id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -50,7 +50,7 @@ const ProductDetailPage = () => {
         content: review,
         rate: star,
       }),
-    });
+    }).then(res => console.log(res));
   };
 
   // 수량 증감 버튼
@@ -96,10 +96,12 @@ const ProductDetailPage = () => {
 
   // Review 데이터 불러오기
   useEffect(() => {
-    fetch(`http://10.58.52.173:3000/comment/productId/${productDatas.id}`)
+    fetch(`http://10.58.52.175:3000/comment/productId/${productDatas.id}`)
       .then(response => response.json())
       .then(data => setReviewList(data));
-  }, []);
+  }, [productDatas.id]);
+
+  console.log(reviewList);
 
   return (
     <div className="productDetailPage">
