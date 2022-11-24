@@ -26,7 +26,7 @@ const NavBar = () => {
       navigate('/');
       setTimeout(() => {
         window.scrollTo(0, document.body.scrollHeight);
-      }, 100);
+      }, 300);
     } else {
       window.scrollTo(0, document.body.scrollHeight);
     }
