@@ -1,3 +1,92 @@
-h1 {
-  text-align: center;
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+.footer_main_box {
+  width: 100%;
+
+  .footer_top_menu {
+    @include flex(space-between, normal);
+    padding: 32px 80px;
+    border-bottom: 1px solid #212224;
+    background-color: #f2f3f7;
+
+    .footer_menu {
+      margin-left: 20px;
+
+      .menu_title {
+        padding: 16px 0;
+        color: #212224;
+        font-family: 'Alfa Slab One', cursive;
+        font-size: 17px;
+        font-weight: 500;
+
+        .fa-egg {
+          margin-right: 3px;
+          color: $deepYellow;
+        }
+      }
+
+      .menu_sublist {
+        display: flex;
+        flex-direction: column;
+        color: #212224;
+        font-size: 15px;
+        cursor: pointer;
+
+        .menu_sublist:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .footer_inside {
+    background-color: #f2f3f7;
+    color: #212224;
+    font-size: 12px;
+
+    .footer_text {
+      @include flex(space-evenly, normal);
+      padding-top: 15px;
+
+      .left_footer {
+        font-size: 15px;
+
+        .call_center {
+          padding-bottom: 25px;
+          font-size: 25px;
+        }
+        .call_center_phone {
+          font-size: 40px;
+        }
+      }
+
+      .right_footer {
+      }
+    }
+  }
+
+  .top_btn {
+    position: fixed;
+    z-index: 99;
+    right: 20px;
+    bottom: 20px;
+    padding: 6px;
+    transition: 0.3s;
+    border-radius: 50%;
+    background-color: $deepYellow;
+    color: #334051;
+    cursor: pointer;
+    @include flex(center, center);
+
+    &:hover {
+      scale: 1.05;
+      transition: 0.3s;
+      background-color: $pointOrange;
+    }
+
+    .fa-chevron-up {
+      color: #fff;
+    }
+  }
 }

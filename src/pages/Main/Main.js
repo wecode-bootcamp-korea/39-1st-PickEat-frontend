@@ -100,7 +100,7 @@ const Main = () => {
           </p>
           <div className="colorBoxIneer">
             <input className="colorBoxInput" placeholder="음식검색하기..." />
-            <i class="fa-solid fa-magnifying-glass fa-lg" />
+            <i className="fa-solid fa-magnifying-glass fa-lg" />
           </div>
           <ul className="colorBoxHash">
             <li className="hashTag">
@@ -119,14 +119,14 @@ const Main = () => {
         </div>
         <div className="slideShowBody">
           <div className="slideShowContents">
-            <i class="fa-solid fa-chevron-left fa-2x" onClick={leftSlide} />
+            <i className="fa-solid fa-chevron-left fa-2x" onClick={leftSlide} />
             <Slideshow
               slideImgList={slideImgList}
               slideIndex={slideIndex}
               setSlideIndex={setSlideIndex}
               setBackColor={setBackColor}
             />
-            <i class="fa-solid fa-chevron-right fa-2x" onClick={slide} />
+            <i className="fa-solid fa-chevron-right fa-2x" onClick={slide} />
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@ const Main = () => {
         <p className="popularity">
           <span className="popularityText">
             한번에 하나씩 단과강의 찍먹하기! 🍴
-            <i class="fa-solid fa-fork" />
+            <i className="fa-solid fa-fork" />
           </span>
         </p>
         <div className="freeLectureBody">

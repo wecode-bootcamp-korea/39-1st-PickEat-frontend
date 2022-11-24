@@ -6,7 +6,7 @@ const NavBar = () => {
     <div className="navBar">
       <h1 className="navName">
         <Link to="/">
-          <i class="fa-solid fa-egg" />
+          <i className="fa-solid fa-egg" />
           P!CKEAT
         </Link>
       </h1>
@@ -19,7 +19,7 @@ const NavBar = () => {
         <li className="navContentsList1">
           <p className="navP1">
             LECTURE
-            <i class="fa-solid fa-chevron-down fa-sm fa-down" />
+            <i className="fa-solid fa-chevron-down fa-sm fa-down" />
           </p>
           <div className="dropBox1 dropBoxs">
             <ul className="dropBoxUl">
@@ -65,7 +65,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li className="navLoginBarList2">
-          <Link className="navSinUP" to="/signup">
+          <Link className="navSinUP" to="/terms">
             무료 회원가입
           </Link>
         </li>
