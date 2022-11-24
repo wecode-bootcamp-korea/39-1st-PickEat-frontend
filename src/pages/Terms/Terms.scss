@@ -1,4 +1,5 @@
 header {
+  justify-content: center;
   text-align: center;
 }
 .signContain {
@@ -42,9 +43,11 @@ header {
   padding-left: 10px;
 }
 .sign-two-textline {
-  padding-bottom: 70px;
+  padding-top: 5px;
+  padding-right: 55%;
+  padding-bottom: 30%;
   overflow-y: auto;
-  border: 1px solid black;
+  border: 1px solid #e9ecef;
   border-radius: 5px;
 }
 .two-req {
@@ -76,9 +79,11 @@ header {
   cursor: pointer;
 }
 .sign-three-textline {
-  padding-bottom: 70px;
+  padding-top: 5px;
+  padding-right: 55%;
+  padding-bottom: 30%;
   overflow-y: auto;
-  border: 1px solid black;
+  border: 1px solid #e9ecef;
   border-radius: 5px;
 }
 .sign-input-four {
@@ -98,9 +103,11 @@ header {
   padding-left: 10px;
 }
 .sign-four-textline {
-  padding-bottom: 70px;
+  padding-top: 5px;
+  padding-right: 55%;
+  padding-bottom: 30%;
   overflow-y: auto;
-  border: 1px solid black;
+  border: 1px solid #e9ecef;
   border-radius: 5px;
 }
 .sign-input-five {

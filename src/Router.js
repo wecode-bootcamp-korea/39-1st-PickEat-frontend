@@ -1,24 +1,33 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
-import UserForm from './pages/Login/UserForm';
+import UserForm from './pages/UserForm/UserForm';
 import DetailPage from './pages/DetailPage/DetailPage';
 import Payment from './pages/Payment/Payment';
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
+// import TopBtn from './components/TopBtn/TopBtn';
 import Footer from './components/Footer/Footer';
-import Signup from './pages/Login/components/Signup/Signup';
+import Signup from './pages/Signup/Signup';
+import Terms from './pages/Terms/Terms';
+import NavBar from './components/NavBar/NavBar';
+import Login from './pages/Login/Login';
+
 const Router = () => {
   return (
     <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/login" element={<UserForm />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/detailpage" element={<DetailPage />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />
-        <Route path="/Footer" element={<Footer />} />
-        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/Footer" element={<Footer />} /> */}
       </Routes>
+      <Footer />
+      {/* <TopBtn /> */}
     </BrowserRouter>
   );
 };

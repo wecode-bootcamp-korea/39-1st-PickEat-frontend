@@ -1,22 +1,10 @@
 import React, { useState } from 'react';
-//import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './SignUp.scss';
-import '../../UserForm.scss';
-
-// function Login() {
-//   const btnCheck = () => {
-//     fetch('http://10.58.52.237:3000/auth/signup',{
-//       method : 'POST',
-//       headers: {'Content-Type' : 'application/json;charset=utf-8'},
-//       body :JSON.stringify({
-//         email:emailInput,
-//         password:pwInput,
-//         name:nameCheck,
-//         phonenumber:phoneNum',
-//     }),
-//   })
 
 export default function Signup({ setFormTitle }) {
+  const naviagate = useNavigate();
+
   const [emailInput, setEmailInput] = useState('');
   const [pwInput, setPwInput] = useState('');
   const [pwCheck, setPwCheck] = useState('');
@@ -64,19 +52,17 @@ export default function Signup({ setFormTitle }) {
           throw new Error('회원가입에 실패하였습니다. 다시 회원가입 해주세요');
         } else {
           alert('P!CKEAT 회원가입을 성공하였습니다');
+          naviagate('/');
         }
       })
 
       .catch(error => {
-        alert('P!CKEAT 회원가입을 성공하였습니다');
-        window.location.reload();
+        alert('회원정보를 다시 확인해 주세요.');
       });
-
-    // .then(data => console.log(data));
   };
 
   return (
-    <>
+    <div className="login_form">
       <header>
         <p className="sign-contain">회원가입</p>
       </header>
@@ -118,6 +104,7 @@ export default function Signup({ setFormTitle }) {
         <div className="input-name-form">
           <input
             type="text"
+            className="input-name"
             placeholder="이름을(를)입력하세요"
             value={nameCheck}
             onChange={textNameInput}
@@ -132,6 +119,7 @@ export default function Signup({ setFormTitle }) {
           <div className="input-phone-form">
             <input
               type="text"
+              className="input-phone"
               placeholder="연락처(를) 입력하세요"
               value={phoneNum}
               onChange={textPhoneInput}
@@ -141,10 +129,7 @@ export default function Signup({ setFormTitle }) {
           <button
             className="push-join-btn"
             // disabled={disabled}
-            onClick={() => {
-              setFormTitle('login');
-              btnCheck();
-            }}
+            onClick={btnCheck}
             // onClick={btnCheck}
           >
             가입하기
@@ -152,15 +137,10 @@ export default function Signup({ setFormTitle }) {
         </div>
       </div>
       <div className="close-btn">
-        <button
-          className="closeBtn"
-          onClick={() => {
-            setFormTitle('./main');
-          }}
-        >
+        <button className="closeBtn" onClick={() => naviagate('/')}>
           <i className="btl bt-times" />
         </button>
       </div>
-    </>
+    </div>
   );
 }

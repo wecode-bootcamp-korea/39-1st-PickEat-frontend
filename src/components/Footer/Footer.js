@@ -1,12 +1,22 @@
 import React from 'react';
+
 import './Footer.scss';
 
 function Footer() {
+  const TopBtn = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <footer className="footer_main_box">
       <div className="footer_top_menu">
         <div className="footer_menu">
-          <div className="menu_title">P!CKEAT</div>
+          <div className="menu_title">
+            <span>
+              {' '}
+              <i className="fa-solid fa-egg" />
+            </span>
+            P!CKEAT
+          </div>
           <div className="menu_sublist">
             <a className="list_text">P!CKEAT 소개</a>
             <a className="list_text">대표이사 소개</a>
@@ -41,7 +51,7 @@ function Footer() {
               <div className="left_footer">
                 <p className="call_center">고객센터</p>
                 <p className="call_center_phone">1588-828200</p>
-                <p className="call_time"> 10:00 ~ 14:00(주말, 공휴일 제외)</p>
+                <p className="call_time"> 10:00 ~ 14:00 (주말, 공휴일 제외)</p>
               </div>
               <div className="right_footer">
                 <p>(주) P!CKEAT</p>
@@ -66,14 +76,12 @@ function Footer() {
               <button className="policy_text2" placeholder="개인정보처리방침" />
             </div>
           </div>
-          {/* <div className="footer_sns">
-              <div className="footer_sns_link">
-                <a className="insta_link" />
-                <a className="kakao_link" />
-              </div>
-            </div> */}
         </div>
       </div>
+
+      <button className="top_btn" onClick={TopBtn}>
+        <i class="fas fa-chevron-up fa-3x" />
+      </button>
     </footer>
   );
 }

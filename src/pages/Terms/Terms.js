@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Terms.scss';
 
 export default function Terms({ setFormTitle }) {
+  const navigate = useNavigate();
   const [allCheck, setAllCheck] = useState(false);
   const [useCheck, setUseCheck] = useState(false);
   const [privacyCheck, setPrivacyCheck] = useState(false);
@@ -76,7 +77,7 @@ export default function Terms({ setFormTitle }) {
     }
   }, [useCheck, privacyCheck, marketCheck, smsCheck, emailCheck]);
   return (
-    <>
+    <div className="login_form">
       <header>
         <p className="signContain">약관동의</p>
       </header>
@@ -107,7 +108,7 @@ export default function Terms({ setFormTitle }) {
         <input
           type="text"
           className="sign-two-textline"
-          placeholder="제 1조 목적 본 이용약관은 (주)P!CKEAT"
+          placeholder="제 1조 목적 본 이용약관은"
         />
       </div>
       <label className="sign-input-three">
@@ -118,14 +119,14 @@ export default function Terms({ setFormTitle }) {
           checked={privacyCheck}
           onChange={privacyBtnCheck}
         />
-        <span className="signCheck-three">개인정보 수집 및 이용 동의</span>
+        <span className="signCheck-three">개인정보 수집 및 </span>
         <span className="three-req">(필수)</span>
       </label>
       <div className="sign-three-text">
         <input
           type="text"
           className="sign-three-textline"
-          placeholder="1.개인정보 수집목적 및 이용목적"
+          placeholder="1.개인정보 수집목적 및"
         />
       </div>
       <label className="sign-input-four">
@@ -144,7 +145,7 @@ export default function Terms({ setFormTitle }) {
         <input
           type="text"
           className="sign-four-textline"
-          placeholder="P!ckEat의 프로그램 및 서비스와"
+          placeholder="P!ckEat의 프로그램 및"
         />
       </div>
       <label className="sign-input-five">
@@ -170,23 +171,13 @@ export default function Terms({ setFormTitle }) {
         <span className="six-req">(선택)</span>
       </label>
       <div className="clearBtn-contain">
-        <button
-          className="clearBtn-cancle"
-          onClick={() => {
-            setFormTitle('login');
-          }}
-        >
+        <button className="clearBtn-cancle" onClick={() => navigate('/')}>
           취소
         </button>
-        <button
-          className="clearBtn-join"
-          onClick={() => {
-            setFormTitle('signup');
-          }}
-        >
+        <button className="clearBtn-join" onClick={() => navigate('/signup')}>
           가입하기
         </button>
       </div>
-    </>
+    </div>
   );
 }

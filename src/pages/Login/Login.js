@@ -80,12 +80,7 @@ export default function Login({ setFormTitle }) {
         로그인
       </button>
       <div className="login-id-pw-input">
-        <p
-          className="login-link"
-          onClick={() => {
-            setFormTitle('terms');
-          }}
-        >
+        <p className="login-link" onClick={() => navigate('/terms')}>
           회원가입
         </p>
         <a className="id-pw-link">아이디 · 비밀번호 찾기</a>
@@ -104,12 +99,7 @@ export default function Login({ setFormTitle }) {
         </button>
       </div>
       <div className="close-btn">
-        <button
-          className="closeBtn"
-          onClick={() => {
-            setFormTitle('./main');
-          }}
-        >
+        <button className="closeBtn" onClick={() => navigate('/')}>
           <i className="btl bt-times" />
         </button>
       </div>
