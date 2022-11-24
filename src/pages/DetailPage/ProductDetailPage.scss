@@ -2,7 +2,7 @@
 @import '../../styles/mixin.scss';
 
 .productDetailPage {
-  margin: 60px auto 0;
+  margin: 100px auto 100px;
   width: 70%;
 
   .product {
@@ -16,6 +16,7 @@
     .productContent {
       padding-left: 5%;
       width: 45%;
+      text-align: left;
 
       .productBrandName {
         padding-bottom: 10px;
@@ -27,6 +28,7 @@
         margin-bottom: 15px;
         font-size: 25px;
         line-height: 40px;
+        text-align: left;
       }
 
       .productPrice {

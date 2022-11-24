@@ -3,25 +3,11 @@ import './CartLectureList.scss';
 
 const CartLectureList = props => {
   const { id, title, price, image, productId } = props.lecture;
-  const { deleteBtn, checkItems, setCheckItems } = props;
-
-  // const handleSingleCheck = (checked, id) => {
-  //   if (checked) {
-  //     setCheckItems(prev => [...prev, id]);
-  //   } else {
-  //     setCheckItems(checkItems.filter(el => el !== id));
-  //   }
-  // };
+  const { deleteBtn } = props;
 
   return (
     <div className="cartLectureList" key={id}>
-      <input
-        className="cartCheckbox"
-        type="checkbox"
-        defaultChecked={true}
-        // onChange={e => handleSingleCheck(e.target.checked, id)}
-        // checked={checkItems.includes(id)}
-      />
+      <input className="cartCheckbox" type="checkbox" defaultChecked={true} />
       <img className="cartLectureImg" src={image} alt="lectureImg" />
       <div className="cartLectureInfo">
         <div className="cartLectureTitle">{title}</div>

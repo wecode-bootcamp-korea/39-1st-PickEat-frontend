@@ -35,15 +35,15 @@ const AsideCart = props => {
         <div className="buyerInfoContent">
           <div className="buyerInfoList">
             <dt className="infoTitle">이름</dt>
-            <dd className="infoContent">김보윤</dd>
+            <dd className="infoContent">{productDatas[0]?.name}</dd>
           </div>
           <div className="buyerInfoList">
             <dt className="infoTitle">이메일</dt>
-            <dd className="infoContent">kby0908@naver.com</dd>
+            <dd className="infoContent">{productDatas[0]?.email}</dd>
           </div>
           <div className="buyerInfoList">
             <dt className="infoTitle">휴대폰 번호</dt>
-            <dd className="infoContent">+82 01012345678</dd>
+            <dd className="infoContent">{productDatas[0]?.phoneNumber}</dd>
           </div>
         </div>
       </section>

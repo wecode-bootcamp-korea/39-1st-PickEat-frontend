@@ -1,7 +1,7 @@
-import './DetailPage.scss';
 import { useEffect, useState } from 'react';
 import Category from './component/category/Category.js';
 import Lectures from './component/lecture/Lectures';
+import './DetailPage.scss';
 
 const DetailPage = () => {
   const [categoryData, setCategoryData] = useState([]);
@@ -10,21 +10,6 @@ const DetailPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
 
-  useEffect(() => {
-    fetch('/data/categoryData.json')
-      .then(response => response.json())
-      .then(data => {
-        setCategoryData(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch('http://10.58.52.158:3002/products?type=코스강의&type=단과강의')
-      .then(response => response.json())
-      .then(data => {
-        setLectures(data);
-      });
-  }, []);
   const saveValue = e => {
     setSearchLectureInput(e.target.value);
   };
@@ -63,6 +48,22 @@ const DetailPage = () => {
       .then(response => response.json())
       .then(data => setLectures(data));
   };
+
+  useEffect(() => {
+    fetch('/data/categoryData.json')
+      .then(response => response.json())
+      .then(data => {
+        setCategoryData(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('http://10.58.52.158:3002/products?type=코스강의&type=단과강의')
+      .then(response => response.json())
+      .then(data => {
+        setLectures(data);
+      });
+  }, []);
 
   return (
     <div className="categoryPageBody">

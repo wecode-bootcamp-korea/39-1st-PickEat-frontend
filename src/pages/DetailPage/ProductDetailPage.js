@@ -42,12 +42,11 @@ const ProductDetailPage = () => {
     setReview('');
     setClicked([]);
 
-    fetch(`http://10.58.52.175:3000/comment/productId/${productDatas.id}`, {
+    fetch(`http://10.58.52.158:3002/comment/productId/${productDatas.id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImlhdCI6MTY2OTI3ODYwOCwiZXhwIjoxNjY5MzY1MDA4fQ.DojOyed8vlvdItKag2TpXhS4e541UBkNqqkQwMUgSU4',
+        authorization: userToken,
       },
       body: JSON.stringify({
         content: review,
@@ -77,9 +76,8 @@ const ProductDetailPage = () => {
   // 장바구니 담기 버튼
   const goToCart = () => {
     alert('장바구니에 성공적으로 담겼습니다!');
-    navigate('/shoppingcart');
 
-    fetch(`http://10.58.52.158:3002/lectures/${productDatas.id}`, {
+    fetch(`http://10.58.52.158:3002/cart/${path}`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -89,6 +87,8 @@ const ProductDetailPage = () => {
         quantity: count,
       }),
     });
+
+    navigate('/shoppingcart');
   };
 
   // 구매하기 버튼
@@ -99,14 +99,14 @@ const ProductDetailPage = () => {
 
   // 상품 불러오기
   useEffect(() => {
-    fetch(`http://10.58.52.158:3002/lectures/${path}`)
+    fetch(`http://10.58.52.158:3002/lecture/${path}`)
       .then(response => response.json())
       .then(data => setProductDatas(data));
   }, []);
 
   // Review 데이터 불러오기
   useEffect(() => {
-    fetch(`http://10.58.52.175:3000/comment/product/${path}`)
+    fetch(`http://10.58.52.158.:3002/comment/product/${path}`)
       .then(response => response.json())
       .then(data => setReviewList(data));
     setIsEnrollReview(false);

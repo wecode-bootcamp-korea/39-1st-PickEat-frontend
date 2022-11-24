@@ -10,21 +10,6 @@ const ShoppingPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
 
-  useEffect(() => {
-    fetch('/data/categoryData.json')
-      .then(response => response.json())
-      .then(data => {
-        setCategoryData(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch('http://10.58.52.158:3002/products?type=요리도구')
-      .then(response => response.json())
-      .then(data => {
-        setCookware(data);
-      });
-  }, []);
   const saveValue = e => {
     setSearchCookwareInput(e.target.value);
   };
@@ -63,6 +48,22 @@ const ShoppingPage = () => {
       .then(response => response.json())
       .then(data => setCookware(data));
   };
+
+  useEffect(() => {
+    fetch('/data/categoryData.json')
+      .then(response => response.json())
+      .then(data => {
+        setCategoryData(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('http://10.58.52.158:3002/products?type=요리도구')
+      .then(response => response.json())
+      .then(data => {
+        setCookware(data);
+      });
+  }, []);
 
   return (
     <div className="categoryPageBody">

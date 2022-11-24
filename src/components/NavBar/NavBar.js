@@ -1,8 +1,8 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
-import './NavBar.scss';
 import ShoppingBasket from './component/UserBar/ShoppingBasket';
 import LoginBar from './component/LoginBar/LoginBar';
+import './NavBar.scss';
+
 const NavBar = () => {
   const location = useLocation();
   const navigate = useNavigate();

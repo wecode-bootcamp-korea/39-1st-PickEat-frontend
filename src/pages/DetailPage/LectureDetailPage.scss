@@ -249,6 +249,7 @@
 
       .commentList {
         margin: 20px 0;
+        border-bottom: 1px solid #e9ecef;
 
         .commentInfo {
           display: flex;
@@ -260,8 +261,6 @@
           }
 
           .commentStarId {
-            padding-left: 20px;
-
             .commentStar {
               padding-bottom: 5px;
             }

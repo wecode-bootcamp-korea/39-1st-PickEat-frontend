@@ -8,11 +8,6 @@ const ReviewList = ({ review, ARRAY }) => {
   return (
     <div className="commentList">
       <div className="commentInfo">
-        <img
-          src="../../images/profileImg.jpg"
-          className="profileImg"
-          alt="profileImage"
-        />
         <div className="commentStarId">
           <div className="commentStar">
             {ARRAY.map((el, idx) => {

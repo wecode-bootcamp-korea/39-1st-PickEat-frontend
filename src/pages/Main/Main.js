@@ -1,8 +1,8 @@
-import './Main.scss';
 import { useState, useEffect, useRef } from 'react';
 import BastLecture from './components/BastLecture/BastLecture';
 import FreeLecture from './components/freeLecture/FreeLecture';
 import SlideBox from './components/SlideBox/SlideBox';
+import './Main.scss';
 
 const Main = () => {
   const [bastLectureList, setBastLectureList] = useState([]);
@@ -12,8 +12,6 @@ const Main = () => {
   const [freeLectureIndex, setFreeLectureIndex] = useState(0);
   const [backColor, setBackColor] = useState('colorBoxColor1');
   const freeLectureRef = useRef(null);
-
-  // const Contact = React.);
 
   const rightfreeLectureSlide = () => {
     if (freeLectureIndex === 2) {

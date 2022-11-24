@@ -11,16 +11,15 @@ export default function Login({ setFormTitle }) {
   const onInputId = e => {
     setInputId(e.currentTarget.value);
   };
+
   const onInputPwd = e => {
     setInputPwd(e.currentTarget.value);
   };
-  // const onInputSumit = e => {
-  //   e.preventDefault();
-  // };
+
   const push_btnCheck = e => {
     e.preventDefault();
 
-    fetch('http://10.58.52.59:3002/users/signin', {
+    fetch('http://10.58.52.158:3002/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({ email: inputId, password: inputPwd }),
@@ -35,8 +34,9 @@ export default function Login({ setFormTitle }) {
         alert('로그인 실패! 아이디 또는 비밀번호를 확인해주세요.');
       })
       .then(data => {
+        alert('로그인 성공!');
         localStorage.setItem('token', data.accessToken);
-        navigate('./main');
+        navigate('/');
       });
   };
 
@@ -72,11 +72,7 @@ export default function Login({ setFormTitle }) {
         />
         <span className="blackCheck">로그인상태유지</span>
       </label>
-      <button
-        className="push-btn"
-        // onChange={onInputSumit}
-        onClick={push_btnCheck}
-      >
+      <button className="push-btn" onClick={push_btnCheck}>
         로그인
       </button>
       <div className="login-id-pw-input">

@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import CartLectureList from './CartLectureList';
 import CartProductList from './CartProductList';
 import AsideCart from './AsideCart';
-
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
   const [cartDatas, setCartDatas] = useState([]);
   const [checkItems, setCheckItems] = useState([true]);
+  const userToken = localStorage.getItem('token');
 
   //강의, 도구 구분
   const lectureDatas = cartDatas.filter(cartData => {
@@ -18,16 +19,17 @@ const ShoppingCart = () => {
     return cartData.type === '요리도구';
   });
 
+  console.log(productDatas);
+
   // 개별 삭제 버튼
   const deleteBtn = productId => {
-    fetch(`http://10.58.52.158:3002/cart/${productId}`, {
+    fetch(`http://10.58.52.158:3002/cart/productId/${productId}`, {
       method: 'delete',
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY2OTIwOTIyMiwiZXhwIjoxNjY5Mjk1NjIyfQ.sB4a72yYOvOaUYrGkEsVpAUhSGVUTitLYBigXzPZNrw',
+        authorization: userToken,
       },
     }).then(res => {
-      if (res.status === 204) {
+      if (res.status === 201) {
         alert('상품이 장바구니에서 삭제되었습니다');
         setCartDatas(
           cartDatas.filter(cartData => productId !== cartData.productId)
@@ -53,8 +55,7 @@ const ShoppingCart = () => {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY2OTIwOTIyMiwiZXhwIjoxNjY5Mjk1NjIyfQ.sB4a72yYOvOaUYrGkEsVpAUhSGVUTitLYBigXzPZNrw',
+        authorization: userToken,
       },
       body: JSON.stringify({ quantity: quantity++ }),
     });
@@ -74,8 +75,8 @@ const ShoppingCart = () => {
     fetch(`http://10.58.52.158:3002/cart/${productId}`, {
       method: 'PATCH',
       headers: {
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY2OTIwOTIyMiwiZXhwIjoxNjY5Mjk1NjIyfQ.sB4a72yYOvOaUYrGkEsVpAUhSGVUTitLYBigXzPZNrw',
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: userToken,
       },
       body: JSON.stringify({ quantity: quantity-- }),
     });
@@ -86,8 +87,7 @@ const ShoppingCart = () => {
     fetch('http://10.58.52.158:3002/cart/', {
       headers: {
         'Content-Type': 'application/json',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY2OTIwOTIyMiwiZXhwIjoxNjY5Mjk1NjIyfQ.sB4a72yYOvOaUYrGkEsVpAUhSGVUTitLYBigXzPZNrw',
+        authorization: userToken,
       },
     })
       .then(response => response.json())

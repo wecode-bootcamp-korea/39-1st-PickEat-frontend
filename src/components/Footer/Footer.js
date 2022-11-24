@@ -1,11 +1,11 @@
 import React from 'react';
-
 import './Footer.scss';
 
 function Footer() {
   const TopBtn = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
   return (
     <footer className="footer_main_box">
       <div className="footer_top_menu">
@@ -80,7 +80,7 @@ function Footer() {
       </div>
 
       <button className="top_btn" onClick={TopBtn}>
-        <i class="fas fa-chevron-up fa-3x" />
+        <i className="fas fa-chevron-up fa-3x" />
       </button>
     </footer>
   );

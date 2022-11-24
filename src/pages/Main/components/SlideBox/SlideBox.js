@@ -32,6 +32,7 @@ const SlideBox = props => {
 
     return () => clearTimeout(slideShow);
   }, [slideIndex]);
+
   return (
     <div className={`mainColorBox ${backColor}`}>
       <div className="colorBoxContent">

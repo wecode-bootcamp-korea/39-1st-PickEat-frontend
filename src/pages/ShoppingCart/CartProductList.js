@@ -3,25 +3,11 @@ import './CartProductList.scss';
 
 const CartProductList = props => {
   const { id, productId, title, price, image, quantity } = props.product;
-  const { increaseBtn, decreaseBtn, deleteBtn, checkItems, setCheckItems } =
-    props;
+  const { increaseBtn, decreaseBtn, deleteBtn } = props;
 
-  const handleSingleCheck = (checked, id) => {
-    if (checked) {
-      setCheckItems(prev => [...prev, id]);
-    } else {
-      setCheckItems(checkItems.filter(el => el !== id));
-    }
-  };
   return (
     <div className="cartProductList" key={id}>
-      <input
-        className="cartCheckbox"
-        type="checkbox"
-        defaultChecked={true}
-        // onChange={e => handleSingleCheck(e.target.checked, id)}
-        // checked={checkItems.includes(id)}
-      />
+      <input className="cartCheckbox" type="checkbox" defaultChecked={true} />
       <img className="cartLectureImg" src={image} alt="lectureImg" />
       <div className="cartProductInfo">
         <div className="productName">{title}</div>
@@ -49,7 +35,7 @@ const CartProductList = props => {
           {(price * quantity).toLocaleString()}
         </span>
         원
-        <button className="cartDeleteBtn" onClick={() => deleteBtn(id)}>
+        <button className="cartDeleteBtn" onClick={() => deleteBtn(productId)}>
           ✖
         </button>
       </div>
