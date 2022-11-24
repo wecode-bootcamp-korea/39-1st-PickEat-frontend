@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import ReviewList from './ReviewList';
 import './ProductDetailPage.scss';
 
 const ProductDetailPage = () => {
   const [productDatas, setProductDatas] = useState([]);
-  const [review, setReview] = useState([]);
+  const [isEnrollReview, setIsEnrollReview] = useState(false);
+  const [review, setReview] = useState('');
   const [reviewList, setReviewList] = useState([]);
   const [count, setCount] = useState(1);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname.substring(19);
 
   const userToken = localStorage.getItem('token');
 
@@ -34,7 +38,6 @@ const ProductDetailPage = () => {
 
   // 리뷰 달기 버튼
   const saveReview = () => {
-    setReviewList([...reviewList, { content: review, rate: star }]);
     alert('리뷰가 등록되었습니다!');
     setReview('');
     setClicked([]);
@@ -44,13 +47,20 @@ const ProductDetailPage = () => {
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImlhdCI6MTY2OTE4ODc3NiwiZXhwIjoxNjY5Mjc1MTc2fQ.3TaDTqvH9NI4IKYEUHZEOZwK_7wdcGaLb_NM5mkByZY',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImlhdCI6MTY2OTI3ODYwOCwiZXhwIjoxNjY5MzY1MDA4fQ.DojOyed8vlvdItKag2TpXhS4e541UBkNqqkQwMUgSU4',
       },
       body: JSON.stringify({
         content: review,
         rate: star,
+        userName: '김명성',
       }),
-    }).then(res => console.log(res));
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message === 'SUCCESS') {
+          setIsEnrollReview(true);
+        }
+      });
   };
 
   // 수량 증감 버튼
@@ -89,19 +99,18 @@ const ProductDetailPage = () => {
 
   // 상품 불러오기
   useEffect(() => {
-    fetch(`http://10.58.52.158:3002/lectures/17`)
+    fetch(`http://10.58.52.158:3002/lectures/${path}`)
       .then(response => response.json())
       .then(data => setProductDatas(data));
   }, []);
 
   // Review 데이터 불러오기
   useEffect(() => {
-    fetch(`http://10.58.52.175:3000/comment/productId/${productDatas.id}`)
+    fetch(`http://10.58.52.175:3000/comment/product/${path}`)
       .then(response => response.json())
       .then(data => setReviewList(data));
-  }, [productDatas.id]);
-
-  console.log(reviewList);
+    setIsEnrollReview(false);
+  }, [isEnrollReview]);
 
   return (
     <div className="productDetailPage">
@@ -242,14 +251,10 @@ const ProductDetailPage = () => {
               </button>
             </div>
           </div>
-          {reviewList.map(review => (
-            <ReviewList
-              key={review.id}
-              review={review}
-              ARRAY={ARRAY}
-              clicked={clicked}
-            />
-          ))}
+          {reviewList?.data &&
+            reviewList?.data[0]?.comments?.map(review => (
+              <ReviewList key={review.userName} review={review} ARRAY={ARRAY} />
+            ))}
         </div>
 
         <div className="productQna">

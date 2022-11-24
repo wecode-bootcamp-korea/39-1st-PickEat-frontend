@@ -1,10 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './BastLecture.scss';
 
 const BastLecture = props => {
   const { lecture } = props;
+  const navigate = useNavigate();
+
   return (
-    <div className="lectures">
+    <div
+      className="lectures"
+      onClick={() => {
+        navigate(`/productdetailpage/${lecture.id}`);
+      }}
+    >
       <Link to="">
         <img className="LectureThumbnail" src={lecture.img} />
         <p className="lecturetitle">{lecture.title}</p>

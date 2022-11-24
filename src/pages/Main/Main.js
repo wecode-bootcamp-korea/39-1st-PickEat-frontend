@@ -164,7 +164,7 @@ const Main = () => {
             </ul>
           </div>
           <i
-            class="fa-solid fa-chevron-right fa-3x"
+            className="fa-solid fa-chevron-right fa-3x"
             onClick={rightfreeLectureSlide}
           />
         </div>

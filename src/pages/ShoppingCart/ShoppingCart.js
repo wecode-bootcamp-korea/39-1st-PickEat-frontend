@@ -8,17 +8,6 @@ const ShoppingCart = () => {
   const [cartDatas, setCartDatas] = useState([]);
   const [checkItems, setCheckItems] = useState([true]);
 
-  //체크박스 전체 선택
-  // const handleAllCheck = checked => {
-  //   if (checked) {
-  //     const newCheckArr = [];
-  //     cartDatas.forEach(el => newCheckArr.push(el.id));
-  //     setCheckItems(newCheckArr);
-  //   } else {
-  //     setCheckItems([]);
-  //   }
-  // };
-
   //강의, 도구 구분
   const lectureDatas = cartDatas.filter(cartData => {
     return cartData.type === '단과강의' || cartData.type === '코스강의';
@@ -113,11 +102,8 @@ const ShoppingCart = () => {
             className="cartCheckbox"
             type="checkbox"
             defaultChecked={true}
-            // onChange={e => handleAllCheck(e.target.checked)}
-            // checked={checkItems.length === cartDatas.length ? true : false}
           />
           <label className="allCheckedTitle">전체선택</label>
-          {/* <button className="deleteBtn">선택삭제 ✖</button> */}
         </nav>
         <main className="sectionCartBody">
           {lectureDatas.map(lecture => (
