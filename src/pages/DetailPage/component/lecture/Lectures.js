@@ -10,7 +10,7 @@ const Lectures = props => {
 
   return (
     <li className="slideLectures">
-      <Link className="linkTag" to="">
+      <Link className="linkTag" to={`/lecturedetailpage/${lectureList.id}`}>
         <img className="LectureThumbnail" src={lectureList.image} />
         <p className="lecturetitle">{lectureList.title}</p>
       </Link>

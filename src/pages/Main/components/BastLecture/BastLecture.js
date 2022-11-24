@@ -4,9 +4,10 @@ import './BastLecture.scss';
 const BastLecture = props => {
   const { lecture } = props;
   const price = lecture.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
   return (
     <div className="lectures">
-      <Link to="">
+      <Link to={`/lecturedetailpage/${lecture.id}`}>
         <img className="LectureThumbnail" src={lecture.image} />
         <p className="lecturetitle">{lecture.title}</p>
       </Link>

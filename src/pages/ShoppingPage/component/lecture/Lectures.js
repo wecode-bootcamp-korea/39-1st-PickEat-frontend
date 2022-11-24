@@ -9,7 +9,7 @@ const Lectures = props => {
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return (
     <li className="slideLectures">
-      <Link className="linkTag" to="">
+      <Link className="linkTag" to={`/productdetailpage/${lectureList.id}`}>
         <img className="LectureThumbnail" src={lectureList.image} />
         <p className="lecturetitle">{lectureList.title}</p>
       </Link>

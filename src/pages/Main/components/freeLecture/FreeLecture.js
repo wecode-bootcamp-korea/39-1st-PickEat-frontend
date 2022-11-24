@@ -5,7 +5,7 @@ const FreeLecture = props => {
   const price = lecture.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return (
     <li className="slideLectures">
-      <Link to="">
+      <Link to={`/lecturedetailpage/${lecture.id}`}>
         <img className="LectureThumbnail" src={lecture.image} />
         <p className="lecturetitle">{lecture.title}</p>
       </Link>
