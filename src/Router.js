@@ -4,6 +4,7 @@ import Main from './pages/Main/Main';
 import Login from './pages/Login/Login';
 import DetailPage from './pages/DetailPage/DetailPage';
 import LectureDetailPage from './pages/DetailPage/LectureDetailPage';
+import ProductDetailPage from './pages/DetailPage/ProductDetailPage';
 import Payment from './pages/Payment/Payment';
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
 import SignUp from './pages/SignUp/SignUp';
@@ -18,6 +19,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/detailpage" element={<DetailPage />} />
         <Route path="/lecturedetailpage" element={<LectureDetailPage />} />
+        <Route path="/productdetailpage" element={<ProductDetailPage />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />
         <Route path="/signup" element={<SignUp />} />
