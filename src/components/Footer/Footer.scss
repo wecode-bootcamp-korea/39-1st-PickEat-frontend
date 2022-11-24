@@ -6,8 +6,8 @@
 
   .footer_top_menu {
     @include flex(space-between, normal);
-    padding: 32px 80px;
-    border-bottom: 1px solid #212224;
+    padding: 30px 300px 50px 300px;
+    border-bottom: 1px solid #888888;
     background-color: #f2f3f7;
 
     .footer_menu {
@@ -15,10 +15,10 @@
 
       .menu_title {
         padding: 16px 0;
-        color: #212224;
-        font-family: 'Alfa Slab One', cursive;
+        color: black;
+        font-family: 'Nanum Gothic', sans-serif;
         font-size: 17px;
-        font-weight: 500;
+        font-weight: 400;
 
         .fa-egg {
           margin-right: 3px;
@@ -29,7 +29,7 @@
       .menu_sublist {
         display: flex;
         flex-direction: column;
-        color: #212224;
+        color: black;
         font-size: 15px;
         cursor: pointer;
 
@@ -46,14 +46,19 @@
     font-size: 12px;
 
     .footer_text {
-      @include flex(space-evenly, normal);
-      padding-top: 15px;
+      display: flex;
+      padding: 0px 300px 0px 300px;
+      padding-top: 50px;
+      border-top: 1px solid rgb(194, 194, 194);
 
       .left_footer {
+        margin-right: 50px;
+        color: black;
         font-size: 15px;
 
         .call_center {
           padding-bottom: 25px;
+          color: black;
           font-size: 25px;
         }
         .call_center_phone {
@@ -62,6 +67,7 @@
       }
 
       .right_footer {
+        color: black;
       }
     }
   }
@@ -74,7 +80,7 @@
     padding: 6px;
     transition: 0.3s;
     border-radius: 50%;
-    background-color: $deepYellow;
+    background-color: $pointGreen;
     color: #334051;
     cursor: pointer;
     @include flex(center, center);

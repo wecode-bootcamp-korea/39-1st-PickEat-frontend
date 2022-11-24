@@ -1,5 +1,5 @@
 import React from 'react';
-import './CartLecureList.scss';
+import './CartLectureList.scss';
 
 const CartLectureList = props => {
   const { id, title, price, image, productId } = props.lecture;

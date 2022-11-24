@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
-// import ReviewList from '../DetailPage/components/ReviewList';
-import ReviewList from './ReviewList';
+import ReviewList from '../DetailPage/ReviewList';
 import './LectureDetailPage.scss';
 
 const LectureDetailPage = () => {

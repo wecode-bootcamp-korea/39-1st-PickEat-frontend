@@ -34,7 +34,7 @@ const NavBar = () => {
   return (
     <div className="navBar">
       <h1 className="navName">
-        <Link to="/">
+        <Link className="navNameLink" to="/">
           <i className="fa-solid fa-egg" />
           P!CKEAT
         </Link>
