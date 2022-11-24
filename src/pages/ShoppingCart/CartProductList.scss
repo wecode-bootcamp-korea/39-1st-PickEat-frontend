@@ -1,0 +1,79 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixin.scss';
+
+.cartProductList {
+  display: flex;
+  margin-top: 20px;
+
+  .cartCheckbox {
+    width: 20px;
+    height: 20px;
+    accent-color: $pointGreen;
+  }
+
+  .cartLectureImg {
+    width: 130px;
+    margin: 0 20px;
+  }
+
+  .cartProductInfo {
+    font-size: 15px;
+
+    .productName {
+      padding-bottom: 7px;
+      font-weight: bold;
+    }
+
+    .productCount {
+      @include flex(normal, center);
+
+      .productCountHeader {
+        margin-right: 10px;
+        color: #858a8d;
+        font-size: 12px;
+      }
+
+      .productCountBtn {
+        @include flex(center, center);
+        border: 1px solid #858a8d;
+        border-radius: 3px;
+
+        .quantity {
+          height: 100%;
+          padding: 0 7px;
+          font-size: 15px;
+        }
+
+        .btn {
+          padding: 0 5px;
+          margin-top: -3.667px;
+          background-color: transparent;
+          font-size: 20px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .cartProductPrice {
+    margin-left: auto;
+
+    .productPrice {
+      font-weight: bold;
+    }
+
+    .cartDeleteBtn {
+      margin-left: 20px;
+      background-color: transparent;
+      color: #858a8d;
+      font-size: 15px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,3 +1,204 @@
-h1 {
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+header {
+  @include flex(center, normal);
+
+  .login-contain {
+    margin-bottom: 19px;
+    padding: 20px;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+  }
+}
+
+form input {
+  display: block;
+}
+
+.login-id-pw {
+  margin-bottom: 20px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+}
+
+.text-file-id {
+  width: 100%;
+  padding: 14px;
+  color: gray;
+  font-size: 18px;
+  text-align: left;
+}
+
+.text-file-pw {
+  width: 100%;
+  padding: 14px;
+  overflow: hidden;
+  border-top: 1px solid #e9ecef;
+  color: gray;
+  font-size: 18px;
+  text-align: left;
+}
+
+.state-input {
+  padding-bottom: 11px;
+  cursor: pointer;
+}
+
+.login-state {
+  width: auto;
+  inline-size: 18px;
+  border: 1px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.state-input {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+.blackCheck {
+  padding-bottom: 1px;
+  padding-left: 10px;
+}
+
+.push-btn {
+  @include flex(center, normal);
+  position: relative;
+  width: 100%;
+  padding: 14px;
+  overflow: hidden;
+  border: none;
+  border-radius: 5px;
+  background-color: #32b67a;
+  color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 17px;
+  font-weight: bold;
   text-align: center;
+  cursor: pointer;
+}
+
+.login-id-pw-input {
+  display: block;
+  position: relative;
+  margin-top: 12px;
+  font-size: 17px;
+}
+
+.login-link {
+  float: left;
+  cursor: pointer;
+}
+
+.id-pw-link {
+  float: right;
+  cursor: pointer;
+}
+
+.or-text {
+  position: relative;
+  margin: 55px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.border-left {
+  position: absolute;
+  top: 50%;
+  left: -55px;
+  width: 61%;
+  height: 1px;
+  background: gray;
+}
+
+.border-light {
+  position: absolute;
+  top: 50%;
+  left: 137px;
+  width: 62%;
+  height: 1px;
+  background: gray;
+}
+
+.shopping-tax {
+  @include flex(center, normal);
+  position: relative;
+  width: 100%;
+}
+
+.shopping {
+  width: 100%;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.kakao-login {
+  @include flex(center, normal);
+  position: relative;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.kakao {
+  @include flex(center, normal);
+  width: 100%;
+  padding: 12px;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #f7e600;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.fa-comment {
+  padding: 1px;
+  padding-right: 7px;
+  color: black;
+  font-size: 18px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  button {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background: none;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+      transform: rotate(45deg);
+      background: gray;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+      transform: rotate(-45deg);
+      background: gray;
+    }
+  }
 }

@@ -64,36 +64,6 @@ const DetailPage = () => {
       .then(data => setLectures(data));
   };
 
-  // const korean = () => {
-  //   fetch('http://10.58.52.158:3002/products?name=한식&type=코스강의')
-  //     .then(response => response.json())
-  //     .then(data => setLectures(data));
-  // };
-
-  // const china = () => {
-  //   fetch('http://10.58.52.158:3002/products?name=중식&type=코스강의')
-  //     .then(response => response.json())
-  //     .then(data => setLectures(data));
-  // };
-
-  // const japan = () => {
-  //   fetch('http://10.58.52.158:3002/products?name=일식&type=코스강의')
-  //     .then(response => response.json())
-  //     .then(data => setLectures(data));
-  // };
-
-  // const american = () => {
-  //   fetch('http://10.58.52.158:3002/products?name=양식&type=코스강의')
-  //     .then(response => response.json())
-  //     .then(data => setLectures(data));
-  // };
-
-  // const mexican = () => {
-  //   fetch('http://10.58.52.158:3002/products?name=멕시코&type=코스강의')
-  //     .then(response => response.json())
-  //     .then(data => setLectures(data));
-  // };
-
   return (
     <div className="categoryPageBody">
       <div className="categorylaieout">

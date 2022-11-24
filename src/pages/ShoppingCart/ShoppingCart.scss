@@ -1,3 +1,58 @@
-h1 {
-  text-align: center;
+@import '../../styles/variables.scss';
+@import '../../styles/mixin.scss';
+
+.container {
+  @include flex(space-between, normal);
+  width: 75%;
+  margin: 0 auto;
+  font-family: 'Noto Sans KR', sans-serif;
+
+  .sectionCart {
+    width: 65%;
+    margin-right: 20px;
+
+    .sectionCartHeader {
+      padding: 20px 0;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .sectionCartControl {
+      @include flex(normal, center);
+      border-bottom: 1px solid black;
+      padding: 15px 0;
+      font-size: 20px;
+
+      .cartCheckbox {
+        width: 20px;
+        height: 20px;
+        accent-color: $pointGreen;
+      }
+
+      .allCheckedTitle {
+        padding-left: 20px;
+        font-size: 18px;
+        letter-spacing: -1px;
+      }
+
+      .deleteBtn {
+        margin-left: auto;
+        padding: 10px;
+        border: 1px solid #858a8d;
+        border-radius: 6px;
+        background-color: transparent;
+        font-weight: bold;
+        letter-spacing: -1px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .line {
+      margin: 20px 0;
+      border-top: 1px solid gray;
+    }
+  }
 }

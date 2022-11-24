@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './FreeLecture.scss';
 const FreeLecture = props => {
   const { lecture } = props;
+  const price = lecture.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return (
     <li className="slideLectures">
       <Link to="">
@@ -24,7 +25,7 @@ const FreeLecture = props => {
         <span className="reviewNumber">(100)</span>
       </div>
       <div className="price">
-        <p>{lecture.price}</p>
+        <p>{price}</p>
       </div>
     </li>
   );

@@ -1,0 +1,98 @@
+@import '../../styles/variables';
+@import '../../styles/mixin';
+
+header {
+  justify-content: center;
+  text-align: center;
+}
+.sign-contain {
+  margin-bottom: 25px;
+  padding-top: 8px;
+}
+
+.sign-id-pw-check {
+  border: 1px solid #e9ecef;
+}
+.text-file-sign-id {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+}
+.text-file-sign-pw {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+}
+.text-file-pw-check {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+}
+.input-name-block {
+  margin-top: 28px;
+}
+.input-name-mini {
+  padding-left: 1px;
+  font-size: 15px;
+}
+.icon-req {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background: blue;
+  vertical-align: 2px;
+}
+.input-name-form {
+  margin-top: 4px;
+  border: 1px solid #e9ecef;
+}
+.input-phone {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+}
+.input-name {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+}
+.input-phone-block {
+  margin-top: 28px;
+}
+.input-phone-mini {
+  padding-left: 1px;
+  font-size: 15px;
+}
+icon-req {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background: blue;
+  vertical-align: 2px;
+}
+.input-phone-form {
+  margin-top: 4px;
+  border: 1px solid #e9ecef;
+}
+.push-join-btn {
+  @include flex(center, normal);
+  position: relative;
+  width: 100%;
+  margin-top: 30px;
+  padding: 14px;
+  overflow: hidden;
+  border: none;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  background-color: #32b67a;
+  color: white;
+  font-size: 17px;
+  text-align: center;
+  cursor: pointer;
+}

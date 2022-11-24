@@ -3,6 +3,7 @@ import './BastLecture.scss';
 
 const BastLecture = props => {
   const { lecture } = props;
+  const price = lecture.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return (
     <div className="lectures">
       <Link to="">
@@ -25,7 +26,7 @@ const BastLecture = props => {
         <span className="reviewNumber">(100)</span>
       </div>
       <div className="price">
-        <p>{lecture.price}</p>
+        <p>{price}</p>
       </div>
     </div>
   );

@@ -1,0 +1,352 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixin.scss';
+
+.productDetailPage {
+  margin: 60px auto 0;
+  width: 70%;
+
+  .product {
+    @include flex(center, center);
+    font-family: 'Nanum Gothic', sans-serif;
+
+    .productImg {
+      width: 30rem;
+    }
+
+    .productContent {
+      padding-left: 5%;
+      width: 45%;
+
+      .productBrandName {
+        padding-bottom: 10px;
+        color: gray;
+        font-size: 15px;
+      }
+
+      .productName {
+        margin-bottom: 15px;
+        font-size: 25px;
+        line-height: 40px;
+      }
+
+      .productPrice {
+        padding-bottom: 15px;
+        font-size: 15px;
+      }
+
+      .productDelivery {
+        display: flex;
+        padding: 20px 40px 20px 0;
+
+        .productDeliveryTitle {
+          font-size: 15px;
+          padding-right: 40px;
+        }
+
+        .productDeliveryPrice {
+          color: gray;
+        }
+      }
+
+      .productSeller {
+        display: flex;
+
+        .productSellerTitle {
+          padding-right: 25px;
+        }
+
+        .productSellerName {
+          padding-bottom: 15px;
+          font-family: 'Alfa Slab One', cursive;
+        }
+      }
+
+      .productOption {
+        display: flex;
+
+        .productOptionTitle {
+          padding-right: 40px;
+        }
+
+        .productOptionAmount {
+          @include flex(center, center);
+          border: 1px solid #858a8d;
+          border-radius: 3px;
+
+          .amount {
+            padding: 4px 7px;
+            height: 100%;
+            font-size: 13px;
+          }
+
+          .decreaseBtn,
+          .increaseBtn {
+            margin-top: -3.667px;
+            padding: 0 5px;
+            background-color: transparent;
+            font-size: 20px;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .productSelected {
+        @include flex(space-between, normal);
+        width: 90%;
+        margin: 20px 0;
+      }
+
+      .payFormBtns {
+        display: flex;
+
+        .cartBtn,
+        .payBtn {
+          width: 45%;
+          padding: 12px;
+          border-radius: 4px;
+          font-family: 'Nanum Gothic', sans-serif;
+          font-size: 15px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .cartBtn {
+          background-color: #f8f9fa;
+        }
+
+        .payBtn {
+          margin-left: 10px;
+          background-color: $pointOrange;
+          color: white;
+          font-family: 'Nanum Gothic', sans-serif;
+        }
+      }
+    }
+  }
+
+  .productDetailPageMain {
+    .productDetailPageMainNavBar {
+      @include flex(space-around, normal);
+      position: sticky;
+      top: 0;
+      padding: 20px;
+      width: 100%;
+      margin: 30px auto;
+      background-color: #f8f9fa;
+      font-family: 'Nanum Gothic', sans-serif;
+      z-index: 1;
+
+      .navBarInfo,
+      .navBarReview,
+      .navBarCall {
+        &:hover {
+          color: $pointOrange;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .productDetailPageContent {
+      width: 65%;
+      font-family: 'Noto Sans KR', sans-serif;
+      .productDetailPageInfo {
+        .productInfoTitle {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .productImg {
+          width: 100%;
+          margin: 20px 0;
+        }
+      }
+
+      .review {
+        font-family: 'Noto Sans KR', sans-serif;
+
+        .reviewTitle {
+          padding-bottom: 20px;
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .reviewSubTitle {
+          padding-bottom: 10px;
+          font-size: 15px;
+          color: gray;
+        }
+
+        .inputBox {
+          @include flex(normal, center);
+          flex-direction: column;
+          padding: 40px;
+          border: 1px solid #e9ecef;
+          border-radius: 4px;
+          background-color: #f8f9fa;
+
+          .countingStar {
+            padding-bottom: 20px;
+            .yellowStar {
+              color: #fcc419;
+            }
+            & svg {
+              color: rgb(172, 170, 170);
+              cursor: pointer;
+            }
+
+            :hover svg {
+              color: #fcc419;
+            }
+          }
+
+          .inputBoxStar {
+            display: inline;
+            padding-bottom: 40px;
+            font-family: 'Noto Sans KR', sans-serif;
+          }
+
+          .reviewInputBox {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #e9ecef;
+            font-size: 13px;
+            font-family: 'Noto Sans KR', sans-serif;
+
+            resize: none;
+
+            &::placeholder {
+              opacity: 0.4;
+            }
+          }
+
+          .enrollBtn {
+            padding: 7px 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+            background-color: $pointOrange;
+            color: white;
+            font-family: 'Nanum Gothic', sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+
+            &:disabled {
+              opacity: 0.4;
+              cursor: default;
+            }
+          }
+        }
+      }
+    }
+
+    .productQna {
+      width: 65%;
+      font-family: 'Noto Sans KR', sans-serif;
+
+      .productQnaTitle {
+        padding: 40px 0 20px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .productQnaQuestion {
+        padding: 20px 0;
+      }
+
+      .productQnaAnswer {
+        line-height: 25px;
+      }
+    }
+  }
+
+  .productDetailPageAside {
+    position: sticky;
+    top: 100px;
+    width: 30%;
+    float: right;
+    font-family: 'Nanum Gothic', sans-serif;
+
+    .asideSelectedProduct {
+      padding: 15px;
+      margin-bottom: 10px;
+      background-color: #f8f9fa;
+      color: gray;
+
+      .asideProductName {
+        margin-bottom: 20px;
+      }
+
+      .asideProductOption {
+        @include flex(space-between, center);
+
+        .asideProductTitle {
+          padding-right: 5px;
+        }
+
+        .asideOptionAmount {
+          @include flex(center, center);
+          width: 50%;
+          border: 1px solid #858a8d;
+          border-radius: 3px;
+
+          .amount {
+            height: 100%;
+            font-size: 13px;
+          }
+
+          .decreaseBtn,
+          .increaseBtn {
+            padding: 0 10px;
+            margin-top: -3.667px;
+            background-color: transparent;
+            font-size: 20px;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .asideProductPrice {
+      margin-top: 30%;
+
+      .asidePrice {
+        margin-bottom: 20px;
+        font-size: 25px;
+      }
+
+      .payFormBtns {
+        .cartBtn,
+        .payBtn {
+          width: 100%;
+          padding: 12px;
+          border-radius: 4px;
+          font-size: 15px;
+          font-family: 'Nanum Gothic', sans-serif;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .cartBtn {
+          background-color: #f8f9fa;
+        }
+
+        .payBtn {
+          margin-top: 10px;
+          color: white;
+          background-color: $pointOrange;
+          font-family: 'Nanum Gothic', sans-serif;
+        }
+      }
+    }
+  }
+}

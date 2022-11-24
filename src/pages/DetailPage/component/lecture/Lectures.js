@@ -4,6 +4,9 @@ const Lectures = props => {
   const { lectureList } = props;
   const lectureType =
     lectureList.type === '코스강의' ? 'ratingTag' : 'ratingTag1';
+  const price = lectureList.price
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   return (
     <li className="slideLectures">
@@ -27,7 +30,7 @@ const Lectures = props => {
         <span className="reviewNumber">(100)</span>
       </div>
       <div className="price">
-        <p>{lectureList.price}</p>
+        <p>{price}</p>
       </div>
     </li>
   );
