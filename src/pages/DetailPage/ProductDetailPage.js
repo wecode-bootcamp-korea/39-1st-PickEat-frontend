@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
-import ReviewList from './components/ReviewList/ReviewList';
+import ReviewList from './ReviewList';
 import './ProductDetailPage.scss';
 
 const ProductDetailPage = () => {
@@ -10,11 +10,15 @@ const ProductDetailPage = () => {
   const [reviewList, setReviewList] = useState([]);
   const [count, setCount] = useState(1);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
-  let star = clicked.filter(Boolean).length;
-
   const navigate = useNavigate();
+
+  const userToken = localStorage.getItem('token');
+
+  let star = clicked.filter(Boolean).length;
+  const valid = review.length >= 5 && star > 0 ? false : true;
   const ARRAY = [0, 1, 2, 3, 4];
 
+  // 별점 매기기
   const handleStarClick = index => {
     let clickStates = [...clicked];
     for (let i = 0; i < 5; i++) {
@@ -23,13 +27,12 @@ const ProductDetailPage = () => {
     setClicked(clickStates);
   };
 
+  // 입력된 리뷰 가져오기
   const handleReview = e => {
     setReview(e.target.value);
   };
 
-  console.log(productDatas.id);
-  console.log(reviewList);
-
+  // 리뷰 달기 버튼
   const saveReview = () => {
     setReviewList([...reviewList, { content: review, rate: star }]);
     alert('리뷰가 등록되었습니다!');
@@ -50,8 +53,7 @@ const ProductDetailPage = () => {
     });
   };
 
-  const valid = review.length >= 5 && star > 0 ? false : true;
-
+  // 수량 증감 버튼
   const increaseBtn = () => {
     setCount(count => count + 1);
   };
@@ -62,44 +64,42 @@ const ProductDetailPage = () => {
     }
   };
 
+  // 장바구니 담기 버튼
   const goToCart = () => {
     alert('장바구니에 성공적으로 담겼습니다!');
     navigate('/shoppingcart');
 
-    // fetch(``, {
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=utf-8',
-    //     // Authorization: 'dfd',
-    //   },
-    //   body: JSON.stringify({
-    //     // product_id: id,
-    //     // quantity: quantity,
-    //   }),
-    // });
+    fetch(`http://10.58.52.158:3002/lectures/${productDatas.id}`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: userToken,
+      },
+      body: JSON.stringify({
+        quantity: count,
+      }),
+    });
   };
 
+  // 구매하기 버튼
   const payBtn = () => {
     alert('구매 완료되었습니다!');
     navigate('/');
   };
 
-  // Mock Data
+  // 상품 불러오기
   useEffect(() => {
-    fetch(`http://10.58.52.158:3002/lectures/9`)
+    fetch(`http://10.58.52.158:3002/lectures/17`)
       .then(response => response.json())
       .then(data => setProductDatas(data));
   }, []);
 
-  console.log(productDatas);
-
-  // useEffect(() => {
-  //   fetch(`http://10.58.52.173:3000/comment/productId/${productDatas.id}`)
-  //     .then(response => response.json())
-  //     .then(data => setReviewList(data));
-  // }, []);
-
-  console.log(reviewList);
+  // Review 데이터 불러오기
+  useEffect(() => {
+    fetch(`http://10.58.52.173:3000/comment/productId/${productDatas.id}`)
+      .then(response => response.json())
+      .then(data => setReviewList(data));
+  }, []);
 
   return (
     <div className="productDetailPage">
@@ -112,7 +112,9 @@ const ProductDetailPage = () => {
         <div className="productContent">
           <div className="productBrandName">PiCKEAT</div>
           <div className="productName">{productDatas?.title}</div>
-          <div className="productPrice">{productDatas?.price}원</div>
+          <div className="productPrice">
+            {Number(productDatas.price).toLocaleString()}원
+          </div>
           <div className="productDelivery">
             <div className="productDeliveryTitle">배송</div>
             <div className="productDeliveryPrice">무료배송</div>
