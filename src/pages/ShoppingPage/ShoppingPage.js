@@ -1,12 +1,12 @@
-import './DetailPage.scss';
+import './ShoppingPage.scss';
 import { useEffect, useState } from 'react';
 import Category from './component/category/Category.js';
 import Lectures from './component/lecture/Lectures';
 
-const DetailPage = () => {
+const ShoppingPage = () => {
   const [categoryData, setCategoryData] = useState([]);
-  const [lectures, setLectures] = useState([]);
-  const [searchLectureInput, setSearchLectureInput] = useState('');
+  const [cookwares, setCookware] = useState([]);
+  const [searchCookwareInput, setSearchCookwareInput] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
 
@@ -19,31 +19,31 @@ const DetailPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://10.58.52.158:3002/products?type=코스강의&type=단과강의')
+    fetch('http://10.58.52.158:3002/products?type=요리도구')
       .then(response => response.json())
       .then(data => {
-        setLectures(data);
+        setCookware(data);
       });
   }, []);
   const saveValue = e => {
-    setSearchLectureInput(e.target.value);
+    setSearchCookwareInput(e.target.value);
   };
 
   const deleteValue = () => {
-    setSearchLectureInput('');
+    setSearchCookwareInput('');
   };
 
-  const searchLectures = lectures.filter(lecture =>
-    lecture.title.includes(searchLectureInput)
+  const searchLectures = cookwares.filter(lecture =>
+    lecture.title.includes(searchCookwareInput)
   );
 
   const clearAll =
-    searchLectureInput.length > 0
+    searchCookwareInput.length > 0
       ? 'fa-solid fa-xmark fa-lg'
       : 'fa-solid fa-magnifying-glass fa-lg';
 
   const changeColor =
-    searchLectureInput.length > 0
+    searchCookwareInput.length > 0
       ? 'searchCategoryIconX'
       : 'searchCategoryIcon';
 
@@ -59,9 +59,9 @@ const DetailPage = () => {
   const runDrop2 = isOpen2 ? 'courseLectureDropsOn' : 'courseLectureDropsOff';
 
   const allLectures = () => {
-    fetch('http://10.58.52.158:3002/products?type=코스강의&type=단과강의')
+    fetch('http://10.58.52.158:3002/products?type=요리도구')
       .then(response => response.json())
-      .then(data => setLectures(data));
+      .then(data => setCookware(data));
   };
 
   return (
@@ -71,12 +71,12 @@ const DetailPage = () => {
           <div className="leftCategory">
             <div className="leftCategoryContents1">
               <button className="leftCategoryButton" onClick={allLectures}>
-                전체강의
+                전체상품
               </button>
             </div>
             <div className="courseLectureBody">
               <div className="leftCategoryContents2" onClick={dropDown}>
-                <button className="leftCategoryButton">코스강의</button>
+                <button className="leftCategoryButton">조리도구</button>
                 <i
                   className={`fa-solid fa-angle-${isOpen ? 'down' : 'right'}`}
                 />
@@ -88,11 +88,11 @@ const DetailPage = () => {
                       'http://10.58.52.158:3002/products?name=한식&type=코스강의'
                     )
                       .then(response => response.json())
-                      .then(data => setLectures(data));
+                      .then(data => setCookware(data));
                   }}
                   className="courseLectureContents"
                 >
-                  <button>한식</button>
+                  <button>후라이팬</button>
                 </div>
                 <div
                   onClick={() => {
@@ -100,11 +100,11 @@ const DetailPage = () => {
                       'http://10.58.52.158:3002/products?name=중식&type=코스강의'
                     )
                       .then(response => response.json())
-                      .then(data => setLectures(data));
+                      .then(data => setCookware(data));
                   }}
                   className="courseLectureContents"
                 >
-                  <button>중식</button>
+                  <button>냄비</button>
                 </div>
                 <div
                   onClick={() => {
@@ -112,11 +112,11 @@ const DetailPage = () => {
                       'http://10.58.52.158:3002/products?name=일식&type=코스강의'
                     )
                       .then(response => response.json())
-                      .then(data => setLectures(data));
+                      .then(data => setCookware(data));
                   }}
                   className="courseLectureContents"
                 >
-                  <button>일식</button>
+                  <button>뒤집개</button>
                 </div>
                 <div
                   onClick={() => {
@@ -124,11 +124,11 @@ const DetailPage = () => {
                       'http://10.58.52.158:3002/products?name=양식&type=코스강의'
                     )
                       .then(response => response.json())
-                      .then(data => setLectures(data));
+                      .then(data => setCookware(data));
                   }}
                   className="courseLectureContents"
                 >
-                  <button>양식</button>
+                  <button>부엌칼</button>
                 </div>
                 <div
                   onClick={() => {
@@ -136,16 +136,16 @@ const DetailPage = () => {
                       'http://10.58.52.158:3002/products?name=멕시코&type=코스강의'
                     )
                       .then(response => response.json())
-                      .then(data => setLectures(data));
+                      .then(data => setCookware(data));
                   }}
                   className="courseLectureContents"
                 >
-                  <button>멕시칸</button>
+                  <button>국자</button>
                 </div>
               </div>
             </div>
             <div className="leftCategoryContents3" onClick={dropDown2}>
-              <button className="leftCategoryButton">단과강의</button>
+              <button className="leftCategoryButton">식기</button>
               <i
                 className={`fa-solid fa-angle-${isOpen2 ? 'down' : 'right'}`}
               />
@@ -157,11 +157,11 @@ const DetailPage = () => {
                     'http://10.58.52.158:3002/products?name=한식&type=단과강의'
                   )
                     .then(response => response.json())
-                    .then(data => setLectures(data));
+                    .then(data => setCookware(data));
                 }}
                 className="courseLectureContents"
               >
-                <button>한식</button>
+                <button>접시</button>
               </div>
               <div
                 onClick={() => {
@@ -169,11 +169,11 @@ const DetailPage = () => {
                     'http://10.58.52.158:3002/products?name=중식&type=단과강의'
                   )
                     .then(response => response.json())
-                    .then(data => setLectures(data));
+                    .then(data => setCookware(data));
                 }}
                 className="courseLectureContents"
               >
-                <button>중식</button>
+                <button>와인잔</button>
               </div>
               <div
                 onClick={() => {
@@ -181,11 +181,11 @@ const DetailPage = () => {
                     'http://10.58.52.158:3002/products?name=일식&type=단과강의'
                   )
                     .then(response => response.json())
-                    .then(data => setLectures(data));
+                    .then(data => setCookware(data));
                 }}
                 className="courseLectureContents"
               >
-                <button>일식</button>
+                <button>머그컵</button>
               </div>
               <div
                 onClick={() => {
@@ -193,11 +193,11 @@ const DetailPage = () => {
                     'http://10.58.52.158:3002/products?name=양식&type=단과강의'
                   )
                     .then(response => response.json())
-                    .then(data => setLectures(data));
+                    .then(data => setCookware(data));
                 }}
                 className="courseLectureContents"
               >
-                <button>양식</button>
+                <button>숫가락</button>
               </div>
               <div
                 onClick={() => {
@@ -205,11 +205,11 @@ const DetailPage = () => {
                     'http://10.58.52.158:3002/products?name=멕시코&type=단과강의'
                   )
                     .then(response => response.json())
-                    .then(data => setLectures(data));
+                    .then(data => setCookware(data));
                 }}
                 className="courseLectureContents"
               >
-                <button>멕시칸</button>
+                <button>젓가락</button>
               </div>
             </div>
           </div>
@@ -220,9 +220,9 @@ const DetailPage = () => {
             <div className="searchCategoryBody">
               <input
                 className="searchCategory"
-                placeholder="음식검색..."
+                placeholder="상품검색..."
                 onChange={saveValue}
-                value={searchLectureInput}
+                value={searchCookwareInput}
               />
               <div className={changeColor} onClick={deleteValue}>
                 <i className={clearAll} />
@@ -232,7 +232,7 @@ const DetailPage = () => {
               <Category
                 key={category.id}
                 category={category}
-                setSearchLectureInput={setSearchLectureInput}
+                setSearchLectureInput={setSearchCookwareInput}
               />
             ))}
           </div>
@@ -247,4 +247,4 @@ const DetailPage = () => {
   );
 };
 
-export default DetailPage;
+export default ShoppingPage;

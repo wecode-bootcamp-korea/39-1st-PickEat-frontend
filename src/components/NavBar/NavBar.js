@@ -1,19 +1,50 @@
-import { Link } from 'react-router-dom';
-import './NavBar.scss';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import './NavBar.scss';
+import ShoppingBasket from './component/UserBar/ShoppingBasket';
+import LoginBar from './component/LoginBar/LoginBar';
 const NavBar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const path = location.pathname;
+
+  const userToken = localStorage.getItem('token');
+
+  const scroll = () => {
+    if (path !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo(0, 1290);
+      }, 100);
+    } else {
+      window.scrollTo(0, 1290);
+    }
+  };
+
+  const scrollDown = () => {
+    if (path !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+      }, 300);
+    } else {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  };
   return (
     <div className="navBar">
       <h1 className="navName">
-        <Link to="/">
+        <Link className="navNameLink" to="/">
           <i className="fa-solid fa-egg" />
           P!CKEAT
         </Link>
       </h1>
-
       <ul className="navContents">
         <li className="navContentsList2">
-          <p className="navP2">ABOUT</p>
+          <p className="navP2" onClick={scroll}>
+            ABOUT
+          </p>
+
           <div className="dropBoxs" />
         </li>
         <li className="navContentsList1">
@@ -24,24 +55,32 @@ const NavBar = () => {
           <div className="dropBox1 dropBoxs">
             <ul className="dropBoxUl">
               <li className="dropBoxCt1">
-                <Link>Korean | 한식</Link>
+                <Link to="/detailpage">전체 카테고리</Link>
+              </li>
+              <li className="dropBoxCt1">
+                <Link to="/detailpage">Korean | 한식</Link>
               </li>
 
               <li className="dropBoxCt1">
                 <p>
-                  <Link>China | 중식</Link>
+                  <Link to="/detailpage">China | 중식</Link>
                 </p>
               </li>
 
               <li className="dropBoxCt1">
                 <p>
-                  <Link>Japan | 일식</Link>
+                  <Link to="/detailpage">Japan | 일식</Link>
                 </p>
               </li>
 
+              <li className="dropBoxCt1">
+                <p>
+                  <Link to="/detailpage">American | 양식</Link>
+                </p>
+              </li>
               <li className="dropBoxCtN">
                 <p>
-                  <Link>Western | 양식</Link>
+                  <Link to="/detailpage">Mexican | 멕시칸</Link>
                 </p>
               </li>
             </ul>
@@ -49,27 +88,17 @@ const NavBar = () => {
         </li>
 
         <li className="navContentsList3">
-          <p className="navP3">SHOPPING</p>
+          <Link className="shoppingLink" to="/shopping">
+            <p className="navP3">SHOPPING</p>
+          </Link>
           <div className="dropBoxs" />
         </li>
-        <li className="navContentsList4">
+        <li className="navContentsList4" onClick={scrollDown}>
           <p className="navP4">CONTACT</p>
           <div className="dropBoxs" />
         </li>
       </ul>
-
-      <ul className="navLoginBar">
-        <li className="navLoginBarList1">
-          <Link className="navLogin" to="/login">
-            로그인
-          </Link>
-        </li>
-        <li className="navLoginBarList2">
-          <Link className="navSinUP" to="/terms">
-            무료 회원가입
-          </Link>
-        </li>
-      </ul>
+      {userToken ? <ShoppingBasket /> : <LoginBar />}
     </div>
   );
 };

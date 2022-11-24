@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-
 const Slideshow = props => {
   const { slideImgList, slideIndex, setSlideIndex, setBackColor } = props;
 
@@ -23,7 +22,7 @@ const Slideshow = props => {
             key={index}
             type="radio"
             checked={slideIndex === index}
-            onClick={e => {
+            onChange={e => {
               setSlideIndex(index);
               setBackColor(`colorBoxColor${index + 1}`);
             }}

@@ -3,11 +3,10 @@ import './Lectures.scss';
 const Lectures = props => {
   const { lectureList } = props;
   const lectureType =
-    lectureList.type === '코스강의' ? 'ratingTag' : 'ratingTag1';
+    lectureList.type === '요리도구' ? 'ratingTag2' : 'ratingTag1';
   const price = lectureList.price
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
   return (
     <li className="slideLectures">
       <Link className="linkTag" to="">

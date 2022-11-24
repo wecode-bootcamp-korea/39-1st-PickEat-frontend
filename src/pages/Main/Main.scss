@@ -1,11 +1,15 @@
 @import '../../styles/variables';
 @import '../../styles/mixin';
 
+html {
+  scroll-behavior: smooth;
+}
+
 .mainBody {
   min-width: 1424px;
   max-width: 3000px;
   height: 100%;
-  margin-top: 30px;
+  margin-top: 60px;
 
   .mainImgconta {
     @include flex(center, center);
@@ -19,12 +23,12 @@
 
   .colorBoxColor1 {
     transition: 1s;
-    background-color: $pointGreen;
+    background-color: $pointOrange;
   }
 
   .colorBoxColor2 {
     transition: 1s;
-    background-color: $pointOrange;
+    background-color: $pointGreen;
   }
   .colorBoxColor3 {
     transition: 1s;
@@ -213,6 +217,10 @@
       font-size: 23px;
       white-space: nowrap;
 
+      i {
+        margin-right: 5px;
+      }
+
       .popularityText {
         font-family: 'Noto Sans KR', sans-serif;
         font-weight: 600;
@@ -329,5 +337,43 @@
         text-align: center;
       }
     }
+  }
+
+  .mainCoupon {
+    width: 100%;
+    height: 170px;
+    padding: 0px 320px 0px 320px;
+    background-color: #212224;
+    @include flex(space-between, center);
+
+    p {
+      color: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 25px;
+      font-weight: span {
+        font-family: 'Alfa Slab One', cursive;
+      }
+    }
+
+    .fa-ticket {
+      color: $deepYellow;
+    }
+  }
+
+  .mainCouponImg {
+    width: 100%;
+    height: 730px;
+    padding: 0px 300px 0px 300px;
+    background-color: #ffd401;
+
+    img {
+      width: 100%;
+      height: 650px;
+    }
+  }
+  .mainEndBody {
+    width: 100%;
+    height: 700px;
+    background-color: #f2f3f7;
   }
 }
