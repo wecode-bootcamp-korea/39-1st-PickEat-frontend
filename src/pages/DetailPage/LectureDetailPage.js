@@ -112,7 +112,7 @@ const LectureDetailPage = () => {
           <p className="lectureInfoIndex">강의 코스 {productDatas?.category}</p>
           <p className="lectureInfoName">{productDatas?.title}</p>
           <br />
-          <p className="lectureInfoCount">{reviewList.length}개의 수강평</p>
+          <p className="lectureInfoCount">13개의 수강평</p>
           <div className="lectureInfoBtn">
             <span>#</span>
             <button className="lectureHashTag">레시피</button>
