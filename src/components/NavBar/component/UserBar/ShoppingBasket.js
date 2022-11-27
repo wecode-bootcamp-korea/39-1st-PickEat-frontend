@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react';
 
 const ShoppingBasket = () => {
   const [cartDatas, setCartDatas] = useState([]);
+  const userToken = localStorage.getItem('token');
 
   useEffect(() => {
     fetch('http://10.58.52.158:3002/cart/', {
       headers: {
         'Content-Type': 'application/json',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImlhdCI6MTY2OTIwOTIyMiwiZXhwIjoxNjY5Mjk1NjIyfQ.sB4a72yYOvOaUYrGkEsVpAUhSGVUTitLYBigXzPZNrw',
+        authorization: userToken,
       },
     })
       .then(response => response.json())
@@ -22,7 +22,7 @@ const ShoppingBasket = () => {
       <li className="navLoginBarShoppingList">
         <Link className="navLogin" to="/shoppingcart">
           <div className="cartNumber">
-            <p>{cartDatas.length}</p>
+            <p>{cartDatas.length - 1}</p>
           </div>
           <i className="fa-solid fa-cart-shopping fa-lg" />
         </Link>

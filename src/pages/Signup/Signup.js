@@ -11,6 +11,7 @@ export default function Signup({ setFormTitle }) {
   const [nameCheck, setNameCheck] = useState('');
   const [phoneNum, setPhoneNum] = useState('');
   const [disabled, setDisabled] = useState(true);
+
   const textIdInput = e => {
     setEmailInput(e.target.value);
   };
@@ -37,18 +38,18 @@ export default function Signup({ setFormTitle }) {
   };
 
   const btnCheck = () => {
-    fetch('http://10.58.52.59:3002/users/signup', {
+    fetch('http://10.58.52.158:3002/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({
         email: emailInput,
         password: pwInput,
         name: nameCheck,
-        phoneNumber: phoneNum,
+        phonenumber: phoneNum,
       }),
     })
       .then(response => {
-        if (response.status !== 200) {
+        if (response.status !== 201) {
           throw new Error('회원가입에 실패하였습니다. 다시 회원가입 해주세요');
         } else {
           alert('P!CKEAT 회원가입을 성공하였습니다');
@@ -126,11 +127,7 @@ export default function Signup({ setFormTitle }) {
               onKeyUp={loginIsValidate}
             />
           </div>
-          <button
-            className="push-join-btn"
-            // disabled={disabled}
-            onClick={btnCheck}
-          >
+          <button className="push-join-btn" onClick={btnCheck}>
             가입하기
           </button>
         </div>

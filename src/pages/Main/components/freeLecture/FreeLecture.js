@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import './FreeLecture.scss';
+
 const FreeLecture = props => {
   const { lecture } = props;
   const price = lecture.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
   return (
     <li className="slideLectures">
       <Link to={`/lecturedetailpage/${lecture.id}`}>

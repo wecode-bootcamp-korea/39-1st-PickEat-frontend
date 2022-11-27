@@ -1,18 +1,12 @@
 .commentList {
   margin: 20px 0;
+  border-bottom: 1px solid #e9ecef;
+  border-radius: 2px;
 
   .commentInfo {
     display: flex;
 
-    .profileImg {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
-
     .commentStarId {
-      padding-left: 20px;
-
       .commentStar {
         padding-bottom: 5px;
 
@@ -25,6 +19,7 @@
         padding-top: 5px;
         color: gray;
         font-weight: bold;
+        font-size: 14px;
       }
     }
   }

@@ -1,5 +1,5 @@
-import './LoginBar.scss';
 import { Link } from 'react-router-dom';
+import './LoginBar.scss';
 
 const LoginBar = () => {
   return (
